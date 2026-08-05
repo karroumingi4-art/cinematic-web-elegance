@@ -14,7 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      fan_wall_messages: {
+        Row: {
+          country: string
+          created_at: string
+          id: string
+          message: string
+          name: string
+        }
+        Insert: {
+          country: string
+          created_at?: string
+          id?: string
+          message: string
+          name: string
+        }
+        Update: {
+          country?: string
+          created_at?: string
+          id?: string
+          message?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
