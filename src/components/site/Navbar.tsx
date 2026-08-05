@@ -6,9 +6,11 @@ import mark from "@/assets/mark.png";
 const links = [
   { label: "Club", href: "#about" },
   { label: "Programmes", href: "#programmes" },
+  { label: "Squad", href: "#squad" },
   { label: "Gallery", href: "#gallery" },
   { label: "Journal", href: "#journal" },
   { label: "Voices", href: "#voices" },
+  { label: "Fan wall", href: "#fanwall" },
   { label: "FAQ", href: "#faq" },
 ];
 
