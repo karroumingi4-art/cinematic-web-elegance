@@ -5,9 +5,11 @@ import { Loader } from "@/components/site/Loader";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { Programmes } from "@/components/site/Programmes";
+import { Squad } from "@/components/site/Squad";
 import { Gallery } from "@/components/site/Gallery";
 import { Journal } from "@/components/site/Journal";
 import { Voices } from "@/components/site/Voices";
+import { FanWall } from "@/components/site/FanWall";
 import { Partners } from "@/components/site/Partners";
 import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
@@ -51,9 +53,11 @@ function Index() {
         <Hero />
         <About />
         <Programmes />
+        <Squad />
         <Gallery />
         <Journal />
         <Voices />
+        <FanWall />
         <Partners />
         <Faq />
         <Contact />
