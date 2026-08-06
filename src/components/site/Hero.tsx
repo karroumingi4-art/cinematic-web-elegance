@@ -4,7 +4,7 @@ import hero from "@/assets/hero-stadium.jpg";
 
 const stats = [
   { value: "1907", label: "Founded" },
-  { value: "62,400", label: "Seats" },
+  { value: "75,400", label: "posti a sedere" },
   { value: "31", label: "Honours" },
 ];
 
