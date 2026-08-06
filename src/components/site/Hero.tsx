@@ -74,20 +74,15 @@ export function Hero() {
         >
           <a
             href="#about"
-            className="<button
-  <button
-  className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-sky-400 px-8 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-rose-950 transition-all duration-500 hover:gap-5 hover:shadow-glow"
->
-  ENTER THE CLUB
-</button>
-
-
+            className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-sky-400 px-8 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-rose-950 transition-all duration-500 hover:gap-5 hover:shadow-glow"
+          >
             Entra nel club
             <ArrowDown className="size-4 transition-transform duration-500 group-hover:translate-y-1" />
           </a>
         </motion.div>
 
         <motion.dl
+
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
