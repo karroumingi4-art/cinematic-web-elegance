@@ -56,12 +56,12 @@ export function Hero() {
           ))}
         </h1>
 
-        <motion.p
+        <motion.p>
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.65, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg"
-        >
+        &gt;
          Il Gaston Villa Football Club nacque nel 2023 a Trento, ai piedi delle Dolomiti, dall'idea di Gastone, attuale presidente del club, un'idea semplice ma pur sempre importante e caraterizzante: formare nuovi ragazzi per un futuro da vincenti.
          Idea che si è dimostrata vincente e che ha trovato nella stagione 2024 -2025 il suo picco, il campionato
         </motion.p>
@@ -77,7 +77,7 @@ export function Hero() {
            className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-sky-400 px-8 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-rose-950 transition-all duration-500 hover:gap-5 hover:shadow-glow">
 
             Entra nel club
-            <ArrowDown> className="size-4 transition-transform duration-500 group-hover:translate-y-1" />
+            <ArrowDown> className="size-4 transition-transform duration-500 group-hover:translate-y-1"&gt;
           </a>
         </motion.div>
 
