@@ -10,7 +10,7 @@ const posts = [
     src: n1,
     tag: "Accademia",
     date: "06.09.2026",
-    title: "4 giovnai in prima squadra, l'idea di Gastone",
+    title: "4 giovani in prima squadra, l'idea di Gastone",
     body: "Come il gruppo di giovani si approccia con i senatori del Team.",
   },
   {
