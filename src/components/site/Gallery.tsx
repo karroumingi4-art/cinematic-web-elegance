@@ -6,10 +6,10 @@ import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
 
 const shots = [
-  { src: g1, alt: "Silhouetted player sprinting under floodlights", caption: "Second half, 71'", w: 1200, h: 1504, span: "lg:col-span-4 lg:row-span-2" },
-  { src: g2, alt: "Aerial view of a full stadium at night", caption: "Sold out, again", w: 1600, h: 1000, span: "lg:col-span-8" },
-  { src: g3, alt: "Close-up of boot studs pressed into wet grass", caption: "Groundskeeping, 05:40", w: 1200, h: 1200, span: "lg:col-span-4" },
-  { src: g4, alt: "Empty stand of dark stadium seats at dusk", caption: "Before the noise", w: 1200, h: 1500, span: "lg:col-span-4" },
+  { src: g1, alt: "Silhouetted player sprinting under floodlights", caption: "Secondo tempo dell'amichevole, 71'", w: 1200, h: 1504, span: "lg:col-span-4 lg:row-span-2" },
+  { src: g2, alt: "Aerial view of a full stadium at night", caption: "Un altro sold out", w: 1600, h: 1000, span: "lg:col-span-8" },
+  { src: g3, alt: "Close-up of boot studs pressed into wet grass", caption: "Giardinaggio, 05:40", w: 1200, h: 1200, span: "lg:col-span-4" },
+  { src: g4, alt: "Empty stand of dark stadium seats at dusk", caption: "Prima del Caos", w: 1200, h: 1500, span: "lg:col-span-4" },
 ];
 
 export function Gallery() {
