@@ -3,21 +3,21 @@ import { Reveal, SectionHeading } from "./Reveal";
 const quotes = [
   {
     quote:
-      "I have sat in the same seat for thirty-one years. The club has grown enormously and somehow still feels like it belongs to us.",
+      "Mi sono sempre seduta nello stesso posto per gli ultimi 4 anni. Sebbene il club sia cresciuto, lo sento ancora mio.",
     name: "Marta Ferrero",
-    role: "Season member since 1994",
+    role: "Abbonata dal 2022",
   },
   {
     quote:
-      "The academy taught me how to train, but more than that it taught me how to carry myself when nobody is watching.",
-    name: "Luca Bendini",
-    role: "Academy graduate, first team",
+      "Questa squadra è pazzesca e non la lascierei mai e poi mai.",
+    name: "Christian Pulisic",
+    role: "Prima Squadra",
   },
   {
     quote:
-      "Working with Ardente is unlike any other partnership. Nothing leaves the building until it is genuinely finished.",
-    name: "Rina Halvorsen",
-    role: "Creative director, partner studio",
+      "Lavorare per Gaston Villa, ma soprattutto per Gaston è un vero onore.",
+    name: "Ezio Sella",
+    role: "Vice Allenatore, Piima Squadra",
   },
 ];
 
@@ -26,10 +26,10 @@ export function Voices() {
     <section id="voices" className="relative bg-background py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Voices"
+          eyebrow="VOCI"
           title={
             <>
-              What the club <span className="text-gradient-gold">sounds like</span>
+              LE PAROLE <span className="text-gradient-gold">DEL CLUB</span>
             </>
           }
           align="center"
