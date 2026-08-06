@@ -14,9 +14,9 @@ const schema = z.object({
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
 const details = [
-  { icon: MapPin, label: "Stadio dell'Ardente", value: "Viale Corso 12, Marina District" },
-  { icon: Phone, label: "Club office", value: "+39 055 0100 190" },
-  { icon: Mail, label: "Membership", value: "members@ardentefc.example" },
+  { icon: MapPin, label: "Gaston Villa Park", value: "Loc.Centa,4 " },
+  { icon: Phone, label: "uffci del CLub", value: "+39 055 0100 190" },
+  { icon: Mail, label: "Membership", value: "members@ardentefc.com" },
 ];
 
 const field =
@@ -40,7 +40,7 @@ export function Contact() {
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
-      toast.error("Please check the highlighted fields.");
+      toast.error("Per favore controllare le zone sottolineate.");
       return;
     }
 
@@ -49,7 +49,7 @@ export function Contact() {
     window.setTimeout(() => {
       setSending(false);
       form.reset();
-      toast.success("Message received. The club office will reply within one working day.");
+      toast.success("Messagio ricevuto. l'amministrazione le  risponderà in un giorno lavorativo.");
     }, 700);
   };
 
@@ -64,7 +64,7 @@ export function Contact() {
                 Speak to <span className="text-gradient-gold">the club</span>
               </>
             }
-            intro="Membership, hospitality, academy trials or partnership — write to us and a named member of staff will answer."
+            intro="Membership, hospitality, Provini o partnership — Scrivici e un membro dello staff le risponderà."
           />
           <ul className="mt-12 space-y-7">
             {details.map((d, i) => (
