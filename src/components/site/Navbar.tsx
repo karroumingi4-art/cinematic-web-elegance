@@ -7,6 +7,7 @@ const links = [
   { label: "Club", href: "#about" },
   { label: "Programmi", href: "#programmes" },
   { label: "La Squadra", href: "#squad" },
+  { label: "Calendario", href: "#matches" },
   { label: "Galleria", href: "#gallery" },
   { label: "Diario", href: "#journal" },
   { label: "Voci", href: "#voices" },
