@@ -15,9 +15,9 @@ type FanMessage = {
 };
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Please enter your name").max(60),
-  country: z.string().trim().min(2, "Please enter your country").max(60),
-  message: z.string().trim().min(4, "Say a little more").max(180, "Keep it under 180 characters"),
+  name: z.string().trim().min(2, "prego inserire nome e cognome").max(60),
+  country: z.string().trim().min(2, Prego inserire paese di residenza").max(60),
+  message: z.string().trim().min(4, "parlaci un po'").max(180, "max. 180 caratteri"),
 });
 
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
@@ -31,7 +31,7 @@ const labelClass = "text-[0.65rem] font-bold uppercase tracking-[0.2em] text-mut
 
 async function fetchWall(): Promise<FanMessage[]> {
   const res = await fetch("/api/fanwall");
-  if (!res.ok) throw new Error("Unable to load the wall");
+  if (!res.ok) throw new Error("impossbile caricare il fan wall");
   const json = (await res.json()) as { messages: FanMessage[] };
   return json.messages ?? [];
 }
@@ -90,13 +90,13 @@ export function FanWall() {
       });
       if (!res.ok) {
         const json = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(json.error ?? "Unable to save your message");
+        throw new Error(json.error ?? "Impossibile salvare il messaggio");
       }
       return (await res.json()) as { message: FanMessage };
     },
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ["fanwall"] });
-      toast.success("Your name is on the wall. Thank you for signing.");
+      toast.success("Il tuo nome è sul Muro. Grazie per tutto.");
     },
     onError: (error: Error) => toast.error(error.message),
   });
@@ -130,8 +130,8 @@ export function FanWall() {
   const rowTwo = data.slice(half);
 
   const stats = [
-    { icon: MessageSquareQuote, value: totalMessages.toLocaleString("en-US"), label: "Messages signed" },
-    { icon: Globe2, value: `${totalCountries}`, label: "Countries represented" },
+    { icon: MessageSquareQuote, value: totalMessages.toLocaleString("en-US"), label: "Messaggi Inviati" },
+    { icon: Globe2, value: `${totalCountries}`, label: "Paesi rappresentati" },
   ];
 
   return (
@@ -141,10 +141,10 @@ export function FanWall() {
           eyebrow="Fan wall"
           title={
             <>
-              Signed by <span className="text-gradient-gold">the support</span>
+              Firmato da <span className="text-gradient-gold">VOI</span>
             </>
           }
-          intro="Every message left here stays here. Add yours to a wall written by supporters on six continents."
+          intro="ogni messaggio lasciato qui rimarrà qui. Aggiungi il tuo in un muro di tifosi da tutto il mondo."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-start lg:gap-16">
@@ -160,7 +160,7 @@ export function FanWall() {
                 ))}
               </div>
               <p className="mt-8 font-serif text-base italic leading-relaxed text-foreground/75">
-                “A club is only ever as old as the last person who chose it.”
+                “Il dodicesimo uomo, il primo cuore.”
               </p>
             </div>
           </Reveal>
@@ -173,7 +173,7 @@ export function FanWall() {
             >
               <div className="flex items-center gap-3">
                 <PenLine className="size-5 text-primary" aria-hidden="true" />
-                <h3 className="display text-2xl">Sign the wall</h3>
+                <h3 className="display text-2xl"> Firma sul Muro</h3>
               </div>
 
               <div className="mt-7 grid gap-6 sm:grid-cols-2">
@@ -203,7 +203,7 @@ export function FanWall() {
                   rows={4}
                   maxLength={180}
                   className={`${field} resize-none`}
-                  placeholder="Why this club, in one line."
+                  placeholder="Un messaggio per questo club, in una riga."
                 />
                 {errors.message && <p className="mt-2 text-xs text-destructive">{errors.message}</p>}
               </div>
