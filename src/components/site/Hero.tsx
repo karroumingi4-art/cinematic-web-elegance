@@ -3,9 +3,9 @@ import { ArrowDown } from "lucide-react";
 import hero from "@/assets/hero-stadium.jpg";
 
 const stats = [
-  { value: "2023", label: "Anno di Fondazione" },
-  { value: "75,400", label: "posti a sedere" },
-  { value: "1 Campionato", label: "Palmares" },
+  { value: "1907", label: "Founded" },
+  { value: "62,400", label: "Seats" },
+  { value: "31", label: "Honours" },
 ];
 
 export function Hero() {
@@ -17,7 +17,7 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-dvh overflow-hidden">
-      <motion.div> className="absolute inset-0 -z-10" style={reduced ? {} : { y: imageY }}>
+      <motion.div className="absolute inset-0 -z-10" style={reduced ? {} : { y: imageY }}>
         <img
           src={hero}
           alt="Floodlit stadium tunnel before kick-off"
@@ -28,7 +28,7 @@ export function Hero() {
         <div className="veil absolute inset-0" />
       </motion.div>
 
-      <motion.div>
+      <motion.div
         style={reduced ? {} : { y: contentY, opacity: contentOpacity }}
         className="relative mx-auto flex min-h-dvh max-w-7xl flex-col justify-end px-5 pb-16 pt-32 sm:px-8 sm:pb-24"
       >
@@ -38,11 +38,11 @@ export function Hero() {
           transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="eyebrow"
         >
-          Gaston Villa Football Club — Est.2022
+          Ardente Football Club — Est. 1907
         </motion.p>
 
         <h1 className="display mt-6 max-w-4xl text-[clamp(2.75rem,11vw,7.5rem)]">
-          {["Fondato Dalla", "passione. vinto", "per amore."].map((line, i) => (
+          {["Built in the", "dark. Forged", "for the light."].map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
                 className="block"
@@ -56,28 +56,28 @@ export function Hero() {
           ))}
         </h1>
 
-        <motion.p>
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.65, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg"
-       &gt; 
-         Il Gaston Villa Football Club nacque nel 2023 a Trento, ai piedi delle Dolomiti, dall'idea di Gastone, attuale presidente del club, un'idea semplice ma pur sempre importante e caraterizzante: formare nuovi ragazzi per un futuro da vincenti.
-         Idea che si è dimostrata vincente e che ha trovato nella stagione 2024 -2025 il suo picco, il campionato
+        >
+          A century of craft, discipline and belonging. Step inside the club where every
+          matchday is written like a chapter and every supporter carries the flame.
         </motion.p>
 
-        <motion.div>
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.78, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10"
-         &gt;
+        >
           <a
             href="#about"
-           className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-sky-400 px-8 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-rose-950 transition-all duration-500 hover:gap-5 hover:shadow-glow">
-
-            Entra nel club
-            <ArrowDown> className="size-4 transition-transform duration-500 group-hover:translate-y-1"&gt;
+            className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-primary px-8 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-primary-foreground transition-all duration-500 hover:gap-5 hover:shadow-glow"
+          >
+            Enter the club
+            <ArrowDown className="size-4 transition-transform duration-500 group-hover:translate-y-1" />
           </a>
         </motion.div>
 
