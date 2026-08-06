@@ -38,7 +38,7 @@ export function Hero() {
           transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="eyebrow"
         >
-          Ardente Football Club — Est. 1907
+          GAston Villa Football Club — Est. 2023
         </motion.p>
 
         <h1 className="display mt-6 max-w-4xl text-[clamp(2.75rem,11vw,7.5rem)]">
@@ -62,8 +62,8 @@ export function Hero() {
           transition={{ delay: 0.65, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg"
         >
-          A century of craft, discipline and belonging. Step inside the club where every
-          matchday is written like a chapter and every supporter carries the flame.
+          Nel 2023 Gastone, Presidente Attuale del club, fonda Gaston Villa con un'idea a dir poco rivoluzionaria che ha creato critiche in tutto il mondo. 
+          Un'idea semplice ma pur sempre importante: Lavorare nel presente per il FUTURO
         </motion.p>
 
         <motion.div
