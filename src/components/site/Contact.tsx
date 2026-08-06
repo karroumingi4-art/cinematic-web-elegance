@@ -90,7 +90,7 @@ export function Contact() {
                 <label className={labelClass} htmlFor="contact-name">
                   Name
                 </label>
-                <input id="contact-name" name="name" className={field} placeholder="Your name" maxLength={100} />
+                <input id="contact-name" name="name" className={field} placeholder="Il tuo nome" maxLength={100} />
                 {errors.name && <p className="mt-2 text-xs text-destructive">{errors.name}</p>}
               </div>
               <div>
@@ -114,10 +114,10 @@ export function Contact() {
                 Subject
               </label>
               <input
-                id="contact-subject"
-                name="subject"
+                id="contatto"
+                name="oggetto"
                 className={field}
-                placeholder="Membership enquiry"
+                placeholder="richiesta di membership"
                 maxLength={120}
               />
               {errors.subject && <p className="mt-2 text-xs text-destructive">{errors.subject}</p>}
@@ -129,10 +129,10 @@ export function Contact() {
               </label>
               <textarea
                 id="contact-message"
-                name="message"
+                name="messaggio"
                 rows={5}
                 className={`${field} resize-none`}
-                placeholder="How can we help?"
+                placeholder="come possiamo aiutarti?"
                 maxLength={1000}
               />
               {errors.message && <p className="mt-2 text-xs text-destructive">{errors.message}</p>}
