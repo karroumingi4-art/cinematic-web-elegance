@@ -5,10 +5,10 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Please enter your full name").max(100),
-  email: z.string().trim().email("Please enter a valid email address").max(255),
-  subject: z.string().trim().min(2, "Please add a subject").max(120),
-  message: z.string().trim().min(10, "Tell us a little more (10 characters minimum)").max(1000),
+  name: z.string().trim().min(2, "Prego inserire nome e cognome").max(100),
+  email: z.string().trim().email("Prego inserire indirizzo email valido").max(255),
+  subject: z.string().trim().min(2, "Prego inserire oggetto").max(120),
+  message: z.string().trim().min(10, "raccontaci di più (min. 10 parole)").max(1000),
 });
 
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
