@@ -5,11 +5,11 @@ import mark from "@/assets/mark.png";
 
 const links = [
   { label: "Club", href: "#about" },
-  { label: "Programmes", href: "#programmes" },
-  { label: "Squad", href: "#squad" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Journal", href: "#journal" },
-  { label: "Voices", href: "#voices" },
+  { label: "Programmi", href: "#programmes" },
+  { label: "La Squadra", href: "#squad" },
+  { label: "Galleria", href: "#gallery" },
+  { label: "Diario", href: "#journal" },
+  { label: "Voci", href: "#voices" },
   { label: "Fan wall", href: "#fanwall" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -104,7 +104,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-[0.75rem] font-bold uppercase tracking-[0.16em] text-primary-foreground"
               >
-                Membership
+                Iscrizioni
               </a>
             </nav>
           </motion.div>

@@ -1,11 +1,11 @@
 import { Reveal } from "./Reveal";
 
 const partners = [
-  "Vaselli Automotive",
-  "Northbank",
+  "Iliad",
+  "Tecnocasa",
   "Terra Mineral",
-  "Halden Optics",
-  "Corso Atelier",
+  "Unieuro",
+  "Bancomat",
   "Ridgeline Air",
 ];
 
