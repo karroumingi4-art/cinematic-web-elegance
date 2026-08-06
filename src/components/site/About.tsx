@@ -32,9 +32,9 @@ export function About() {
           </div>
           <Reveal delay={0.2}>
             <div className="glass absolute -bottom-8 left-4 right-4 rounded-lg p-6 sm:left-8 sm:right-auto sm:w-72">
-              <p className="eyebrow">Our creed</p>
+              <p className="eyebrow">il nostro credo</p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-                “We do not chase moments. We build the conditions that make them inevitable.”
+                “Lavorare nel presente per il futuro.”
               </p>
             </div>
           </Reveal>
