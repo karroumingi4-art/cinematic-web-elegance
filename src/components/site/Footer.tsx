@@ -7,33 +7,33 @@ const columns = [
   {
     heading: "Club",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Programmes", href: "#programmes" },
-      { label: "Gallery", href: "#gallery" },
+      { label: "Sul Club", href: "#sul club" },
+      { label: "Programmi", href: "#programmi" },
+      { label: "Galleria", href: "#galleria" },
     ],
   },
   {
-    heading: "Supporters",
+    heading: "I Tifosi",
     links: [
-      { label: "Journal", href: "#journal" },
-      { label: "Voices", href: "#voices" },
+      { label: "Diario", href: "#diario" },
+      { label: "Voci", href: "#voci" },
       { label: "FAQ", href: "#faq" },
     ],
   },
   {
-    heading: "Visit",
+    heading: "VIsita",
     links: [
-      { label: "Contact", href: "#contact" },
-      { label: "Stadium tours", href: "#faq" },
-      { label: "Partners", href: "#journal" },
+      { label: "Contattaci", href: "#contattaci" },
+      { label: "Tour dello Stadio", href: "#faq" },
+      { label: "Partner", href: "#diario" },
     ],
   },
 ];
 
 const socials = [
-  { icon: Instagram, label: "Ardente FC on Instagram" },
-  { icon: Facebook, label: "Ardente FC on Facebook" },
-  { icon: Youtube, label: "Ardente FC on YouTube" },
+  { icon: Instagram, label: "Gaston Villa on Instagram" },
+  { icon: Facebook, label: "Gaston Villa on Facebook" },
+  { icon: Youtube, label: "Gaston Villa on YouTube" },
 ];
 
 export function Footer() {
@@ -43,11 +43,11 @@ export function Footer() {
     event.preventDefault();
     const value = email.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) || value.length > 255) {
-      toast.error("Please enter a valid email address.");
+      toast.error("prego inserire un indirizzo e-mail valido.");
       return;
     }
     setEmail("");
-    toast.success("You're on the list. Look out for the Monday dispatch.");
+    toast.success("Sei nella lista... attendi per la newsletter di Lunedì.");
   };
 
   return (
@@ -60,8 +60,7 @@ export function Footer() {
               <span className="display text-lg tracking-[0.18em]">Ardente</span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Ardente Football Club. Founded 1907 in the Marina District. Owned in part by its
-              supporters.
+              Gaston Villa Football Club. Fondato nel 2023 a Trento. Psseduto in parte dai propri Tifosi.
             </p>
             <ul className="mt-7 flex gap-3">
               {socials.map((s) => (
@@ -105,7 +104,7 @@ export function Footer() {
               Newsletter
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              One dispatch each Monday: team news, long reads and ticket releases.
+              Una newsletter ogni lunedì: notizie sulla squadra, approfondimenti e informazioni sui biglietti. .
             </p>
             <form onSubmit={subscribe} noValidate className="mt-6 flex flex-col gap-3 sm:flex-row">
               <label className="sr-only" htmlFor="newsletter-email">
@@ -124,14 +123,14 @@ export function Footer() {
                 type="submit"
                 className="min-h-11 shrink-0 rounded-full bg-primary px-6 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary-foreground transition-transform duration-300 hover:scale-[1.04]"
               >
-                Subscribe
+                Iscriviti
               </button>
             </form>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Ardente Football Club. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} GAston Villa Football Club. Tutti i diritti riservati.</p>
           <ul className="flex flex-wrap gap-6">
             <li>
               <a href="#faq" className="link-underline hover:text-foreground">
@@ -140,12 +139,12 @@ export function Footer() {
             </li>
             <li>
               <a href="#faq" className="link-underline hover:text-foreground">
-                Terms
+                Termini
               </a>
             </li>
             <li>
               <a href="#faq" className="link-underline hover:text-foreground">
-                Accessibility
+                Accessibilità
               </a>
             </li>
           </ul>
