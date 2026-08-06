@@ -37,7 +37,7 @@ export function Faq() {
           eyebrow="FAQ"
           title={
             <>
-              DOMANDE, <span className="text-gradient-gold">A CUI C'è UNA RISPOSTA</span>
+              DOMANDE, <span className="text-[#95BFE5]">A CUI C'è UNA RISPOSTA</span>
             </>
           }
           intro="se avete ulteriori domande, l'uffcio vi risponderà in un giorno lavorativo."

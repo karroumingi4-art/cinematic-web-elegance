@@ -78,7 +78,7 @@ export function PlayerModal({ player, onClose }: { player: Player | null; onClos
               <div className="veil absolute inset-0" />
               <motion.span
                 aria-hidden="true"
-                className="display pointer-events-none absolute -bottom-8 right-3 text-gradient-gold text-[9rem] leading-none opacity-90 sm:text-[13rem] lg:-bottom-12 lg:text-[16rem]"
+                className="display pointer-events-none absolute -bottom-8 right-3 text-[#95BFE5] text-[9rem] leading-none opacity-90 sm:text-[13rem] lg:-bottom-12 lg:text-[16rem]"
                 initial={reduced ? { opacity: 0 } : { opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.1, ease }}
@@ -119,7 +119,7 @@ export function PlayerModal({ player, onClose }: { player: Player | null; onClos
                 <div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4">
                   {player.season.map((stat) => (
                     <div key={stat.label}>
-                      <p className="display text-3xl text-gradient-gold">{stat.value}</p>
+                      <p className="display text-3xl text-[#95BFE5]">{stat.value}</p>
                       <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                         {stat.label}
                       </p>

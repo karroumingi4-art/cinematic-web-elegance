@@ -6,37 +6,37 @@ const items = [
   {
     icon: Ticket,
     title: "Matchday",
-    body: "Curated seating tiers, tunnel-side hospitality and pre-match dining designed around the ninety minutes.",
+    body: "posti a sedere premium, tour nel tunnel dello stadio e cena pre partita a tema dei 90 minuti.",
   },
   {
     icon: Crown,
-    title: "The Gold Circle",
-    body: "A limited membership with year-round access to training sessions, archives and members-only evenings.",
+    title: "Il Circolo",
+    body: "Un'iscrizione premium che ti permette di accedere agli allenamenti a porte chiuse, entrare prima alle partite, avere priorità nelle prenotazioni.",
   },
   {
     icon: Users,
-    title: "Academy",
-    body: "Technical development from age eight upward, with schooling, nutrition and mentorship built in.",
+    title: "Accademia",
+    body: "Sviluppo tecnico, tatticoe mentale dagli 8 anni in su, con studio, nutrizione e psicologo inclusi.",
   },
   {
     icon: Trophy,
-    title: "Legacy fund",
-    body: "Community pitches, coaching bursaries and stadium restoration financed directly by supporters.",
+    title: "Fondo Eredità",
+    body: "Campi per le communità, sviluppo delle attrezature e strutture,costruzione zone pubbliche.",
   },
 ];
 
 export function Programmes() {
   return (
-    <section id="programmes" className="relative bg-ink py-24 sm:py-32 lg:py-40">
+    <section id="programmi" className="relative bg-ink py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Programmes"
+          eyebrow="programmi"
           title={
             <>
-              Ways to stand <span className="text-gradient-gold">with us</span>
+              Stai <span className="text-[#95BFE5]">con noi</span>
             </>
           }
-          intro="Four routes into the club, each built with the same attention we give the first team."
+          intro="Quattro strade dentro al club, ognuna costruita con la setssa cura usata con la prima squadra."
         />
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

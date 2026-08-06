@@ -20,7 +20,7 @@ export function Gallery() {
           eyebrow="Gallery"
           title={
             <>
-              The season, <span className="text-gradient-gold">frame by frame</span>
+              The season, <span className="text-[#95BFE5]">frame by frame</span>
             </>
           }
         />

@@ -61,7 +61,7 @@ export function Contact() {
             eyebrow="Contact"
             title={
               <>
-                Speak to <span className="text-gradient-gold">the club</span>
+                Speak to <span className="text-[#95BFE5]">the club</span>
               </>
             }
             intro="Membership, hospitality, Provini o partnership — Scrivici e un membro dello staff le risponderà."

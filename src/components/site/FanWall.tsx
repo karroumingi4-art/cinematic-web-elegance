@@ -141,7 +141,7 @@ export function FanWall() {
           eyebrow="Fan wall"
           title={
             <>
-              Firmato da <span className="text-gradient-gold">VOI</span>
+              Firmato da <span className="text-[#95BFE5]">VOI</span>
             </>
           }
           intro="ogni messaggio lasciato qui rimarrà qui. Aggiungi il tuo in un muro di tifosi da tutto il mondo."

@@ -11,13 +11,13 @@ export function Squad() {
     <section id="squad" className="relative bg-background py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="First team"
+          eyebrow="Prima Squadra"
           title={
             <>
-              The names on <span className="text-gradient-gold">the shirts</span>
+              I Nomi sulle <span className="text-[#95BFE5]">Maglie</span>
             </>
           }
-          intro="Open a player to read their vitals, this season's numbers, the career rail and the honours behind the badge."
+          intro="Clicca sul giocatore per scoprire tutto su di lui."
         />
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

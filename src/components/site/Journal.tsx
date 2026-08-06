@@ -39,7 +39,7 @@ export function Journal() {
             eyebrow="Journal"
             title={
               <>
-                Le Ultime da <span className="text-gradient-gold">Trento</span>
+                Le Ultime da <span className="text-[#95BFE5]">Trento</span>
               </>
             }
           />
