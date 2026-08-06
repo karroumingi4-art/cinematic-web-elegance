@@ -8,24 +8,24 @@ import { Reveal, SectionHeading } from "./Reveal";
 
 const faqs = [
   {
-    q: "How do I join the Gold Circle?",
-    a: "Membership opens twice a year and is capped at 1,200 places. Register your interest through the contact form and we will write to you before the next intake.",
+    q: "Come divento un membro del circolo d'oro?",
+    a: "Le iscrizioni aprono due volte all'anno, AGosto e Gennaio e hanno una capienza di 25000 posti. Registra il tuo interesse e ti scriveremo subito",
   },
   {
-    q: "Can I visit the stadium on a non-matchday?",
-    a: "Yes. Guided tours run Tuesday to Saturday and include the dressing rooms, the tunnel and the club archive. Members receive priority booking.",
+    q: "Posso visitare lo stadio in un giorno non di partita?",
+    a: "Certamente, i tour guidati sono aperti dal lunedì al giovedì, dalle 07:00 alle 15:00. c'è anche l'opzione per osservare gli allenamenti, dalle 17:00 alle 20:00. Gli abbonati hanno priorità sulle prenotazioni",
   },
   {
-    q: "What age can a child join the academy?",
-    a: "Trials begin at age eight. Every intake includes schooling support, nutrition guidance and a mentor from the senior squad.",
+    q: "a qaule età posso entrare nell'accademia?",
+    a: "I provini iniziano dall'età di 8 anni. i Membri dell'Accademia riceveranno consultazioni private da medici dello sport, nutrizionisti e lezioni private da membri della prima squadra",
   },
   {
-    q: "Is hospitality accessible?",
-    a: "All hospitality tiers are step-free, with companion seating, hearing loops and quiet rooms available on request at no additional cost.",
+    q: "L'Ospitalità è accessibile?",
+    a: "Certamente, l'ospitalità è accessibile a tutti i tifosi, camere insonorizzate e altre aggiunte enon hanno costi aggiuntivi.",
   },
   {
-    q: "Where does the Legacy Fund money go?",
-    a: "Published annually and independently audited: community pitches, coaching bursaries and the restoration of the original east stand.",
+    q: "Dove vanno i soldi del Fondo Eredità?",
+    a: "Il bilacio viene pubblicato annualmente a fine stagione. Principalmente viene utilizato per nuove butique del Club, Ristrutturzione dei campi, Attrezzature e molto altro....",
   },
 ];
 
@@ -37,10 +37,10 @@ export function Faq() {
           eyebrow="FAQ"
           title={
             <>
-              Answers, <span className="text-gradient-gold">plainly given</span>
+              DOMANDE, <span className="text-gradient-gold">A CUI C'è UNA RISPOSTA</span>
             </>
           }
-          intro="If something is not covered here, the club office replies within one working day."
+          intro="se avete ulteriori domande, l'uffcio vi risponderà in un giorno lavorativo."
         />
 
         <Reveal delay={0.12}>
