@@ -8,24 +8,24 @@ import n3 from "@/assets/news-3.jpg";
 const posts = [
   {
     src: n1,
-    tag: "Academy",
-    date: "12 May",
-    title: "Nine graduates, one philosophy",
-    body: "How the under-19 group rewrote our approach to pre-season conditioning.",
+    tag: "Accademia",
+    date: "06.09.2026",
+    title: "4 giovnai in prima squadra, l'idea di Gastone",
+    body: "Come il gruppo di giovani si approccia con i senatori del Team.",
   },
   {
     src: n2,
-    tag: "Kit",
-    date: "28 April",
-    title: "The centenary shirt, explained",
-    body: "Every seam references an era. A conversation with the design studio behind it.",
+    tag: "Kit 2026-2027",
+    date: "05.05.2026",
+    title: "LA Maglia per il ritorno",
+    body: "C'è chi vince una volta e si accontenta. Noi abbiamo vinto una volta e abbiamo capito che possiamo farlo ancora. Questa maglia porta addosso quella convinzione.",
   },
   {
     src: n3,
     tag: "Club",
-    date: "09 April",
-    title: "Inside the new performance centre",
-    body: "Twelve thousand square metres built around recovery, data and daylight.",
+    date: "06.08.2026",
+    title: "Dentro al nuovo centro preparativo",
+    body: "deici mila metri quadrati per ritornare in forma.",
   },
 ];
 
@@ -38,7 +38,7 @@ export function Journal() {
             eyebrow="Journal"
             title={
               <>
-                Latest from <span className="text-gradient-gold">Ardente</span>
+                Le Ultime da <span className="text-gradient-gold">Trento</span>
               </>
             }
           />
@@ -47,7 +47,7 @@ export function Journal() {
               href="#contact"
               className="link-underline inline-flex shrink-0 items-center gap-2 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary"
             >
-              All stories <ArrowUpRight className="size-4" />
+              Tutte le Storie <ArrowUpRight className="size-4" />
             </a>
           </Reveal>
         </div>
