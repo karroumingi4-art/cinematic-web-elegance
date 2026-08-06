@@ -16,7 +16,7 @@ type FanMessage = {
 
 const schema = z.object({
   name: z.string().trim().min(2, "prego inserire nome e cognome").max(60),
-  country: z.string().trim().min(2, Prego inserire paese di residenza").max(60),
+  country: z.string().trim().min(2, "Prego inserire paese di residenza").max(60),
   message: z.string().trim().min(4, "parlaci un po'").max(180, "max. 180 caratteri"),
 });
 
