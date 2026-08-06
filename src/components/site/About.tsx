@@ -4,9 +4,9 @@ import { Reveal, SectionHeading } from "./Reveal";
 import locker from "@/assets/about-locker.jpg";
 
 const pillars = [
-  { title: "Discipline", body: "Every session measured, every detail rehearsed until it disappears." },
-  { title: "Belonging", body: "A club shaped by the city that fills it, from the terraces inward." },
-  { title: "Longevity", body: "Decisions made for the next generation, not the next headline." },
+  { title: "Disciplina e Cura", body: "Ogni sessione curata, ogni dettaglio perfezioanto." },
+  { title: "appartenenza", body: "Un club profondamente attaccato alle sue origini, ai suoi tifosi e al suo territorio." },
+  { title: "LOngevità", body: "Lavorare ora per il futuro, l'idea di Gastone." },
 ];
 
 export function About() {
@@ -45,10 +45,10 @@ export function About() {
             eyebrow="The club"
             title={
               <>
-                A quiet obsession with <span className="text-gradient-gold">getting it right</span>
+                Un attaccamento <span className="text-[#95BFE5]">Senza limiti</span>
               </>
             }
-            intro="Ardente began as eleven dockworkers on a floodless pitch. More than a century later the ambition is unchanged: play with courage, treat people well, and leave the shirt heavier with meaning than we found it."
+            intro="Gaston Villa nasce nel 2023 grazie a Gastone e Karim.Nato da idee nobili come la disciplina , la cura, ma soprattutto sempre concentrati sul futuro."
           />
 
           <ul className="mt-12 space-y-8">
