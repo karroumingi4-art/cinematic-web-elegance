@@ -4,9 +4,9 @@ import { Reveal, SectionHeading } from "./Reveal";
 import locker from "@/assets/about-locker.jpg";
 
 const pillars = [
-  { title: "Disciplina", body: "Ogni sessione curata, ogni minimo detaglio perfezionato." },
-  { title: "Appartenenza", body: "Un club attaccato ai suoi colori, ai suoi tifosi e alla sua terra" },
-  { title: "Lonegevità", body: "L'idea di Gastone portata avanti: lavorare nel presente per il futuro" },
+  { title: "Discipline", body: "Every session measured, every detail rehearsed until it disappears." },
+  { title: "Belonging", body: "A club shaped by the city that fills it, from the terraces inward." },
+  { title: "Longevity", body: "Decisions made for the next generation, not the next headline." },
 ];
 
 export function About() {
@@ -32,9 +32,9 @@ export function About() {
           </div>
           <Reveal delay={0.2}>
             <div className="glass absolute -bottom-8 left-4 right-4 rounded-lg p-6 sm:left-8 sm:right-auto sm:w-72">
-              <p className="eyebrow">il nostro credo</p>
+              <p className="eyebrow">Our creed</p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-                “"Caduti nel 2023, rinati campioni.".”
+                “We do not chase moments. We build the conditions that make them inevitable.”
               </p>
             </div>
           </Reveal>
@@ -42,13 +42,13 @@ export function About() {
 
         <div className="order-1 lg:order-2">
           <SectionHeading
-            eyebrow="Il club"
+            eyebrow="The club"
             title={
               <>
                 A quiet obsession with <span className="text-gradient-gold">getting it right</span>
               </>
             }
-            intro="Gaston Villa ha iniziato come un piccolo club di provincia nel 2023 dove è retrocesso, poi successivamente, con la fatica, la voglia e i tifosi sempre vicini a noi siamo riusciti a coronare i nostri sforzi con la vittoria del campionato 2024-2025"
+            intro="Ardente began as eleven dockworkers on a floodless pitch. More than a century later the ambition is unchanged: play with courage, treat people well, and leave the shirt heavier with meaning than we found it."
           />
 
           <ul className="mt-12 space-y-8">
