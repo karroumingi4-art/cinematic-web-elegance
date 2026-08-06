@@ -25,11 +25,11 @@ export function Voices() {
   return (
     <section id="voices" className="relative bg-background py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading
+         <SectionHeading
           eyebrow="VOCI"
           title={
             <>
-              LE PAROLE <span className="text-gradient-gold">DEL CLUB</span>
+              LE PAROLE <span className="text-[#95BFE5]">DEL CLUB</span>
             </>
           }
           align="center"
