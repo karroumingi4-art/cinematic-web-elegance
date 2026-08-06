@@ -181,14 +181,14 @@ export function FanWall() {
                   <label className={labelClass} htmlFor="wall-name">
                     Name
                   </label>
-                  <input id="wall-name" name="name" className={field} placeholder="Your name" maxLength={60} />
+                  <input id="wall-name" name="name" className={field} placeholder="Il tuo Nome" maxLength={60} />
                   {errors.name && <p className="mt-2 text-xs text-destructive">{errors.name}</p>}
                 </div>
                 <div>
                   <label className={labelClass} htmlFor="wall-country">
                     Country
                   </label>
-                  <input id="wall-country" name="country" className={field} placeholder="Italy" maxLength={60} />
+                  <input id="wall-country" name="Paese" className={field} placeholder="Italia" maxLength={60} />
                   {errors.country && <p className="mt-2 text-xs text-destructive">{errors.country}</p>}
                 </div>
               </div>
