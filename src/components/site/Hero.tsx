@@ -42,7 +42,7 @@ export function Hero() {
         </motion.p>
 
         <h1 className="display mt-6 max-w-4xl text-[clamp(2.75rem,11vw,7.5rem)]">
-          {["Built in the", "dark. Forged", "for the light."].map((line, i) => (
+          {["Fondato con un sogno, cresciuto con sudore"].map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
                 className="block"
