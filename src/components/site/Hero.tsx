@@ -3,9 +3,9 @@ import { ArrowDown } from "lucide-react";
 import hero from "@/assets/hero-stadium.jpg";
 
 const stats = [
-  { value: "1907", label: "Founded" },
+  { value: "2023", label: "Anno di Fondazione" },
   { value: "75,400", label: "posti a sedere" },
-  { value: "31", label: "Honours" },
+  { value: "1 Campionato", label: "Palmares" },
 ];
 
 export function Hero() {
