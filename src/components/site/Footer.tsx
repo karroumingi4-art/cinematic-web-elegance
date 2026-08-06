@@ -7,25 +7,25 @@ const columns = [
   {
     heading: "Club",
     links: [
-      { label: "Sul Club", href: "#sul club" },
-      { label: "Programmi", href: "#programmi" },
-      { label: "Galleria", href: "#galleria" },
+      { label: "Sul Club", href: "#about" },
+      { label: "Programmi", href: "#programms" },
+      { label: "Galleria", href: "#gallery" },
     ],
   },
   {
     heading: "I Tifosi",
     links: [
-      { label: "Diario", href: "#diario" },
-      { label: "Voci", href: "#voci" },
+      { label: "Diario", href: "#journal" },
+      { label: "Voci", href: "#voices" },
       { label: "FAQ", href: "#faq" },
     ],
   },
   {
     heading: "VIsita",
     links: [
-      { label: "Contattaci", href: "#contattaci" },
+      { label: "Contattaci", href: "#contact" },
       { label: "Tour dello Stadio", href: "#faq" },
-      { label: "Partner", href: "#diario" },
+      { label: "Partner", href: "#journal" },
     ],
   },
 ];
@@ -60,7 +60,7 @@ export function Footer() {
               <span className="display text-lg tracking-[0.18em]">Ardente</span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Gaston Villa Football Club. Fondato nel 2023 a Trento. Psseduto in parte dai propri Tifosi.
+              Gaston Villa Football Club. Fondato nel 2023 a Trento. Posseduto in parte dai propri Tifosi.
             </p>
             <ul className="mt-7 flex gap-3">
               {socials.map((s) => (
@@ -130,7 +130,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} GAston Villa Football Club. Tutti i diritti riservati.</p>
+          <p>© {new Date().getFullYear()} Gaston Villa Football Club. Tutti i diritti riservati.</p>
           <ul className="flex flex-wrap gap-6">
             <li>
               <a href="#faq" className="link-underline hover:text-foreground">
