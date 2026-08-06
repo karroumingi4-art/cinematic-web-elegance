@@ -143,7 +143,7 @@ export function Contact() {
               disabled={sending}
               className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary-foreground transition-all duration-500 hover:shadow-glow disabled:opacity-60 sm:w-auto"
             >
-              {sending ? "Sending…" : "Send message"}
+              {sending ? "Sending…" : "Invia"}
             </button>
           </form>
         </Reveal>
