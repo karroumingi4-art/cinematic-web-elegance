@@ -1,14 +1,19 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { Crown, ShieldCheck, Star, Download } from "lucide-react";
 import { Reveal, SectionHeading } from "../components/site/Reveal";
 
-export default function ClubPage() {
+export const Route = createFileRoute("/club")({
+  component: ClubPage,
+});
+
+function ClubPage() {
   return (
     <section id="club" className="relative bg-ink py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Premium Membership"
           title={<>Il <span className="text-[#95BFE5]">Circolo</span></>}
-          intro="L'esperienza più esclusiva per vivere il Gaston Villa FC da protagonista. Un pass per entrare nel cuore pulsante del club."
+          intro="L'experience più esclusiva per vivere il Gaston Villa FC da protagonista. Un pass per entrare nel cuore pulsante del club."
         />
         
         <div className="mt-16 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-16">
