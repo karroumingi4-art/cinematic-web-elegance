@@ -8,6 +8,8 @@ const links = [
   { label: "Programmi", href: "#programmes" },
   { label: "La Squadra", href: "#squad" },
   { label: "Calendario", href: "#matches" },
+  { label: "Pronostici", href: "#predictions" },
+  { label: "Pagelle", href: "#mvp" },
   { label: "Galleria", href: "#gallery" },
   { label: "Diario", href: "#journal" },
   { label: "Voci", href: "#voices" },
