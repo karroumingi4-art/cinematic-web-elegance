@@ -276,7 +276,7 @@ const fixtures: Fixture[] =
     home: "Foschia Adriatica",
     away: "Gaston Villa ",
     venue: "Gaston Villa Park",
-  }
+  },
 
 const results: Fixture[] = [
 ];
