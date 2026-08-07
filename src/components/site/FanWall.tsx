@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion } from "motion/react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -28,12 +29,27 @@ const field =
   "mt-2 w-full rounded-md border border-input bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-colors duration-300 focus:border-primary focus:outline-none";
 const labelClass = "text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted-foreground";
 
-// Messaggi dimostrativi fissi da far scorrere sul muro, dato che non c'è il database
 const MOCK_MESSAGES: FanMessage[] = [
-  { id: "1", name: "Marco", country: "Italia", message: "Forza Gaston Villa! Sempre con voi!", created_at: "" },
-  { id: "2", name: "Alex", country: "Italia", message: "Quest'anno si vince il campionato!", created_at: "" },
-  { id: "3", name: "Matteo", country: "Italia", message: "Il dodicesimo uomo in campo siamo noi.", created_at: "" },
+  { id: "m1", name: "Ahmed Mansour", country: "Egypt", message: "كل الدعم لجاستون فيلا من القاهرة! فريق رائع.", created_at: "" },
+  { id: "m2", name: "Marco Rossi", country: "Italia", message: "Forza Gaston Villa! Sempre al vostro fianco per la vittoria!", created_at: "" },
+  { id: "m3", name: "John Smith", country: "United Kingdom", message: "Gaston Villa is the best club in the world! Let's win this match!", created_at: "" },
+  { id: "m4", name: "Fatima Al-Sayed", country: "Saudi Arabia", message: "بالتوفيق للفريق، دائماً في القمة يا جاستون فيلا.", created_at: "" },
+  { id: "m5", name: "Alessandro Bianchi", country: "Italia", message: "Un saluto a tutta la dirigenza, questa stagione ci farete sognare.", created_at: "" },
+  { id: "m6", name: "Pierre Dubois", country: "France", message: "Allez Gaston Villa! Un soutien total depuis Paris. Magnifique équipe!", created_at: "" },
+  { id: "m7", name: "Youssef El Amrani", country: "Morocco", message: "ديما جاستون فيلا! قلوبنا معكم من المغرب لتحقيق اللقب.", created_at: "" },
+  { id: "m8", name: "Giulia Fontana", country: "Italia", message: "Il dodicesimo uomo in campo siamo noi! Forza ragazzi, non si molla mai!", created_at: "" },
+  { id: "m9", name: "Carlos Mendoza", country: "Argentina", message: "¡Vamos muchachos! El Gaston Villa tiene el mejor juego del torneo.", created_at: "" },
+  { id: "m10", name: "Zainab Hassan", country: "UAE", message: "كل التوفيق لكم في هذه البطولة الاستثنائية.", created_at: "" },
+  { id: "m11", name: "Matteo Esposito", country: "Italia", message: "Gaston Villa nel cuore! Campionato o Fantacalcio, domineremo noi.", created_at: "" },
+  { id: "m12", name: "Yuki Tanaka", country: "Japan", message: "Gaston Villa matches are incredible to watch. Greetings from Tokyo!", created_at: "" }
 ];
+
+async function fetchWall(): Promise<FanMessage[]> {
+  const res = await fetch("/api/fanwall");
+  if (!res.ok) throw new Error("impossbile caricare il fan wall");
+  const json = (await res.json()) as { messages: FanMessage[] };
+  return json.messages ?? [];
+}
 
 function FanCard({ entry }: { entry: FanMessage }) {
   return (
@@ -75,65 +91,57 @@ function MarqueeRow({ entries, reverse }: { entries: FanMessage[]; reverse?: boo
 }
 
 export function FanWall() {
+  const queryClient = useQueryClient();
   const [errors, setErrors] = useState<Errors>({});
-  const [isPending, setIsPending] = useState(false);
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const { data = [] } = useQuery({ queryKey: ["fanwall"], queryFn: fetchWall });
+
+  const sign = useMutation({
+    mutationFn: async (values: z.infer<typeof schema>) => {
+      const res = await fetch("https://formspree.io", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        const json = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(json.error ?? "Impossibile salvare il messaggio");
+      }
+      return (await res.json()) as { message: FanMessage };
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["fanwall"] });
+      toast.success("Il tuo nome è sul Muro. Grazie per tutto.");
+    },
+    onError: (error: Error) => toast.error(error.message),
+  });
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    
-    // Raccogliamo i dati inseriti nei campi corretti
-    const formDataRaw = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      country: (form.elements.namedItem("country") as HTMLInputElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-    };
-
-    const parsed = schema.safeParse(formDataRaw);
+    const parsed = schema.safeParse(Object.fromEntries(new FormData(form)));
 
     if (!parsed.success) {
       const next: Errors = {};
       for (const issue of parsed.error.issues) {
-        const key = issue.path[0] as keyof Errors;
+        const key = issue.path as keyof Errors;
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
-      toast.error("Controlla i campi evidenziati.");
+      toast.error("Please check the highlighted fields.");
       return;
     }
 
     setErrors({});
-    setIsPending(true);
-
-    const formData = new FormData();
-    formData.append("Nome Tifoso", parsed.data.name);
-    formData.append("Paese", parsed.data.country);
-    formData.append("Messaggio per il Muro", parsed.data.message);
-
-    try {
-      const res = await fetch("https://formspree.io/f/mvkpglgl", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (res.ok) {
-        toast.success("Il tuo nome è sul Muro. Grazie per tutto.");
-        form.reset();
-      } else {
-        throw new Error("Impossibile inviare");
-      }
-    } catch (error) {
-      toast.error("Impossibile salvare il messaggio. Riprova più tardi.");
-    } finally {
-      setIsPending(false);
-    }
+    sign.mutate(parsed.data, { onSuccess: () => form.reset() });
   };
 
-  const totalMessages = ARCHIVE_MESSAGES + 3;
-  const totalCountries = ARCHIVE_COUNTRIES;
+  const countries = new Set(data.map((entry) => entry.country.trim().toLowerCase()));
+  const totalMessages = ARCHIVE_MESSAGES + data.length + MOCK_MESSAGES.length;
+  const totalCountries = Math.max(ARCHIVE_COUNTRIES, countries.size);
+
+  const rowOne = MOCK_MESSAGES.slice(0, 6);
+  const rowTwo = MOCK_MESSAGES.slice(6);
 
   const stats = [
     { icon: MessageSquareQuote, value: totalMessages.toLocaleString("en-US"), label: "Messaggi Inviati" },
@@ -207,29 +215,28 @@ export function FanWall() {
                   id="wall-message"
                   name="message"
                   rows={4}
-                  className={field}
-                  placeholder="Scrivi qui il tuo messaggio..."
                   maxLength={180}
+                  className={`${field} resize-none`}
+                  placeholder="Un messaggio per questo club, in una riga."
                 />
-                {errors.message && <p className="mt-2 text-xs text-destructive">{errors.message}</p>}
-              </div>
+      <motion.div
+        className="mt-16 space-y-2"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-10% 0px" }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <MarqueeRow entries={rowOne} />
+        <MarqueeRow entries={rowTwo} reverse />
+      </motion.div>
 
-              <button
-                type="submit"
-                disabled={isPending}
-                className="mt-6 w-full rounded-full bg-primary py-3 text-center text-xs font-bold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
-              >
-                {isPending ? "Invio in corso…" : "Invia messaggio"}
-              </button>
-            </form>
-          </Reveal>
-        </div>
-
-        {/* Riga scorrevole animata con messaggi fissi nel codice */}
-        <div className="mt-20">
-          <MarqueeRow entries={MOCK_MESSAGES} />
-        </div>
-      </div>
+      <ul className="sr-only">
+        {MOCK_MESSAGES.map((entry) => (
+          <li key={entry.id}>
+            {entry.name}, {entry.country}: {entry.message}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
