@@ -16,88 +16,269 @@ type Fixture = {
 
 const fixtures: Fixture[] = [
   {
-    date: "16 AGO",
-    time: "20:45",
+    date: "11 SET",
+    time: "18:30",
     competition: "Campionato · G1",
-    home: "Ardente FC",
-    away: "Verona Nord",
-    venue: "Stadio delle Aurore",
+    home: "Gaston Villa PArk",
+    away: "KUNG FU PANDEV",
+    venue: "Gaston Villa PArk",
   },
   {
-    date: "23 AGO",
+    date: "18 SEP",
     time: "18:30",
     competition: "Campionato · G2",
-    home: "Sestola 1912",
-    away: "Ardente FC",
-    venue: "Arena del Cimone",
+    home: "Tottingham Forest",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa PArk",
   },
   {
-    date: "27 AGO",
+    date: "10 OTT",
     time: "21:00",
-    competition: "Coppa · Ottavi",
-    home: "Ardente FC",
-    away: "Lido Marittima",
-    venue: "Stadio delle Aurore",
-  },
-  {
-    date: "31 AGO",
-    time: "15:00",
     competition: "Campionato · G3",
-    home: "Ardente FC",
-    away: "Aquile Brune",
-    venue: "Stadio delle Aurore",
+    home: "Gaston Villa ",
+    away: "Forza PCI",
+    venue: "Gaston Villa PArk",
   },
   {
-    date: "14 SET",
-    time: "20:45",
+    date: "17 OTT",
+    time: "15:00",
     competition: "Campionato · G4",
-    home: "Foschia Adriatica",
-    away: "Ardente FC",
-    venue: "Stadio del Faro",
+    home: "Gaston Villa ",
+    away: "Aura Jacquet",
+    venue: "Gaston Villa PArk",
   },
-];
+  {
+    date: "24 OTT",
+    time: "20:45",
+    competition: "Campionato · G5",
+    home: "Como Stai",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+  {
+    date: "27 OTT",
+    time: "20:45",
+    competition: "Campionato · G6",
+    home: "Deportivo Aperitivo",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+  {
+    date: "31 OTT",
+    time: "20:45",
+    competition: "Campionato · G7",
+    home: "Urbe Eterna",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+  {
+    date: "07 NOV",
+    time: "20:45",
+    competition: "Campionato · G8",
+    home: "Team Crack",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+  {
+    date: "21 NOV",
+    time: "20:45",
+    competition: "Campionato · G9",
+    home: "BORUSSIA PORCMUND",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+  {
+    date: "28 NOV",
+    time: "20:45",
+    competition: "Campionato · G10",
+    home: "BORUSSIA PORCMUND",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+   {
+    date: "05 DIC",
+    time: "20:45",
+    competition: "Campionato · G8",
+    home: "Team Crack",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+   {
+    date: "12 DIC",
+    time: "20:45",
+    competition: "Campionato · G7",
+    home: "Urbe Eterna",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+ {
+    date: "27 OTT",
+    time: "20:45",
+    competition: "Campionato · G6",
+    home: "Deportivo Aperitivo",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+  {
+    date: "24 OTT",
+    time: "20:45",
+    competition: "Campionato · G5",
+    home: "Como Stai",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },
+   {
+    date: "17 OTT",
+    time: "15:00",
+    competition: "Campionato · G4",
+    home: "Gaston Villa ",
+    away: "Aura Jacquet",
+    venue: "Gaston Villa PArk",
+  },
+
+{
+    date: "09 GEN",
+    time: "20:45",
+    competition: "Campionato · G16",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "16 GEN",
+    time: "20:45",
+    competition: "Campionato · G17",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "23 GEN",
+    time: "20:45",
+    competition: "Campionato · G18",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "30 GEN",
+    time: "20:45",
+    competition: "Campionato · G19",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "6 FEB",
+    time: "20:45",
+    competition: "Campionato · G20",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "13 FEB",
+    time: "20:45",
+    competition: "Campionato · G21",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "20 FEB",
+    time: "20:45",
+    competition: "Campionato · G22",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "27 FEB",
+    time: "20:45",
+    competition: "Campionato · G23",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "6 MAR",
+    time: "20:45",
+    competition: "Campionato · G24",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "13 MAR",
+    time: "20:45",
+    competition: "Campionato · G25",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "20 MAR",
+    time: "20:45",
+    competition: "Campionato · G26",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "03 APR",
+    time: "20:45",
+    competition: "Campionato · G27",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "10 APR",
+    time: "20:45",
+    competition: "Campionato · G28",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "17 APR",
+    time: "20:45",
+    competition: "Campionato · G29",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "24 APR",
+    time: "20:45",
+    competition: "Campionato · G30",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "1 MAG",
+    time: "20:45",
+    competition: "Campionato · G31",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "24 OTT",
+    time: "20:45",
+    competition: "Campionato · G32",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "8 MAG",
+    time: "20:45",
+    competition: "Campionato · G33",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "15 MAG",
+    time: "20:45",
+    competition: "Campionato · G34",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  },{
+    date: "22 MAG",
+    time: "20:45",
+    competition: "Campionato · G35",
+    home: "Foschia Adriatica",
+    away: "Gaston Villa ",
+    venue: "Gaston Villa Park",
+  }
 
 const results: Fixture[] = [
-  {
-    date: "02 AGO",
-    time: "20:45",
-    competition: "Amichevole",
-    home: "Ardente FC",
-    away: "Selva Alta",
-    venue: "Stadio delle Aurore",
-    score: "3 — 0",
-    result: "V",
-  },
-  {
-    date: "27 LUG",
-    time: "19:00",
-    competition: "Trofeo Estivo",
-    home: "Ponente Calcio",
-    away: "Ardente FC",
-    venue: "Stadio Ponente",
-    score: "1 — 2",
-    result: "V",
-  },
-  {
-    date: "20 LUG",
-    time: "18:30",
-    competition: "Amichevole",
-    home: "Ardente FC",
-    away: "Borgo Ferrata",
-    venue: "Centro Sportivo Ardente",
-    score: "1 — 1",
-    result: "N",
-  },
-  {
-    date: "12 LUG",
-    time: "17:00",
-    competition: "Amichevole",
-    home: "Monti Chiari",
-    away: "Ardente FC",
-    venue: "Stadio Chiari",
-    score: "2 — 1",
-    result: "P",
-  },
 ];
 
 type Row = {
@@ -113,16 +294,16 @@ type Row = {
 };
 
 const table: Row[] = [
-  { pos: 1, team: "Ardente FC", pg: 12, v: 9, n: 2, p: 1, gf: 27, gs: 9, pts: 29 },
-  { pos: 2, team: "Verona Nord", pg: 12, v: 8, n: 3, p: 1, gf: 24, gs: 11, pts: 27 },
-  { pos: 3, team: "Aquile Brune", pg: 12, v: 7, n: 3, p: 2, gf: 21, gs: 13, pts: 24 },
-  { pos: 4, team: "Foschia Adriatica", pg: 12, v: 6, n: 4, p: 2, gf: 19, gs: 12, pts: 22 },
-  { pos: 5, team: "Sestola 1912", pg: 12, v: 5, n: 4, p: 3, gf: 17, gs: 15, pts: 19 },
-  { pos: 6, team: "Lido Marittima", pg: 12, v: 4, n: 4, p: 4, gf: 15, gs: 16, pts: 16 },
-  { pos: 7, team: "Ponente Calcio", pg: 12, v: 3, n: 4, p: 5, gf: 13, gs: 18, pts: 13 },
-  { pos: 8, team: "Borgo Ferrata", pg: 12, v: 2, n: 3, p: 7, gf: 11, gs: 22, pts: 9 },
-  { pos: 9, team: "Monti Chiari", pg: 12, v: 2, n: 2, p: 8, gf: 10, gs: 24, pts: 8 },
-  { pos: 10, team: "Selva Alta", pg: 12, v: 1, n: 3, p: 8, gf: 8, gs: 25, pts: 6 },
+  { pos: 1, team: "Gaston Villa", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 0, pts: 00 },
+  { pos: 2, team: "Aura Jacquet", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
+  { pos: 3, team: "Urbe Eterna", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
+  { pos: 4, team: "Deportivo Aperitivo", pg: 0, v: 6, n: 0, p: 0, gf: 00, gs: 0, pts: 00 },
+  { pos: 5, team: "Forza PCI", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
+  { pos: 6, team: "BORUSSIA PORCMUND", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
+  { pos: 7, team: "Team Crack", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
+  { pos: 8, team: "Tottingham Forest", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 0 },
+  { pos: 9, team: "KUNG FU PANDEV", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 0 },
+  { pos: 10, team: "Como Stai", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 00, pts: 6 },
 ];
 
 const resultTone: Record<NonNullable<Fixture["result"]>, string> = {
@@ -132,7 +313,7 @@ const resultTone: Record<NonNullable<Fixture["result"]>, string> = {
 };
 
 function FixtureCard({ match, i }: { match: Fixture; i: number }) {
-  const isHome = match.home === "Ardente FC";
+  const isHome = match.home === "Gaston Villa ";
 
   return (
     <Reveal delay={0.06 * i}>
@@ -200,7 +381,7 @@ export function Matches() {
           intro="Ogni novanta minuti è un capitolo. Segui il cammino della prima squadra, gara per gara, punto per punto."
         />
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+        <div className="mt-16 grid gap-0 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
           <div>
             <Reveal>
               <div
@@ -257,8 +438,8 @@ export function Matches() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.12}>
-            <div className="overflow-hidden rounded-2xl border border-border bg-surface/70">
+          <Reveal delay={0.0}>
+            <div className="overflow-hidden rounded-0xl border border-border bg-surface/70">
               <div className="flex items-center gap-3 border-b border-border px-6 py-5">
                 <Trophy className="size-4 text-primary" aria-hidden />
                 <h3 className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-foreground">
@@ -299,7 +480,7 @@ export function Matches() {
                   </thead>
                   <tbody>
                     {table.map((row) => {
-                      const own = row.team === "Ardente FC";
+                      const own = row.team === "Gaston Villa ";
                       return (
                         <tr
                           key={row.team}
