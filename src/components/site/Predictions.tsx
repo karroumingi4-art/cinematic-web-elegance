@@ -32,7 +32,6 @@ export function Predictions() {
 
     setIsPending(true);
 
-    // Prepariamo i dati da spedire a Formspree
     const formData = new FormData();
     formData.append("Partita", `${nextMatch.home} vs ${nextMatch.away}`);
     formData.append("Competizione", nextMatch.competition);
@@ -40,7 +39,7 @@ export function Predictions() {
     formData.append("Segno Pronosticato", pick);
 
     try {
-      const res = await fetch("https://formspree.io", {
+      const res = await fetch("https://formspree.io/f/mnpanwae", {
         method: "POST",
         body: formData,
         headers: {
@@ -53,7 +52,7 @@ export function Predictions() {
         setVoter("");
         setPick(null);
       } else {
-        throw new Error("Errore durante l'invio del modulo");
+        throw new Error("Errore durante l'invio");
       }
     } catch (error) {
       toast.error("Impossibile salvare il pronostico. Riprova più tardi.");
@@ -134,7 +133,7 @@ export function Predictions() {
               <div className="flex items-center gap-3 border-b border-border px-6 py-5">
                 <Vote className="size-4 text-primary" aria-hidden />
                 <h3 className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-foreground">
-                  Info Pronostico
+                  Info Pronostici
                 </h3>
               </div>
               <div className="px-6 py-8 text-sm text-muted-foreground">
@@ -148,4 +147,3 @@ export function Predictions() {
     </section>
   );
 }
-
