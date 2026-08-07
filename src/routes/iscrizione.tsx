@@ -47,7 +47,7 @@ function IscrizionePage() {
 
     try {
       // 👇 INCOLLA QUI IL TUO ID FORMSPREE
-      const res = await fetch("https://formspree.io/f/INCOLLA_QUI_IL_TUO_ID", {
+      const res = await fetch("https://formspree.io/f/xgawvjqa", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
