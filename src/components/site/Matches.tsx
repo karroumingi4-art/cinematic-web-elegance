@@ -364,9 +364,13 @@ function FixtureCard({ match, i }: { match: Fixture; i: number }) {
   );
 }
 
+const INITIAL_VISIBLE = 4;
+
 export function Matches() {
   const [tab, setTab] = useState<"fixtures" | "results">("fixtures");
+  const [expanded, setExpanded] = useState(false);
   const list = tab === "fixtures" ? fixtures : results;
+  const visible = expanded ? list : list.slice(0, INITIAL_VISIBLE);
 
   return (
     <section id="matches" className="relative bg-background py-24 sm:py-32 lg:py-40">
