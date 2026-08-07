@@ -40,9 +40,9 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
-        <a href="#hero" className="flex min-w-0 items-center gap-3" aria-label="Ardente FC, home">
-          <img src={mark} alt="" width={40} height={40} className="h-9 w-9 shrink-0 object-contain" />
-          <span className="display truncate text-lg tracking-[0.18em] sm:text-xl">Ardente</span>
+               <a href="#hero" className="flex min-w-0 items-center gap-3" aria-label="Gaston Villa, home">
+          <img src="/GASTON_VILLA-removebg-preview.png" alt="Gaston Villa Logo" width={40} height={40} className="h-9 w-9 shrink-0 object-contain" />
+          <span className="display truncate text-lg tracking-[0.18em] sm:text-xl">Gaston Villa</span>
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
