@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const Route = createFileRoute("/shop")({ component: ShopPage });
 
-const FORMSPREE = "xqakzwln"; // metti il tuo ID qui
+const FORMSPREE = "xgawovvo"; // metti il tuo ID qui
 
 const PROD = [
   { id: "granata", name: "Home Granata", a: 89, k: 55, img: "/shop/maglia-granata.png" },
@@ -33,7 +33,7 @@ export function ShopPage() {
     if (!form.nome ||!form.email) { alert("Metti nome ed email"); return; }
     setLoad(true);
     const det = cart.map((c) => `${c.name} ${c.size} x${c.q} = ${c.p * c.q}e`).join("\n");
-    await fetch("https://formspree.io/f/" + FORMSPREE, {
+    await fetch("https://formspree.io/f/xgawovvo" + FORMSPREE, {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({ nome: form.nome, email: form.email, telefono: form.tel, indirizzo: form.addr, ordine: det, totale: total + "e" }),
