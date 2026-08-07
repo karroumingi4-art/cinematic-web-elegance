@@ -27,7 +27,7 @@ export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form));
@@ -46,11 +46,28 @@ export function Contact() {
 
     setErrors({});
     setSending(true);
-    window.setTimeout(() => {
+
+    try {
+      const res = await fetch("https://formspree.io/f/xyegzvwa", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(parsed.data),
+      });
+
+      if (res.ok) {
+        form.reset();
+        toast.success("Messagio ricevuto. l'amministrazione le risponderà in un giorno lavorativo.");
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      toast.error("Impossibile inviare il messaggio. Riprova più tardi.");
+    } finally {
       setSending(false);
-      form.reset();
-      toast.success("Messagio ricevuto. l'amministrazione le  risponderà in un giorno lavorativo.");
-    }, 700);
+    }
   };
 
   return (
@@ -115,7 +132,7 @@ export function Contact() {
               </label>
               <input
                 id="contatto"
-                name="oggetto"
+                name="subject"
                 className={field}
                 placeholder="richiesta di membership"
                 maxLength={120}
@@ -129,7 +146,7 @@ export function Contact() {
               </label>
               <textarea
                 id="contact-message"
-                name="messaggio"
+                name="message"
                 rows={5}
                 className={`${field} resize-none`}
                 placeholder="come possiamo aiutarti?"
