@@ -8,18 +8,33 @@ export const Route = createFileRoute("/matchday")({
   component: MatchdayPage,
 });
 
-type Sector = { id: string; name: string; price: string; color: string; ring: string };
+type Sector = { id: string; name: string; price: string; bgClass: string; borderClass: string; textClass: string };
 
-const SECTORS: Sector[] = [
-  { id: "red-1", name: "1° Anello Rosso (Poltroncine VIP)", price: "85,00 €", color: "border-red-500/50 bg-red-500/10 hover:bg-red-500/30 text-red-400", ring: "Primo Anello" },
-  { id: "red-2", name: "2° Anello Rosso (Tribuna Centrale)", price: "55,00 €", color: "border-red-400/40 bg-red-400/5 hover:bg-red-400/20 text-red-300", ring: "Secondo Anello" },
-  { id: "ora-1", name: "1° Anello Arancio (Distinti)", price: "45,00 €", color: "border-orange-500/50 bg-orange-500/10 hover:bg-orange-500/30 text-orange-400", ring: "Primo Anello" },
-  { id: "ora-2", name: "2° Anello Arancio (Laterale)", price: "35,00 €", color: "border-orange-400/40 bg-orange-400/5 hover:bg-orange-400/20 text-orange-300", ring: "Secondo Anello" },
-  { id: "grn-1", name: "1° Anello Verde (Curva Locali)", price: "25,00 €", color: "border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/30 text-emerald-400", ring: "Primo Anello" },
-  { id: "grn-2", name: "2° Anello Verde (Curva Ospiti)", price: "20,00 €", color: "border-emerald-400/40 bg-emerald-400/5 hover:bg-emerald-400/20 text-emerald-300", ring: "Secondo Anello" },
-];
+const SECTORS: Record<string, Sector[]> = {
+  Rosso: [
+    { id: "red-1", name: "1° Anello Rosso (Poltroncine / VIP)", price: "90,00 €", bgClass: "bg-red-600/10 hover:bg-red-600/30", borderClass: "border-red-600/50", textClass: "text-red-400" },
+    { id: "red-2", name: "2° Anello Rosso (Tribuna Centrale)", price: "60,00 €", bgClass: "bg-red-500/10 hover:bg-red-500/30", borderClass: "border-red-500/40", textClass: "text-red-300" },
+    { id: "red-3", name: "3° Anello Rosso (Alta Tribuna)", price: "40,00 €", bgClass: "bg-red-400/5 hover:bg-red-400/20", borderClass: "border-red-400/30", textClass: "text-red-200" },
+  ],
+  Arancio: [
+    { id: "ora-1", name: "1° Anello Arancio (Distinti Centrali)", price: "50,00 €", bgClass: "bg-orange-600/10 hover:bg-orange-600/30", borderClass: "border-orange-600/50", textClass: "text-orange-400" },
+    { id: "ora-2", name: "2° Anello Arancio (Laterale)", price: "35,00 €", bgClass: "bg-orange-500/10 hover:bg-orange-500/30", borderClass: "border-orange-500/40", textClass: "text-orange-300" },
+    { id: "ora-3", name: "3° Anello Arancio (Alta Vista)", price: "25,00 €", bgClass: "bg-orange-400/5 hover:bg-orange-400/20", borderClass: "border-orange-400/30", textClass: "text-orange-200" },
+  ],
+  Blu: [
+    { id: "blu-1", name: "1° Anello Blu (Curva Sud)", price: "30,00 €", bgClass: "bg-blue-600/10 hover:bg-blue-600/30", borderClass: "border-blue-600/50", textClass: "text-blue-400" },
+    { id: "blu-2", name: "2° Anello Blu (Cuore del Tifo)", price: "25,00 €", bgClass: "bg-blue-500/10 hover:bg-blue-500/30", borderClass: "border-blue-500/40", textClass: "text-blue-300" },
+    { id: "blu-3", name: "3° Anello Blu (Settore Popolare)", price: "18,00 €", bgClass: "bg-blue-400/5 hover:bg-blue-400/20", borderClass: "border-blue-400/30", textClass: "text-blue-200" },
+  ],
+  Verde: [
+    { id: "grn-1", name: "1° Anello Verde (Curva Nord)", price: "30,00 €", bgClass: "bg-emerald-600/10 hover:bg-emerald-600/30", borderClass: "border-emerald-600/50", textClass: "text-emerald-400" },
+    { id: "grn-2", name: "2° Anello Verde (Settore Ospiti)", price: "20,00 €", bgClass: "bg-emerald-500/10 hover:bg-emerald-500/30", borderClass: "border-emerald-500/40", textClass: "text-emerald-300" },
+    { id: "grn-3", name: "3° Anello Verde (Altezza Torri)", price: "18,00 €", bgClass: "bg-emerald-400/5 hover:bg-emerald-400/20", borderClass: "border-emerald-400/30", textClass: "text-emerald-200" },
+  ],
+};
 
 function MatchdayPage() {
+  const [activeColor, setActiveColor] = useState<"Rosso" | "Arancio" | "Blu" | "Verde">("Rosso");
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,27 +45,27 @@ function MatchdayPage() {
     event.preventDefault();
 
     if (!selectedSector) {
-      toast.error("Seleziona un settore dello stadio sulla mappa concentrica prima di inviare!");
+      toast.error("Seleziona prima l'Anello desiderato per l'acquisto!");
       return;
     }
     if (name.trim().length < 2 || email.trim().length < 5) {
-      toast.error("Inserisci un nome e una e-mail validi.");
+      toast.error("Inserisci informazioni di contatto valide.");
       return;
     }
 
     setIsPending(true);
 
     const formData = new FormData();
-    formData.append("Servizio", "Prenotazione Biglietti San Siro Style");
+    formData.append("Servizio", "Biglietteria San Siro Layout Ufficiale");
     formData.append("Nome Tifoso", name.trim());
     formData.append("Email Tifoso", email.trim());
-    formData.append("Fascia Stadio", selectedSector.ring);
-    formData.append("Settore Selezionato", selectedSector.name);
+    formData.append("Settore San Siro", activeColor);
+    formData.append("Anello e Dettaglio", selectedSector.name);
     formData.append("Prezzo Singolo", selectedSector.price);
-    formData.append("Numero Biglietti", ticketsCount);
+    formData.append("Quantità", ticketsCount);
     
     const totale = parseFloat(selectedSector.price.replace(",", ".")) * parseInt(ticketsCount);
-    formData.append("Totale Stimato", `${totale.toFixed(2)} €`);
+    formData.append("Totale Ordine", `${totale.toFixed(2)} €`);
 
     try {
       const res = await fetch("https://formspree.io", {
@@ -60,7 +75,7 @@ function MatchdayPage() {
       });
 
       if (res.ok) {
-        toast.success(`Richiesta inviata! Riceverai i biglietti via e-mail. Totale: ${totale.toFixed(2)} €.`);
+        toast.success(`Richiesta inviata! Riepilogo inviato alla mail. Totale: ${totale.toFixed(2)} €.`);
         setName("");
         setEmail("");
         setTicketsCount("1");
@@ -69,7 +84,7 @@ function MatchdayPage() {
         throw new Error();
       }
     } catch {
-      toast.error("Errore nell'invio della prenotazione. Riprova più tardi.");
+      toast.error("Errore di connessione durante la prenotazione.");
     } finally {
       setIsPending(false);
     }
@@ -79,66 +94,82 @@ function MatchdayPage() {
     <section className="relative bg-ink py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Biglietteria San Siro Layout"
+          eyebrow="Biglietteria San Siro"
           title={
             <>
-              Seleziona il tuo <span className="text-[#95BFE5]">Anello e Settore</span>
+              San Siro <span className="text-[#95BFE5]">Stadium Map</span>
             </>
           }
-          intro="Mappa a settori concentrici ispirata ai grandi stadi. Clicca sull'anello desiderato, compila i dati e prenota i biglietti."
+          intro="Scegli il tuo biglietto selezionando i quattro storici settori dello stadio: Rosso, Arancio, Blu o Verde e seleziona l'anello ideale."
         />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-16">
           
           <Reveal>
             <div className="rounded-2xl border border-border bg-surface/40 p-6 text-center shadow-elegant">
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-6">Mappa Grafica ad Anelli Concentrici</h3>
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-6">Seleziona il Settore e l'Anello</h3>
               
-              <div className="relative mx-auto flex max-w-lg flex-col items-center justify-center rounded-full border-4 border-double border-border/40 bg-black/60 aspect-square p-4 sm:p-8">
-                
-                <div className="absolute inset-2 sm:inset-4 rounded-full border border-dashed border-border/20 pointer-events-none" />
-                <div className="w-full h-full flex flex-col justify-between items-center relative p-2">
-                  
-                  <div className="w-full flex justify-between gap-2 px-6">
-                    <button type="button" onClick={() => setSelectedSector(SECTORS[1])} className={`px-3 py-1.5 rounded-lg border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[1].color} ${selectedSector?.id === "red-2" ? "ring-2 ring-primary scale-105" : ""}`}>2° Rosso</button>
-                    <button type="button" onClick={() => setSelectedSector(SECTORS[3])} className={`px-3 py-1.5 rounded-lg border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[3].color} ${selectedSector?.id === "ora-2" ? "ring-2 ring-primary scale-105" : ""}`}>2° Arancio</button>
-                  </div>
-
-                  <div className="w-[82%] h-[82%] rounded-full border border-border/40 flex flex-col justify-between items-center p-3 relative bg-zinc-950/40">
-                    
-                    <div className="w-full flex justify-between gap-2 px-4">
-                      <button type="button" onClick={() => setSelectedSector(SECTORS[0])} className={`px-3 py-1.5 rounded-lg border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[0].color} ${selectedSector?.id === "red-1" ? "ring-2 ring-primary scale-105" : ""}`}>1° Rosso VIP</button>
-                      <button type="button" onClick={() => setSelectedSector(SECTORS[2])} className={`px-3 py-1.5 rounded-lg border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[2].color} ${selectedSector?.id === "ora-1" ? "ring-2 ring-primary scale-105" : ""}`}>1° Arancio</button>
-                    </div>
-
-                    <div className="w-[62%] h-[40%] rounded-xl border border-emerald-500/30 bg-emerald-950/20 flex flex-col items-center justify-center p-2 border-dashed my-2">
-                      <div className="w-full h-px bg-emerald-500/20 relative top-1/2" />
-                      <div className="size-8 rounded-full border border-emerald-500/20 flex items-center justify-center">
-                        <div className="size-1.5 rounded-full bg-emerald-500/40" />
-                      </div>
-                      <span className="text-[0.55rem] font-bold uppercase tracking-[0.2em] text-emerald-400/40 z-10">PITCH</span>
-                    </div>
-
-                    <div className="w-full flex justify-center">
-                      <button type="button" onClick={() => setSelectedSector(SECTORS[4])} className={`w-3/4 py-1.5 rounded-lg border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[4].color} ${selectedSector?.id === "grn-1" ? "ring-2 ring-primary scale-105" : ""}`}>1° Verde Curva</button>
-                    </div>
-
-                  </div>
-
-                  <div className="w-full flex justify-center">
-                    <button type="button" onClick={() => setSelectedSector(SECTORS[5])} className={`w-1/2 py-1.5 rounded-lg border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[5].color} ${selectedSector?.id === "grn-2" ? "ring-2 ring-primary scale-105" : ""}`}>2° Verde Curva</button>
-                  </div>
-
-                </div>
+              {/* Pulsantiera 4 Colori San Siro */}
+              <div className="grid grid-cols-4 gap-2 mb-8 max-w-md mx-auto">
+                {(["Rosso", "Arancio", "Blu", "Verde"] as const).map((color) => (
+                  <button
+                    key={color}
+                    type="button"
+                    onClick={() => { setActiveColor(color); setSelectedSector(null); }}
+                    className={`py-2 text-xs font-bold uppercase rounded-lg border transition-all ${
+                      activeColor === color 
+                        ? color === "Rosso" ? "bg-red-600/20 border-red-500 text-red-400 ring-1 ring-red-500" :
+                          color === "Arancio" ? "bg-orange-500/20 border-orange-500 text-orange-400 ring-1 ring-orange-500" :
+                          color === "Blu" ? "bg-blue-600/20 border-blue-500 text-blue-400 ring-1 ring-blue-500" :
+                          "bg-emerald-600/20 border-emerald-500 text-emerald-400 ring-1 ring-emerald-500"
+                        : "border-border bg-zinc-900/40 text-muted-foreground hover:text-white"
+                    }`}
+                  >
+                    {color}
+                  </button>
+                ))}
               </div>
-              <p className="mt-6 text-xs text-muted-foreground">La mappa rappresenta la divisione a gironi concentrici. Seleziona una zona per calcolare il prezzo complessivo.</p>
-            </div>
-          </Reveal>
+
+              {/* Mappa ad Anelli Dinamica */}
+              <div className="relative mx-auto flex max-w-sm flex-col items-center justify-center rounded-3xl border-4 border-double border-border/40 bg-black/60 aspect-square p-6 sm:p-10">
+                <div className="w-full h-full flex flex-col justify-between items-center relative">
+                  
+                  {/* 3° Anello */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSector(SECTORS[activeColor][2])}
+                    className={`w-full py-2.5 rounded-xl border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[activeColor][2].bgClass} ${SECTORS[activeColor][2].borderClass} ${SECTORS[activeColor][2].textClass} ${selectedSector?.id === SECTORS[activeColor][2].id ? "ring-2 ring-primary scale-[1.03]" : ""}`}
+                  >
+                    3° Anello {activeColor} ({SECTORS[activeColor][2].price})
+                  </button>
+
+                  {/* 2° Anello */}
+                  <div className="w-[86%] h-[80%] rounded-2xl border border-border/40 flex flex-col justify-between items-center p-3 relative bg-zinc-950/30">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedSector(SECTORS[activeColor][1])}
+                      className={`w-full py-2.5 rounded-xl border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[activeColor][1].bgClass} ${SECTORS[activeColor][1].borderClass} ${SECTORS[activeColor][1].textClass} ${selectedSector?.id === SECTORS[activeColor][1].id ? "ring-2 ring-primary scale-[1.03]" : ""}`}
+                    >
+                      2° Anello {activeColor} ({SECTORS[activeColor][1].price})
+                    </button>
+
+                    {/* 1° Anello e Campo */}
+                    <div className="w-[84%] h-[74%] rounded-xl border border-border/40 flex flex-col justify-between items-center p-3 relative bg-zinc-950/60">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedSector(SECTORS[activeColor][0])}
+                        className={`w-full py-2.5 rounded-xl border text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${SECTORS[activeColor][0].bgClass} ${SECTORS[activeColor][0].borderClass} ${SECTORS[activeColor][0].textClass} ${selectedSector?.id === SECTORS[activeColor][0].id ? "ring-2 ring-primary scale-[1.03]" : ""}`}
+                      >
+                        1° Anello {activeColor} ({SECTORS[activeColor][0].price})
+                      </button>
+
+                      {/* Il Terreno di gioco centrale */}
+                      <div className="w-full h-[40%] rounded-lg border border-emerald-500/20 bg-emerald-950/20 flex flex-col items-center justify-center border-dashed">
           <Reveal delay={0.12}>
             <div className="rounded-lg border border-border bg-surface p-7 shadow-elegant sm:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <Ticket className="size-5 text-primary" />
-                <h3 className="display text-2xl">Prenotazione Posto</h3>
+                <h3 className="display text-2xl">Riepilogo Biglietto</h3>
               </div>
 
               <form onSubmit={handleBooking} noValidate className="flex flex-col gap-5">
@@ -147,14 +178,14 @@ function MatchdayPage() {
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="size-5 shrink-0 text-primary" />
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wider">{selectedSector.ring}</p>
+                        <p className="text-xs font-bold uppercase tracking-wider">Settore {activeColor}</p>
                         <p className="text-sm font-semibold text-white">{selectedSector.name} — {selectedSector.price}</p>
                       </div>
                     </div>
                   ) : (
                     <div className="flex items-center gap-3 py-1">
                       <Armchair className="size-5 shrink-0" />
-                      <p className="text-sm font-medium">Seleziona un anello colorato sulla pianta dello stadio</p>
+                      <p className="text-sm font-medium">Seleziona una zona colorata e un anello a sinistra</p>
                     </div>
                   )}
                 </div>
@@ -180,7 +211,7 @@ function MatchdayPage() {
                 </div>
 
                 <button type="submit" disabled={isPending || !selectedSector} className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary-foreground hover:shadow-glow disabled:opacity-40 disabled:cursor-not-allowed">
-                  {isPending ? "Elaborazione..." : selectedSector ? `Acquista (${(parseFloat(selectedSector.price.replace(",", ".")) * parseInt(ticketsCount)).toFixed(2)} €)` : "Seleziona un Anello"}
+                  {isPending ? "Elaborazione..." : selectedSector ? `Acquista (${(parseFloat(selectedSector.price.replace(",", ".")) * parseInt(ticketsCount)).toFixed(2)} €)` : "Seleziona un Settore"}
                 </button>
               </form>
             </div>
