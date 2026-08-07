@@ -207,7 +207,7 @@ export function FanWall() {
                 </div>
               </div>
 
-              <div className="mt-6">
+                <div className="mt-6">
                 <label className={labelClass} htmlFor="wall-message">
                   Your message
                 </label>
@@ -219,6 +219,21 @@ export function FanWall() {
                   className={`${field} resize-none`}
                   placeholder="Un messaggio per questo club, in una riga."
                 />
+                {errors.message && <p className="mt-2 text-xs text-destructive">{errors.message}</p>}
+              </div>
+
+              <button
+                type="submit"
+                disabled={sign.isPending}
+                className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary-foreground transition-all duration-500 hover:shadow-glow disabled:opacity-60 sm:w-auto"
+              >
+                {sign.isPending ? "Signing…" : "Add my message"}
+              </button>
+            </form>
+          </Reveal>
+        </div>
+      </div>
+
       <motion.div
         className="mt-16 space-y-2"
         initial={{ opacity: 0 }}
