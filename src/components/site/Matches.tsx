@@ -14,7 +14,7 @@ type Fixture = {
   result?: "V" | "N" | "P";
 };
 
-const fixtures: Fixture[] = [
+const fixtures: Fixture[] = 
   {
     date: "11 SET",
     time: "18:30",
