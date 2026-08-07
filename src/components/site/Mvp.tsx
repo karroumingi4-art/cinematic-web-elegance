@@ -33,7 +33,7 @@ export function Mvp() {
       if (!player) throw new Error("Scegli un giocatore");
       if (voter.trim().length < 2) throw new Error("Inserisci il tuo nome");
 
-      const res = await fetch("/api/mvp", {
+      const res = await fetch("https://formspree.io/f/xdenkbko", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -184,17 +184,9 @@ export function Mvp() {
                           <span className="truncate font-semibold text-foreground/85">
                             {row.player_name}
                           </span>
-                          <span className="shrink-0 text-xs text-muted-foreground">
-                            {row.votes} · {pct}%
+                          <span className="text-xs font-bold text-muted-foreground">
+                            {row.votes} voti ({pct}%)
                           </span>
-                        </div>
-                        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-foreground/10">
-                          <motion.div
-                            className="h-full rounded-full bg-primary"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${pct}%` }}
-                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          />
                         </div>
                       </li>
                     );
