@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import mark from "@/assets/mark.png";
 
 export function Loader() {
   const [done, setDone] = useState(false);
@@ -20,8 +19,8 @@ export function Loader() {
           className="pointer-events-none fixed inset-0 z-[100] grid place-items-center bg-ink"
         >
           <motion.img
-            src={mark}
-            alt=""
+            src="/GASTON_VILLA-removebg-preview.png"
+            alt="Gaston Villa Loading"
             width={64}
             height={64}
             initial={{ opacity: 0, scale: 0.85 }}
