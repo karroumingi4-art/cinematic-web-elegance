@@ -17,12 +17,13 @@ export function Squad() {
               I Nomi sulle <span className="text-[#95BFE5]">Maglie</span>
             </>
           }
-          intro="Clicca sul giocatore per scoprire tutto su di lui."
+          intro="Scorri lateralmente per vedere la rosa e clicca sul giocatore per scoprire tutto su di lui."
         />
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Contenitore con scorrimento orizzontale e barra sotto */}
+        <div className="mt-16 overflow-x-auto pb-6 scrollbar-thin scrollbar-thumb-primary scrollbar-track-border snap-x snap-mandatory flex gap-5">
           {players.map((player, i) => (
-            <Reveal key={player.number} delay={0.08 * i}>
+            <Reveal key={player.number} delay={0.08 * i} className="w-[18rem] sm:w-[22rem] shrink-0 snap-start">
               <motion.button
                 type="button"
                 onClick={() => setSelected(player)}
