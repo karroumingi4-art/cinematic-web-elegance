@@ -5,16 +5,15 @@ import mark from "@/assets/mark.png";
 
 const links = [
   { label: "Club", href: "#about" },
-  { label: "Programmi", href: "#programmes" },
+  { label: "Fondo Eredità", href: "/legacy" },
+  { label: "Biglietti", href: "/matchday" },
+  { label: "Accademia", href: "/academy" },
+  { label: "Il Circolo", href: "/club" },
   { label: "La Squadra", href: "#squad" },
   { label: "Calendario", href: "#matches" },
   { label: "Pronostici", href: "#predictions" },
   { label: "Pagelle", href: "#mvp" },
-  { label: "Galleria", href: "#gallery" },
-  { label: "Diario", href: "#journal" },
-  { label: "Voci", href: "#voices" },
   { label: "Fan wall", href: "#fanwall" },
-  { label: "FAQ", href: "#faq" },
 ];
 
 export function Navbar() {
@@ -42,17 +41,17 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
-               <a href="#hero" className="flex min-w-0 items-center gap-3" aria-label="Gaston Villa, home">
+        <a href="#hero" className="flex min-w-0 items-center gap-3" aria-label="Gaston Villa, home">
           <img src="/GASTON_VILLA-removebg-preview.png" alt="Gaston Villa Logo" width={40} height={40} className="h-9 w-9 shrink-0 object-contain" />
           <span className="display truncate text-lg tracking-[0.18em] sm:text-xl">Gaston Villa</span>
         </a>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="link-underline text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-foreground/75 transition-colors hover:text-foreground"
+              className="link-underline text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-foreground/75 transition-colors hover:text-foreground white-space-nowrap"
             >
               {l.label}
             </a>
@@ -97,7 +96,7 @@ export function Navbar() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.06 * i + 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="display border-b border-border py-4 text-2xl text-foreground/85"
+                  className="display border-b border-border py-4 text-xl text-foreground/85"
                 >
                   {l.label}
                 </motion.a>
