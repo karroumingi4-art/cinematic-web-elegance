@@ -38,6 +38,57 @@ export type Database = {
         }
         Relationships: []
       }
+      match_predictions: {
+        Row: {
+          created_at: string
+          id: string
+          match_label: string
+          pick: string
+          voter_name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          match_label: string
+          pick: string
+          voter_name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          match_label?: string
+          pick?: string
+          voter_name?: string
+        }
+        Relationships: []
+      }
+      mvp_votes: {
+        Row: {
+          created_at: string
+          id: string
+          match_label: string
+          player_name: string
+          player_number: string
+          voter_name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          match_label: string
+          player_name: string
+          player_number: string
+          voter_name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          match_label?: string
+          player_name?: string
+          player_number?: string
+          voter_name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

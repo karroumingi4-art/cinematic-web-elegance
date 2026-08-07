@@ -3,10 +3,13 @@ import { motion } from "motion/react";
 import { Navbar } from "@/components/site/Navbar";
 import { Loader } from "@/components/site/Loader";
 import { Hero } from "@/components/site/Hero";
+import { Countdown } from "@/components/site/Countdown";
 import { About } from "@/components/site/About";
 import { Programmes } from "@/components/site/Programmes";
 import { Squad } from "@/components/site/Squad";
 import { Matches } from "@/components/site/Matches";
+import { Mvp } from "@/components/site/Mvp";
+import { Predictions } from "@/components/site/Predictions";
 import { Gallery } from "@/components/site/Gallery";
 import { Journal } from "@/components/site/Journal";
 import { Voices } from "@/components/site/Voices";
@@ -52,10 +55,13 @@ function Index() {
         transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
       >
         <Hero />
+        <Countdown />
         <About />
         <Programmes />
         <Squad />
         <Matches />
+        <Predictions />
+        <Mvp />
         <Gallery />
         <Journal />
         <Voices />

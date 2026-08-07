@@ -294,16 +294,16 @@ type Row = {
 };
 
 const table: Row[] = [
-  { pos: 1, team: "Gaston Villa", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 0, pts: 00 },
-  { pos: 2, team: "Aura Jacquet", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
-  { pos: 3, team: "Urbe Eterna", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
-  { pos: 4, team: "Deportivo Aperitivo", pg: 0, v: 6, n: 0, p: 0, gf: 00, gs: 0, pts: 00 },
-  { pos: 5, team: "Forza PCI", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
-  { pos: 6, team: "BORUSSIA PORCMUND", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
-  { pos: 7, team: "Team Crack", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 00 },
-  { pos: 8, team: "Tottingham Forest", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 0 },
-  { pos: 9, team: "KUNG FU PANDEV", pg: 0, v: 0, n: 0, p: 0, gf: 00, gs: 00, pts: 0 },
-  { pos: 10, team: "Como Stai", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 00, pts: 6 },
+  { pos: 1, team: "Gaston Villa", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 2, team: "Aura Jacquet", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 3, team: "Urbe Eterna", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 4, team: "Deportivo Aperitivo", pg: 0, v: 6, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 5, team: "Forza PCI", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 6, team: "BORUSSIA PORCMUND", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 7, team: "Team Crack", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 8, team: "Tottingham Forest", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 9, team: "KUNG FU PANDEV", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 0 },
+  { pos: 10, team: "Como Stai", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0, pts: 6 },
 ];
 
 const resultTone: Record<NonNullable<Fixture["result"]>, string> = {
