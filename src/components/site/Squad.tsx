@@ -2,7 +2,44 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { PlayerModal } from "./PlayerModal";
-import { players, type Player } from "./squad-data";
+
+export type Player = {
+  number: string;
+  name: string;
+  position: string;
+  image: string;
+};
+
+const players: Player[] = [
+  { number: "1", name: "Marco Fontana", position: "Portiere", image: "https://unsplash.com" },
+  { number: "12", name: "Ahmed Al-Mansoori", position: "Portiere", image: "https://unsplash.com" },
+  { number: "22", name: "Pierre Dubois", position: "Portiere", image: "https://unsplash.com" },
+  { number: "2", name: "Alessandro Bianchi", position: "Difensore", image: "https://unsplash.com" },
+  { number: "3", name: "John Smith", position: "Difensore", image: "https://unsplash.com" },
+  { number: "4", name: "Youssef El Amrani", position: "Difensore", image: "https://unsplash.com" },
+  { number: "5", name: "Carlos Mendoza", position: "Difensore", image: "https://unsplash.com" },
+  { number: "6", name: "Matteo Esposito", position: "Difensore", image: "https://unsplash.com" },
+  { number: "13", name: "Hans Müller", position: "Difensore", image: "https://unsplash.com" },
+  { number: "14", name: "Tariq Al-Hassan", position: "Difensore", image: "https://unsplash.com" },
+  { number: "25", name: "Luca Ricci", position: "Difensore", image: "https://unsplash.com" },
+  { number: "8", name: "Zayd Rahal", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "10", name: "Lorenzo Ferrari", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "16", name: "Yuki Tanaka", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "18", name: "Omar Farooq", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "20", name: "Davide Bruno", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "21", name: "Kevin De Bruyne", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "23", name: "Ali Al-Saeed", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "24", name: "Simone Gallo", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "26", name: "Mustafa Jamil", position: "Centrocampista", image: "https://unsplash.com" },
+  { number: "7", name: "Karim Benzema", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "9", name: "Andrea Belotti", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "11", name: "Mohamed Salah", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "17", name: "Filippo Inzaghi", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "19", name: "Kamil Al-Farsi", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "27", name: "Christian Vieri", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "28", name: "Tariq Mansoor", position: "Attaccante", image: "https://unsplash.com" },
+  { number: "99", name: "Gabriele Rossi", position: "Attaccante", image: "https://unsplash.com" }
+];
 
 export function Squad() {
   const [selected, setSelected] = useState<Player | null>(null);
@@ -17,13 +54,12 @@ export function Squad() {
               I Nomi sulle <span className="text-[#95BFE5]">Maglie</span>
             </>
           }
-          intro="Scorri lateralmente per vedere la rosa e clicca sul giocatore per scoprire tutto su di lui."
+          intro="Scorri lateralmente per vedere la rosa completa di 28 giocatori e clicca su ciascuno per scoprirne il profilo dettagliato."
         />
 
-        {/* Contenitore con scorrimento orizzontale e barra sotto */}
         <div className="mt-16 overflow-x-auto pb-6 scrollbar-thin scrollbar-thumb-primary scrollbar-track-border snap-x snap-mandatory flex gap-5">
           {players.map((player, i) => (
-            <Reveal key={player.number} delay={0.08 * i} className="w-[18rem] sm:w-[22rem] shrink-0 snap-start">
+            <Reveal key={player.number} delay={0.02 * i} className="w-[18rem] sm:w-[22rem] shrink-0 snap-start">
               <motion.button
                 type="button"
                 onClick={() => setSelected(player)}
