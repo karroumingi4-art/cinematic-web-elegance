@@ -2,101 +2,83 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 
-export const Route = createFileRoute("/shop")({
-  component: ShopPage,
-});
+export const Route = createFileRoute("/shop")({ component: ShopPage });
 
 
-// METTI QUI IL TUO ID FORMSPREE - quello dopo /f/
-const FORMSPREE_ID = "xgawovvo"; // <-- CAMBIA QUESTO con il tuo
+const FORMSPREE = "xqakzwln";
 
 
-type SizeOpt = { label: string; price: number; type: "adult" | "kid" };
-type Product = { id: string; name: string; adultPrice: number; kidPrice: number; badge: string; img: string; };
-
-
-const PRODUCTS: Product[] = [
-  { id: "granata", name: "Home Granata", adultPrice: 89, kidPrice: 55, badge: "PRIMA MAGLIA", img: "/shop/maglia-granata.png" },
-  { id: "nera", name: "Away Nera", adultPrice: 89, kidPrice: 55, badge: "SECONDA MAGLIA", img: "/shop/maglia-nera.png" },
-  { id: "gialla", name: "Portiere Gialla", adultPrice: 79, kidPrice: 49, badge: "PORTIERE", img: "/shop/maglia-gialla.png" },
-  { id: "verde", name: "Third Verde", adultPrice: 79, kidPrice: 49, badge: "TERZA MAGLIA", img: "/shop/maglia-verde.png" },
+const items = [
+  { id: "granata", name: "Home Granata", adult: 89, kid: 55, img: "/shop/maglia-granata.png" },
+  { id: "nera", name: "Away Nera", adult: 89, kid: 55, img: "/shop/maglia-nera.png" },
+  { id: "gialla", name: "Portiere Gialla", adult: 79, kid: 49, img: "/shop/maglia-gialla.png" },
+  { id: "verde", name: "Third Verde", adult: 79, kid: 49, img: "/shop/maglia-verde.png" },
 ];
 
 
-function getSizes(p: Product): SizeOpt[] {
-  return [
-    { label: "4-5Y", price: p.kidPrice, type: "kid" },
-    { label: "6-7Y", price: p.kidPrice, type: "kid" },
-    { label: "8-9Y", price: p.kidPrice, type: "kid" },
-    { label: "10-11Y", price: p.kidPrice, type: "kid" },
-    { label: "12-14Y", price: p.kidPrice, type: "kid" },
-    { label: "S", price: p.adultPrice, type: "adult" },
-    { label: "M", price: p.adultPrice, type: "adult" },
-    { label: "L", price: p.adultPrice + 5, type: "adult" },
-    { label: "XL", price: p.adultPrice + 5, type: "adult" },
-    { label: "XXL", price: p.adultPrice + 10, type: "adult" },
-  ];
-}
-
-
 function ShopPage() {
+  const [sel, setSel] = useState<any>({ granata: { l: "M", p: 89 }, nera: { l: "M", p: 89 }, gialla: { l: "M", p: 79 }, verde: { l: "M", p: 79 } });
   const [cart, setCart] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [selected, setSelected] = useState<Record<string, SizeOpt>>({
-    granata: { label: "M", price: 89, type: "adult" },
-    nera: { label: "M", price: 89, type: "adult" },
-    gialla: { label: "M", price: 79, type: "adult" },
-    verde: { label: "M", price: 79, type: "adult" },
-  });
-  const [form, setForm] = useState({ nome: "", email: "", telefono: "", indirizzo: "" });
+  const [form, setForm] = useState({ nome: "", email: "", tel: "" });
 
 
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const total = cart.reduce((a, b) => a + b.p * b.q, 0);
 
 
-  const add = (p: Product) => {
-    const size = selected[p.id];
-    const ex = cart.find((c) => c.id === p.id && c.size === size.label);
-    if (ex) setCart(cart.map((c) => (c === ex? {...c, qty: c.qty + 1 } : c)));
-    else setCart([...cart, { id: p.id, name: p.name, size: size.label, price: size.price, img: p.img, qty: 1, type: size.type }]);
+  const add = (it: any) => {
+    const s = sel[it.id];
+    setCart([...cart, { ...it, size: s.l, p: s.p, q: 1 }]);
     setOpen(true);
   };
 
 
-  const sendOrder = async () => {
-    if (!form.nome || !form.email || !form.telefono) { alert("Compila nome, email e telefono"); return; }
-    setSending(true);
-    const orderDetails = cart.map(c => `${c.name} [${c.size}] x${c.qty} = ${c.price * c.qty}€`).join("\n");
-    const payload = {
-      nome: form.nome,
-      email: form.email,
-      telefono: form.telefono,
-      indirizzo: form.indirizzo,
-      totale: total + "€",
-      ordine: orderDetails,
-      _subject: `NUOVO ORDINE Gaston Villa - ${total}€ da ${form.nome}`,
-    };
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (res.ok) {
-        alert("Ordine inviato! Ti contattiamo su WhatsApp per pagamento e spedizione.");
-        setCart([]); setOpen(false); setCheckoutOpen(false);
-        setForm({ nome: "", email: "", telefono: "", indirizzo: "" });
-      } else { alert("Errore invio, riprova o scrivi su WhatsApp"); }
-    } catch { alert("Errore rete, riprova"); }
-    setSending(false);
+  const send = async () => {
+    const text = cart.map((c) => c.name + " " + c.size + " " + c.p + "e").join(", ");
+    await fetch("https://formspree.io/f/xgawovvo" + FORMSPREE, {
+      method: "POST",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({ nome: form.nome, email: form.email, tel: form.tel, ordine: text, totale: total }),
+    });
+    alert("Ordine inviato!");
+    setCart([]); setOpen(false);
   };
 
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white">
-      <div className="max-w-7xl mx-auto px-5 py-5 flex justify-between items-center border-b border-white/10">
-        <h1 className="font-black tracking-widest">GASTON VILLA SHOP</h1>
-        <button onClick={() => setOpen(true)} className="bg-white text-black rounded-full px-5 py-2 text-xs font-bold">CARRELLO ({
+    <div style={{ background: "#080808", color: "white", minHeight: "100vh", padding: 20 }}>
+      <h1>GASTON VILLA SHOP - {cart.length}</h1>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 20 }}>
+        {items.map((it) => (
+          <div key={it.id} style={{ background: "#111", padding: 10, borderRadius: 10 }}>
+            <img src={it.img} style={{ width: "100%", height: 250, objectFit: "cover" }} />
+            <h3>{it.name} - {sel[it.id].p}e</h3>
+            <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 5 }}>
+              <button onClick={() => setSel({ ...sel, [it.id]: { l: "4-5Y", p: it.kid } })}>4-5Y {it.kid}e</button>
+              <button onClick={() => setSel({ ...sel, [it.id]: { l: "8-9Y", p: it.kid } })}>8-9Y {it.kid}e</button>
+              <button onClick={() => setSel({ ...sel, [it.id]: { l: "12-14Y", p: it.kid } })}>12-14Y {it.kid}e</button>
+              <button onClick={() => setSel({ ...sel, [it.id]: { l: "M", p: it.adult } })}>M {it.adult}e</button>
+              <button onClick={() => setSel({ ...sel, [it.id]: { l: "L", p: it.adult + 5 } })}>L {it.adult + 5}e</button>
+              <button onClick={() => setSel({ ...sel, [it.id]: { l: "XXL", p: it.adult + 10 } })}>XXL {it.adult + 10}e</button>
+            </div>
+            <p>Selezionato: {sel[it.id].l}</p>
+            <button onClick={() => add(it)} style={{ background: "white", color: "black", width: "100%", marginTop: 10, padding: 8, borderRadius: 20 }}>Aggiungi</button>
+          </div>
+        ))}
+      </div>
+
+
+      {open && (
+        <div style={{ position: "fixed", right: 0, top: 0, width: 350, height: "100%", background: "#222", padding: 20 }}>
+          <button onClick={() => setOpen(false)}>Chiudi X</button>
+          <h2>Carrello {total}e</h2>
+          {cart.map((c, i) => <p key={i}>{c.name} {c.size} {c.p}e</p>)}
+          <input placeholder="Nome" value={form.nome} onChange={(e) => setForm({ ...form, nome: e.target.value })} style={{ width: "100%", marginTop: 10, color: "black" }} />
+          <input placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} style={{ width: "100%", marginTop: 10, color: "black" }} />
+          <input placeholder="Tel" value={form.tel} onChange={(e) => setForm({ ...form, tel: e.target.value })} style={{ width: "100%", marginTop: 10, color: "black" }} />
+          <button onClick={send} style={{ background: "#95BFE5", width: "100%", marginTop: 10, padding: 10 }}>INVIA ORDINE</button>
+        </div>
+      )}
+    </div>
+  );
+}
