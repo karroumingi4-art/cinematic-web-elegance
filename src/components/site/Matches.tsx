@@ -364,9 +364,13 @@ function FixtureCard({ match, i }: { match: Fixture; i: number }) {
   );
 }
 
+const INITIAL_VISIBLE = 4;
+
 export function Matches() {
   const [tab, setTab] = useState<"fixtures" | "results">("fixtures");
+  const [expanded, setExpanded] = useState(false);
   const list = tab === "fixtures" ? fixtures : results;
+  const visible = expanded ? list : list.slice(0, INITIAL_VISIBLE);
 
   return (
     <section id="matches" className="relative bg-background py-24 sm:py-32 lg:py-40">
@@ -422,20 +426,27 @@ export function Matches() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="mt-8 flex flex-col gap-4"
               >
-                {list.map((match, i) => (
-                  <FixtureCard key={`${match.date}-${match.away}`} match={match} i={i} />
+                {visible.map((match, i) => (
+                  <FixtureCard key={`${match.competition}-${match.date}-${i}`} match={match} i={i} />
                 ))}
               </motion.div>
             </AnimatePresence>
 
-            <Reveal delay={0.1}>
-              <a
-                href="#contact"
-                className="link-underline mt-8 inline-flex items-center gap-2 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary"
-              >
-                <CalendarDays className="size-4" aria-hidden /> Calendario completo
-              </a>
-            </Reveal>
+            {list.length > INITIAL_VISIBLE ? (
+              <Reveal delay={0.1}>
+                <button
+                  type="button"
+                  onClick={() => setExpanded((v) => !v)}
+                  className="mt-8 inline-flex items-center gap-2 rounded-full border border-primary/60 px-6 py-3 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  <CalendarDays className="size-4" aria-hidden />
+                  {expanded
+                    ? "Mostra meno"
+                    : `Vedi tutte le gare (${list.length - INITIAL_VISIBLE} in più)`}
+                </button>
+              </Reveal>
+            ) : null}
+
           </div>
 
           <Reveal delay={0.0}>
