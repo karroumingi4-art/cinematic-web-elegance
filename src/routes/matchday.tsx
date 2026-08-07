@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Ticket, Armchair, CheckCircle2 } from "lucide-react";
 import { Reveal, SectionHeading } from "../components/site/Reveal";
+
+export const Route = createFileRoute("/matchday")({
+  component: MatchdayPage,
+});
 
 type Sector = { id: string; name: string; price: string; color: string; ring: string };
 
@@ -14,7 +19,7 @@ const SECTORS: Sector[] = [
   { id: "grn-2", name: "2° Anello Verde (Curva Ospiti)", price: "20,00 €", color: "border-emerald-400/40 bg-emerald-400/5 hover:bg-emerald-400/20 text-emerald-300", ring: "Secondo Anello" },
 ];
 
-export default function MatchdayTickets() {
+function MatchdayPage() {
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
