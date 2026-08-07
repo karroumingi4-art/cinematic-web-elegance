@@ -1,5 +1,5 @@
 import { useState } from "react";
-const FORMSPREE = "xqakzwln";
+const FORMSPREE = "xgawovvo";
 const PROD = [
   { id: "granata", name: "Home Granata", a: 89, k: 55, img: "/shop/maglia-granata.png" },
   { id: "nera", name: "Away Nera", a: 89, k: 55, img: "/shop/maglia-nera.png" },
