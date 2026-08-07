@@ -8,7 +8,9 @@ export const Route = createFileRoute("/shop")({ component: ShopPage });
 type Product = { id: string; name: string; price: number; color: string; img: string };
 const PRODUCTS: Product[] = [
   { id: "home", name: "Maglia Home 24/25 - Rossa", price: 79, color: "bg-red-600", img: "HOME" },
-  { id: "away", name: "Maglia Away 24/25 - Bianca", price: 79, color: "bg-zinc-100 text-black", img: "AWAY" },
+  { id: "home", name: "Maglia away 26/27 - Nera", price: 79, color: "bg-red-600", img: "/shop/maglia-nera-unieuro.png", // <- la tua nuova fotoisImage: true },
+  { id: "training", name: "Maglia Training - Nera", price: 55, color: "bg-black", img: "TRAINING" },
+];,
   { id: "training", name: "Maglia Training - Nera", price: 55, color: "bg-black border-white/20", img: "TRAINING" },
   { id: "keeper", name: "Kit Portiere - Verde", price: 69, color: "bg-emerald-600", img: "KEEPER" },
 ];
