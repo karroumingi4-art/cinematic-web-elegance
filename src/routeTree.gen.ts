@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiFanwallRouteImport } from './routes/api/fanwall'
+import { Route as ApiMvpRouteImport } from './routes/api/mvp'
+import { Route as ApiPredictionsRouteImport } from './routes/api/predictions'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +24,49 @@ const ApiFanwallRoute = ApiFanwallRouteImport.update({
   path: '/api/fanwall',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiMvpRoute = ApiMvpRouteImport.update({
+  id: '/api/mvp',
+  path: '/api/mvp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPredictionsRoute = ApiPredictionsRouteImport.update({
+  id: '/api/predictions',
+  path: '/api/predictions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/fanwall': typeof ApiFanwallRoute
+  '/api/mvp': typeof ApiMvpRoute
+  '/api/predictions': typeof ApiPredictionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/fanwall': typeof ApiFanwallRoute
+  '/api/mvp': typeof ApiMvpRoute
+  '/api/predictions': typeof ApiPredictionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/fanwall': typeof ApiFanwallRoute
+  '/api/mvp': typeof ApiMvpRoute
+  '/api/predictions': typeof ApiPredictionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/fanwall'
+  fullPaths: '/' | '/api/fanwall' | '/api/mvp' | '/api/predictions'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/fanwall'
-  id: '__root__' | '/' | '/api/fanwall'
+  to: '/' | '/api/fanwall' | '/api/mvp' | '/api/predictions'
+  id: '__root__' | '/' | '/api/fanwall' | '/api/mvp' | '/api/predictions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiFanwallRoute: typeof ApiFanwallRoute
+  ApiMvpRoute: typeof ApiMvpRoute
+  ApiPredictionsRoute: typeof ApiPredictionsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,23 +85,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiFanwallRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/mvp': {
+      id: '/api/mvp'
+      path: '/api/mvp'
+      fullPath: '/api/mvp'
+      preLoaderRoute: typeof ApiMvpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/predictions': {
+      id: '/api/predictions'
+      path: '/api/predictions'
+      fullPath: '/api/predictions'
+      preLoaderRoute: typeof ApiPredictionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiFanwallRoute: ApiFanwallRoute,
+  ApiMvpRoute: ApiMvpRoute,
+  ApiPredictionsRoute: ApiPredictionsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
