@@ -2,11 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Download, ShieldCheck, Calendar, Wallet, PenLine } from "lucide-react";
 import { Reveal, SectionHeading } from "../components/site/Reveal";
 
-
 export const Route = createFileRoute("/academy")({
   component: AcademyPage,
 });
-
 
 function AcademyPage() {
   return (
@@ -17,7 +15,6 @@ function AcademyPage() {
           title={<>Gaston Villa <span className="text-[#95BFE5]">Academy</span></>}
           intro="Iscrivi i piccoli campioni alla nostra scuola calcio ufficiale. Allenamenti professionali, crescita e tanto divertimento sotto i colori del Gaston Villa FC."
         />
-
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-16">
           <div className="space-y-8">
@@ -50,7 +47,6 @@ function AcademyPage() {
             </Reveal>
           </div>
 
-
           <Reveal delay={0.1}>
             <div className="rounded-2xl border border-border bg-surface p-8 text-center shadow-elegant sm:p-10">
               <h3 className="display text-2xl text-foreground">Modulo di Iscrizione</h3>
@@ -65,7 +61,6 @@ function AcademyPage() {
                   Compila Online
                 </Link>
 
-
                 <a
                   href="/modulo-iscrizione.png"
                   download="Modulo_Iscrizione_Gaston_Villa.png"
@@ -75,7 +70,6 @@ function AcademyPage() {
                   Scarica il Modulo PNG
                 </a>
               </div>
-
 
               <p className="mt-4 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-muted-foreground">Scegli tu: online in 2 minuti o stampa cartacea</p>
             </div>
