@@ -5,73 +5,31 @@ export const Route = createFileRoute("/shop")({
   component: ShopPage,
 });
 
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  badge: string;
-  img: string;
-};
-
-const PRODUCTS: Product[] = [
-  {
-    id: "granata",
-    name: "Home 26/27 - Granata",
-    price: 79,
-    badge: "PRIMA MAGLIA",
-    img: "/shop/maglia-granata.png"
-  },
-  {
-    id: "nera",
-    name: "Away 26/27 - Nera",
-    price: 99,
-    badge: "SECONDA MAGLIA",
-    img: "/shop/maglia-nera.png"
-  },
-  {
-    id: "gialla",
-    name: "Portiere 26/27 - Gialla",
-    price: 110,
-    badge: "PORTIERE",
-    img: "/shop/maglia-gialla.png"
-  },
-  {
-    id: "verde",
-    name: "Third 26/27 - Verde",
-    price: 90,
-    badge: "TERZA MAGLIA",
-    img: "/shop/maglia-verde.png"
-  },
-];
-
-type CartItem = Product & { size: string; qty: number };
-
 function ShopPage() {
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [open, setOpen] = useState(false);
-  const [sizes, setSizes] = useState<Record<string,string>>({
-    granata: "M",
-    nera: "M",
-    gialla: "M",
-    verde: "M"
-  });
+  const [cart, setCart] = useState(0);
 
-  const add = (p: Product) => {
-    const size = sizes[p.id] || "M";
-    setCart(prev => {
-      const found = prev.find(i => i.id === p.id && i.size === size);
-      if (found) {
-        return prev.map(i => i === found ? { ...i, qty: i.qty + 1 } : i);
-      }
-      return [...prev, { ...p, size, qty: 1 }];
-    });
-    setOpen(true);
-  };
-
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const products = [
+    { id: "granata", name: "Home Granata", price: 89, img: "/shop/maglia-granata.png" },
+    { id: "nera", name: "Away Nera", price: 89, img: "/shop/maglia-nera.png" },
+    { id: "gialla", name: "Portiere Gialla", price: 79, img: "/shop/maglia-gialla.png" },
+    { id: "verde", name: "Third Verde", price: 79, img: "/shop/maglia-verde.png" },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white">
-      <div className="max-w-7xl mx-auto px-5 py-6 flex justify-between items-center border-b border-white/10">
-        <h1 className="text-xl font-black uppercase
+    <div style={{ background: "#080808", minHeight: "100vh", color: "white", padding: "20px" }}>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>GASTON VILLA SHOP - {cart} articoli</h1>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginTop: "20px" }}>
+        {products.map((p) => (
+          <div key={p.id} style={{ background: "#111", padding: "10px", borderRadius: "10px" }}>
+            <img src={p.img} alt={p.name} style={{ width: "100%", height: "300px", objectFit: "cover", background: "#222" }} />
+            <h3>{p.name}</h3>
+            <p>{p.price} euro</p>
+            <button onClick={() => setCart(cart + 1)} style={{ background: "white", color: "black", padding: "8px", borderRadius: "20px", marginTop: "5px", width: "100%" }}>
+              Aggiungi
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
