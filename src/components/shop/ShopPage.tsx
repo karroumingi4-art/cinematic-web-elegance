@@ -1,8 +1,8 @@
 import { useState } from "react";
 const PROD = [
-  { id: "granata", name: "Home Granata", a: 89, k: 55, img: "/shop/maglia-granata.png" },
+  { id: "granata", name: "Home Granata", a: 89, k: 55, img: "/shop/maglia-gialla.png" },
   { id: "nera", name: "Away Nera", a: 89, k: 55, img: "/shop/maglia-nera.png" },
-  { id: "gialla", name: "Portiere Gialla", a: 79, k: 49, img: "/shop/maglia-gialla.png" },
+  { id: "gialla", name: "Portiere Gialla", a: 79, k: 49, img: "/shop/maglia-granata.png" },
   { id: "verde", name: "Third Verde", a: 79, k: 49, img: "/shop/maglia-verde.png" },
 ];
 export function ShopPage() {
