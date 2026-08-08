@@ -10,69 +10,95 @@ function MatchdayPage() {
   const [qty, setQty] = useState(2);
 
   const tribune = [
-    { base: "onore", name: "Tribuna Onore", color: "#FF6B2B" },
-    { base: "centrale", name: "Tribuna Centrale", color: "#FF8A3D" },
+    { base: "onore", name: "Onore", color: "#FF6B2B" },
+    { base: "centrale", name: "Centrale", color: "#FF8A3D" },
     { base: "distinti", name: "Distinti", color: "#60B7E8" },
-    { base: "curva", name: "Curva Nord", color: "#8FB996" },
+    { base: "curva", name: "Curva", color: "#8FB996" },
   ];
 
   const livelli = [
-    { id: "alto", label: "ALTO", mod: -20 },
-    { id: "medio", label: "MEDIO", mod: 0 },
-    { id: "basso", label: "BASSO", mod: -40 },
+    { id: "alto", label: "ALTO" },
+    { id: "medio", label: "MEDIO" },
+    { id: "basso", label: "BASSO" },
   ];
 
   const allSettori: any[] = [];
-  tribune.forEach(t=>{
-    livelli.forEach(l=>{
-      const basePrice = t.base==="onore"?249: t.base==="centrale"?149: t.base==="distinti"?89:49;
+  tribune.forEach((t) => {
+    livelli.forEach((l) => {
+      const basePrice = t.base === "onore"? 249 : t.base === "centrale"? 149 : t.base === "distinti"? 89 : 49;
+      const mod = l.id === "alto"? -20 : l.id === "basso"? -10 : 0;
       allSettori.push({
         id: t.base + "-" + l.id,
         base: t.base,
         livello: l.id,
         name: t.name + " " + l.label,
-        price: basePrice + l.mod,
-        left: Math.floor(Math.random()*20)+5,
+        price: basePrice + mod,
+        left: 12,
         color: t.color,
       });
     });
   });
 
-  const sel = allSettori.find(s=>s.id===settore)!;
-
-  const seats: any[] = [];
-  const rings = [
-    { off: 30, liv: "basso" },
-    { off: 48, liv: "medio" },
-    { off: 66, liv: "alto" },
-  ];
-
-  rings.forEach(ring=>{
-    for(let i=0;i<100;i++){
-      const angle = (i/100)*Math.PI*2 - Math.PI/2;
-      const rx = 120 + ring.off;
-      const ry = 75 + ring.off*0.65;
-      const x = 250 + Math.cos(angle)*rx;
-      const y = 165 + Math.sin(angle)*ry;
-      let base = "curva";
-      if(y < 85) base = "onore";
-      else if(y > 245) base = "centrale";
-      else if(x < 130) base = "distinti";
-      seats.push({ x, y, angle, base, livello: ring.liv, id: base + "-" + ring.liv });
-    }
-  });
+  const sel = allSettori.find((s) => s.id === settore)!;
 
   return (
     <div className="min-h-screen bg-[#080808] text-white pt-20">
       <div className="mx-auto max-w-7xl px-4 py-8 grid lg:grid-cols-2 gap-8">
         <div>
-          <h2 className="text- font-black tracking-widest text-[#95BFE5] uppercase">MAPPA STADIO - 12 SETTORI - 3 LIVELLI</h2>
+          <h2 className="text- font-black tracking-widest text-[#95BFE5] uppercase">
+            MAPPA - 12 SETTORI - 3 FILE
+          </h2>
           <div className="mt-4 bg-[#111] border border-white/10 rounded- p-4">
-            <div className="bg-[#0a0a0a] rounded- border border-white/5 aspect-[1.6/1] overflow-hidden">
-              <svg viewBox="0 0 500 330" className="w-full h-full">
-                <ellipse cx="250" cy="165" rx="90" ry="60" fill="#4CAF50" />
-                <circle cx="250" cy="165" r="15" fill="none" stroke="white" strokeOpacity="0.3" />
-                {seats.map((s,i)=>{
-                  const trib = tribune.find(t=>t.base===s.base)!;
-                  const isSel = s.id===settore;
-                  return (
+            <div className="bg-[#0a0a0a] rounded- border border-white/5 p-4">
+              <div className="bg-[#2a9a2a] h-24 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-black text-black/40">CAMPO</span>
+              </div>
+              <div className="space-y-2">
+                {tribune.map((t) => (
+                  <div key={t.base} className="grid grid-cols-3 gap-2">
+                    {allSettori
+                     .filter((s) => s.base === t.base)
+                     .map((s) => (
+                        <button
+                          key={s.id}
+                          onClick={() => setSettore(s.id)}
+                          className={`p-2 rounded-xl border text-left ${
+                            settore === s.id? "bg-white text-black border-white" : "bg-black border-white/10 text-white/60"
+                          }`}
+                        >
+                          <div className="text- uppercase">{s.livello}</div>
+                          <div className="font-black text-">{t.name}</div>
+                          <div className="text-">{s.price} euro</div>
+                        </button>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#111] border border-white/10 rounded- p-6 h-fit">
+          <h3 className="text-xl font-black">{sel.name}</h3>
+          <p className="text-2xl font-black mt-3">
+            {sel.price} euro x {qty} = {sel.price * qty} euro
+          </p>
+          <div className="flex gap-2 mt-4">
+            <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="w-9 h-9 rounded-full bg-white/10">
+              -
+            </button>
+            <span className="font-black w-6 text-center">{qty}</span>
+            <button onClick={() => setQty((q) => Math.min(4, q + 1))} className="w-9 h-9 rounded-full bg-white text-black">
+              +
+            </button>
+          </div>
+          <button
+            onClick={() => window.open("https://wa.me/393000000000?text=" + sel.name + " x" + qty)}
+            className="mt-6 w-full bg-white text-black rounded-full py-4 font-black text-xs"
+          >
+            PRENOTA {sel.price * qty} EURO
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
