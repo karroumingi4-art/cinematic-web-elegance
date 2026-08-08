@@ -39,6 +39,8 @@ const players: Player[] = [
   { number: "27", name: "Christian Vieri", position: "Attaccante", image: "https://unsplash.com" },
   { number: "28", name: "Tariq Mansoor", position: "Attaccante", image: "https://unsplash.com" },
   { number: "99", name: "Gabriele Rossi", position: "Attaccante", image: "https://unsplash.com" }
+  { number: "0", name: "Alberto Malesani", position: "Mister", image: "public/malesani.png" },
+  { number: "99", name: "Gabriele Rossi", position: "Attaccante", image: "https://unsplash.com" }
 ];
 
 export function Squad() {
