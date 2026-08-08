@@ -1,11 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Crown, ShieldCheck, Star, Download } from "lucide-react";
 import { Reveal, SectionHeading } from "../components/site/Reveal";
-
 export const Route = createFileRoute("/club")({
   component: ClubPage,
 });
-
 function ClubPage() {
   return (
     <section id="club" className="relative bg-ink py-24 sm:py-32 lg:py-40">
@@ -40,22 +38,25 @@ function ClubPage() {
               </div>
             </Reveal>
           </div>
-
           <Reveal delay={0.1}>
             <div className="rounded-2xl border border-border bg-surface p-8 text-center shadow-elegant sm:p-10 sticky top-24">
               <h3 className="display text-2xl text-foreground">Modulo di Adesione</h3>
               <p className="mt-4 text-sm text-muted-foreground">
-                Sei pronto a fare il grande passo ed entrare nel Circolo? Il modulo ufficiale di iscrizione sarà disponibile al download tra pochissimi istanti su questa pagina.
+                Sei pronto a fare il grande passo ed entrare nel Circolo? Scarica il modulo ufficiale di iscrizione e inviacelo compilato per completare la tua adesione.
               </p>
               
               <div className="mt-8 flex justify-center">
-                <button disabled className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary/20 px-8 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-muted-foreground border border-dashed border-border cursor-not-allowed">
+                
+                  href="/modulo-abbonamento-2026-2027.pdf"
+                  download="MODULO_ABBONAMENTO_GASTON_VILLA_2026_2027.pdf"
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-8 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
+                >
                   <Download className="size-4" />
-                  Modulo in Arrivo
-                </button>
+                  Scarica il Modulo
+                </a>
               </div>
               <p className="mt-4 text-[0.62rem] font-bold uppercase tracking-[0.15em] text-primary">
-                Appena mi manderai il documento lo collegherò all'istante qui!
+                Compila il modulo e invialo tramite il form nella pagina di iscrizione
               </p>
             </div>
           </Reveal>
