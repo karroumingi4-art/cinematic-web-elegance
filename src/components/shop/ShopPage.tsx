@@ -1,4 +1,4 @@
-aimport { useState } from "react";
+import { useState } from "react";
 const PROD = [
   { id: "granata", name: "Home Granata", a: 89, k: 55, img: "/shop/maglia-granata.png" },
   { id: "nera", name: "Away Nera", a: 89, k: 55, img: "/shop/maglia-nera.png" },
@@ -28,18 +28,18 @@ export function ShopPage() {
             <h3 className="font-bold mt-3 text-sm">{p.name}</h3>
             <p className="text-[#95BFE5] font-black text-lg">{sel[p.id].p}€ <span className="text-white/30 text-xs">{sel[p.id].l}</span></p>
             <div className="flex flex-wrap gap-1 mt-2">
-              <button onClick={() => setSel({...sel, [p.id]: { l: "4-5Y", p: p.k } })} className={`px-2 py-1 rounded-full border text-[10px] ${sel[p.id].l==="4-5Y"?"bg-white text-black":"border-white/20"}`}>4-5Y {p.k}€</button>
-              <button onClick={() => setSel({...sel, [p.id]: { l: "8-9Y", p: p.k } })} className={`px-2 py-1 rounded-full border text-[10px] ${sel[p.id].l==="8-9Y"?"bg-white text-black":"border-white/20"}`}>8-9Y {p.k}€</button>
-              <button onClick={() => setSel({...sel, [p.id]: { l: "12-14Y", p: p.k } })} className={`px-2 py-1 rounded-full border text-[10px] ${sel[p.id].l==="12-14Y"?"bg-white text-black":"border-white/20"}`}>12-14Y {p.k}€</button>
-              <button onClick={() => setSel({...sel, [p.id]: { l: "M", p: p.a } })} className={`px-2 py-1 rounded-full border text-[10px] ${sel[p.id].l==="M"?"bg-white text-black":"border-white/20"}`}>M {p.a}€</button>
-              <button onClick={() => setSel({...sel, [p.id]: { l: "L", p: p.a+5 } })} className={`px-2 py-1 rounded-full border text-[10px] ${sel[p.id].l==="L"?"bg-white text-black":"border-white/20"}`}>L {p.a+5}€</button>
-              <button onClick={() => setSel({...sel, [p.id]: { l: "XXL", p: p.a+10 } })} className={`px-2 py-1 rounded-full border text-[10px] ${sel[p.id].l==="XXL"?"bg-white text-black":"border-white/20"}`}>XXL {p.a+10}€</button>
+              <button onClick={() => setSel({...sel, [p.id]: { l: "4-5Y", p: p.k } })} className={`px-2 py-1 rounded-full border text- ${sel[p.id].l==="4-5Y"?"bg-white text-black":"border-white/20"}`}>4-5Y {p.k}€</button>
+              <button onClick={() => setSel({...sel, [p.id]: { l: "8-9Y", p: p.k } })} className={`px-2 py-1 rounded-full border text- ${sel[p.id].l==="8-9Y"?"bg-white text-black":"border-white/20"}`}>8-9Y {p.k}€</button>
+              <button onClick={() => setSel({...sel, [p.id]: { l: "12-14Y", p: p.k } })} className={`px-2 py-1 rounded-full border text- ${sel[p.id].l==="12-14Y"?"bg-white text-black":"border-white/20"}`}>12-14Y {p.k}€</button>
+              <button onClick={() => setSel({...sel, [p.id]: { l: "M", p: p.a } })} className={`px-2 py-1 rounded-full border text- ${sel[p.id].l==="M"?"bg-white text-black":"border-white/20"}`}>M {p.a}€</button>
+              <button onClick={() => setSel({...sel, [p.id]: { l: "L", p: p.a+5 } })} className={`px-2 py-1 rounded-full border text- ${sel[p.id].l==="L"?"bg-white text-black":"border-white/20"}`}>L {p.a+5}€</button>
+              <button onClick={() => setSel({...sel, [p.id]: { l: "XXL", p: p.a+10 } })} className={`px-2 py-1 rounded-full border text- ${sel[p.id].l==="XXL"?"bg-white text-black":"border-white/20"}`}>XXL {p.a+10}€</button>
             </div>
             <button onClick={() => { setCart([...cart, { name: p.name, size: sel[p.id].l, p: sel[p.id].p, q: 1 }]); setOpen(true); }} className="w-full bg-white text-black rounded-full py-2.5 mt-3 text-xs font-bold">AGGIUNGI - {sel[p.id].p}€</button>
           </div>
         ))}
       </div>
-      {open && <div className="fixed inset-0 bg-black/80 z-50 flex justify-end"><div className="bg-[#151515] w-full max-w-sm p-6 h-full"><div className="flex justify-between"><h2 className="font-bold">Carrello {total}€</h2><button onClick={() => setOpen(false)} className="border border-white/20 w-8 h-8 rounded-full">X</button></div><div className="mt-5 space-y-2">{cart.map((c:any,i:number)=><p key={i} className="text-sm flex justify-between"><span>{c.name} {c.size}</span><span>{c.p}€</span></p>)}</div><input value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email per ricevuta" className="w-full mt-6 p-3 rounded-full bg-black border border-white/10 text-white text-sm" /><button onClick={pay} disabled={loading||!cart.length} className="w-full bg-[#95BFE5] text-black py-3 rounded-full font-black mt-3">{loading?"CARICO...":`PAGA ${total}€ CON STRIPE`}</button><p className="text-[10px] text-white/30 mt-2 text-center">Pagamento sicuro con Stripe • 2€ spedizione inclusa dopo</p></div></div>}
+      {open && <div className="fixed inset-0 bg-black/80 z-50 flex justify-end"><div className="bg-[#151515] w-full max-w-sm p-6 h-full"><div className="flex justify-between"><h2 className="font-bold">Carrello {total}€</h2><button onClick={() => setOpen(false)} className="border border-white/20 w-8 h-8 rounded-full">X</button></div><div className="mt-5 space-y-2">{cart.map((c:any,i:number)=><p key={i} className="text-sm flex justify-between"><span>{c.name} {c.size}</span><span>{c.p}€</span></p>)}</div><input value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email per ricevuta" className="w-full mt-6 p-3 rounded-full bg-black border border-white/10 text-white text-sm" /><button onClick={pay} disabled={loading||!cart.length} className="w-full bg-[#95BFE5] text-black py-3 rounded-full font-black mt-3">{loading?"CARICO...":`PAGA ${total}€ CON STRIPE`}</button><p className="text- text-white/30 mt-2 text-center">Pagamento sicuro con Stripe • 2€ spedizione inclusa dopo</p></div></div>}
     </div>
   );
 }
