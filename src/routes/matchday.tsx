@@ -297,4 +297,25 @@ function MatchdayPage() {
                     <div><div className="text- opacity-50">TRIBUNA</div><div className="font-black">{selected.tribuna}</div></div>
                     <div><div className="text- opacity-50">SETTORE</div><div className="font-black">{selected.sez}</div></div>
                     <div><div className="text- opacity-50">FILA</div><div className="font-black">F{selected.fila}</div></div>
-                    <div><div className="text- opacity-50">POSTI</div
+                    <div><div className="text- opacity-50">POSTI</div><div className="font-black">{qty}x</div></div>
+                    <div><div className="text- opacity-50">TOTALE</div><div className="font-black text-[#C8102E]">{selected.price * qty}€</div></div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w- bg-[#151515] border-t md:border-t-0 md:border-l border-dashed border-white/20 p-6 flex flex-col items-center justify-center">
+                <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center"><div className="grid grid-cols-10 gap-">{Array.from({length:100}).map((_,i)=><div key={i} className={`w-2 h-2 ${Math.random()>0.5?"bg-black":"bg-white"}`}></div>)}</div></div>
+                <div className="font-mono text-xs font-black mt-3">{ticketCode}</div>
+                <div className="text- opacity-40 mt-1 text-center">NON CEDIBILE - 1 INGRESSO</div>
+              </div>
+            <canvas ref={canvasRef} className="hidden"></canvas>
+            <div className="flex gap-3 mt-4">
+              <button onClick={downloadTicket} className="flex-1 bg-white text-black rounded-full py-4 font-black text-xs">⬇ SCARICA BIGLIETTO MILAN STYLE</button>
+              <button onClick={()=>setShowTicket(false)} className="bg-white/10 text-white rounded-full px-8 py-4 font-bold text-xs">CHIUDI</button>
+            </div>
+            <p className="text- opacity-40 text-center mt-3">Inviato via Formspree a {form.email} - ID: xgawolng</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
