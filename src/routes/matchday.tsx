@@ -1,106 +1,156 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { Clock, Armchair } from "lucide-react";
+
+
 export const Route = createFileRoute("/matchday")({ component: MatchdayPage });
 
+
 const SETTORI = [
-  { id: "onore", name: "Tribuna d'Onore", price: 249, color: "bg-[#95BFE5]", seats: 20, left: 6, desc: "Seduta pelle, bar privato, vista centrale" },
-  { id: "centrale", name: "Tribuna Centrale", price: 149, color: "bg-white", seats: 60, left: 18, desc: "Il cuore dello stadio, cuscino incluso" },
-  { id: "distinti", name: "Distinti", price: 89, color: "bg-yellow-400", seats: 100, left: 42, desc: "Atmosfera calda, vicino alla Curva" },
-  { id: "curva", name: "Curva Nord", price: 49, color: "bg-[#8B2C2C]", seats: 200, left: 97, desc: "Canta 90 minuti con noi" },
+  { id: "onore", name: "Tribuna d'Onore", price: 249, rows: 4, cols: 5, left: 6 },
+  { id: "centrale", name: "Tribuna Centrale", price: 149, rows: 6, cols: 10, left: 18 },
+  { id: "distinti", name: "Distinti", price: 89, rows: 10, cols: 10, left: 42 },
+  { id: "curva", name: "Curva Nord", price: 49, rows: 10, cols: 12, left: 97 },
 ];
+
 
 function MatchdayPage() {
   const [settore, setSettore] = useState("centrale");
+  const [selected, setSelected] = useState<string[]>(["C-5"]);
   const sel = SETTORI.find(s => s.id === settore)!;
 
+
+  // posti occupati casuali
+  const occupied = useMemo(() => {
+    const arr = new Set<string>();
+    for(let i=0;i<sel.rows*sel.cols*0.35;i++) arr.add(`${String.fromCharCode(65+Math.floor(Math.random()*sel.rows))}-${Math.floor(Math.random()*sel.cols)+1}`);
+    return arr;
+  }, [sel.id]);
+
+
+  const toggleSeat = (id: string) => {
+    if (occupied.has(id)) return;
+    setSelected(prev => {
+      if (prev.includes(id)) return prev.filter(s=>s!==id);
+      if (prev.length >= 4) return [id]; // max 4, reset se superi
+      return [...prev, id];
+    });
+  };
+
+
+  const total = selected.length * sel.price;
+
+
   return (
-    <div className="min-h-screen bg-[#080808] text-white pt-24">
-      {/* HERO */}
-      <div className="relative h- overflow-hidden">
-        <div className="absolute inset-0 bg-[#0a0a0a]" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="display text-6xl sm:text-8xl font-black text-center leading-[0.85]">SCEGLI<br/>IL TUO<br/><span className="text-[#95BFE5]">POSTO.</span></h1>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#080808] text-white pt-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 py-6 grid lg:grid-cols-[1.25fr_0.75fr] gap-6">
 
-      <div className="mx-auto max-w-7xl px-5 py-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
 
-        {/* SINISTRA - STADIO */}
+        {/* STADIO */}
         <div>
           <div className="flex justify-between items-center">
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-[#95BFE5]">Mappa Stadio - 26/27</h2>
-            <span className="text- bg-red-500/20 text-red-400 px-2.5 py-1 rounded-full font-bold animate-pulse">{sel.left} POSTI RIMASTI IN {sel.name.toUpperCase()}</span>
+            <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#95BFE5]">MAPPA STADIO - 26/27</h2>
+            <span className="text-[10px] bg-red-500/20 text-red-400 px-3 py-1 rounded-full font-black border border-red-500/20">{sel.left} POSTI RIMASTI IN {sel.name.toUpperCase()}</span>
           </div>
 
-          {/* STADIO SVG SEMPLICE */}
-          <div className="mt-6 bg-[#111] border border-white/10 rounded- p-6 sm:p-10">
-            <div className="relative aspect-[16/10] bg-[#0c0c0c] rounded-xl border border-white/5 overflow-hidden flex flex-col">
-              {/* Campo */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[60%] h-[45%] border border-white/20 rounded-sm flex items-center justify-center"><span className="text- opacity-20 tracking-widest">CAMPO</span></div>
 
-              {/* Settori cliccabili */}
-              <div className="relative z-10 p-3 h-full flex flex-col gap-2">
-                <button onClick={()=>setSettore("onore")} className={`w-full h-[22%] rounded-lg border-2 transition ${settore==="onore"? "border-[#95BFE5] bg-[#95BFE5]/20" : "border-white/10 bg-white/[0.03] hover:border-white/20"} flex items-center justify-center text- font-bold tracking-widest`}>TRIBUNA D'ONORE - {SETTORI[0].price}€</button>
-                <button onClick={()=>setSettore("centrale")} className={`w-full h-[22%] rounded-lg border-2 transition ${settore==="centrale"? "border-white bg-white/20" : "border-white/10 bg-white/[0.03]"} flex items-center justify-center text- font-bold tracking-widest`}>CENTRALE - {SETTORI[1].price}€</button>
-                <div className="flex gap-2 h-[22%]">
-                  <button onClick={()=>setSettore("distinti")} className={`flex-1 rounded-lg border-2 text- font-bold ${settore==="distinti"? "border-yellow-400 bg-yellow-400/20" : "border-white/10"}`}>DISTINTI {SETTORI[2].price}€</button>
-                  <button onClick={()=>setSettore("curva")} className={`flex-1 rounded-lg border-2 text- font-bold ${settore==="curva"? "border-[#8B2C2C] bg-[#8B2C2C]/30" : "border-white/10"}`}>CURVA {SETTORI[3].price}€</button>
+          <div className="mt-4 bg-[#111] border border-white/10 rounded-[20px] p-4 sm:p-6">
+            <div className="flex gap-2 mb-4">
+              {SETTORI.map(s => (
+                <button key={s.id} onClick={()=>{setSettore(s.id); setSelected([]);}} className={`flex-1 py-2.5 rounded-full text-[10px] font-black tracking-widest border ${settore===s.id? "bg-white text-black border-white" : "bg-black text-white/60 border-white/10"}`}>{s.name.split(" ")[0].toUpperCase()} {s.price}€</button>
+              ))}
+            </div>
+
+
+            <div className="bg-[#0a0a0a] rounded-xl p-4 border border-white/5">
+              <div className="flex justify-between text-[9px] text-white/30 uppercase tracking-widest mb-3">
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-white rounded-sm" /> Libero</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-[#95BFE5] rounded-sm" /> Selezionato</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-white/10 rounded-sm" /> Occupato</span>
+              </div>
+
+
+              {/* LEGENDA FILE */}
+              <div className="flex gap-1.5">
+                <div className="flex flex-col gap-1.5 pt-1">
+                  {Array.from({length: sel.rows}).map((_,r) => <div key={r} className="h-7 w-5 flex items-center justify-center text-[9px] text-white/30 font-bold">{String.fromCharCode(65+r)}</div>)}
                 </div>
+                <div className="flex-1">
+                  <div className="grid gap-1.5" style={{gridTemplateColumns: `repeat(${sel.cols}, minmax(0,1fr))`}}>
+                    {Array.from({length: sel.rows}).map((_,r) =>
+                      Array.from({length: sel.cols}).map((_,c) => {
+                        const id = `${String.fromCharCode(65+r)}-${c+1}`;
+                        const isOcc = occupied.has(id);
+                        const isSel = selected.includes(id);
+                        return (
+                          <button key={id} disabled={isOcc} onClick={()=>toggleSeat(id)}
+                            className={`h-7 rounded-[6px] flex items-center justify-center transition text-[10px] font-bold
+                              ${isOcc? "bg-white/10 text-white/20 cursor-not-allowed" : isSel? "bg-[#95BFE5] text-black scale-110 shadow-lg" : "bg-white/10 hover:bg-white/20 text-white/60"}`}>
+                            <Armchair className="w-3.5 h-3.5" />
+                          </button>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              </div>
+
+
+              <div className="mt-5 h-14 border-2 border-dashed border-white/10 rounded-xl flex items-center justify-center">
+                <span className="text-[11px] tracking-[0.3em] text-white/20 font-black">CAMPO - TRIBUNA {sel.name.toUpperCase()}</span>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-5">
-              {SETTORI.map(s => (
-                <button key={s.id} onClick={()=>setSettore(s.id)} className={`text-left p-3 rounded-xl border text-xs ${settore===s.id? "bg-white text-black border-white" : "bg-black border-white/10 text-white/70"}`}>
-                  <div className={`w-2 h-2 rounded-full ${s.color} inline-block mr-2`} />{s.name}<br/><span className="font-black text-sm">{s.price}€</span><span className="opacity-60"> • {s.left} rimasti</span>
-                </button>
-              ))}
-            </div>
+
+            <p className="mt-3 text-[11px] text-white/40 text-center">Selezionati: {selected.length>0? selected.join(", ") : "Nessun posto"} • Max 4 persone • Tocca per selezionare</p>
           </div>
 
-          {/* TIMELINE */}
-          <div className="mt-10">
-            <h3 className="text-xs font-bold tracking-[0.3em] uppercase text-[#95BFE5]">Il tuo Matchday include</h3>
-            <div className="mt-6 border-l border-white/10 ml-3 space-y-8">
+
+          <div className="mt-8">
+            <h3 className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#95BFE5]">IL TUO MATCHDAY INCLUDE</h3>
+            <div className="mt-5 relative">
+              <div className="absolute left-3 top-1 bottom-1 w-px bg-white/10" />
               {[
-                { h: "14:00", t: "Tour Tunnel & Spogliatoio" },
-                { h: "15:30", t: "Pranzo con Leggenda Gaston" },
-                { h: "17:00", t: `Partita dal tuo posto: ${sel.name}` },
-                { h: "19:00", t: "Cena con Giocatori + Maglia" },
-              ].map(s => (
-                <div key={s.h} className="relative pl-8"><div className="absolute -left- top-1 w-2.5 h-2.5 bg-[#95BFE5] rounded-full" /><p className="text-[#95BFE5] font-black text-xs">{s.h}</p><p className="font-bold text-sm mt-1">{s.t}</p></div>
+                {h:"14:00", t:"Tour Tunnel & Spogliatoio"},
+                {h:"15:30", t:"Pranzo con Leggenda Pulisic"},
+                {h:"17:00", t:`Partita - ${sel.name} ${selected.join(", ")}`},
+                {h:"19:00", t:"Cena con Giocatori + Maglia"},
+              ].map(s=>(
+                <div key={s.h} className="relative pl-10 pb-6">
+                  <div className="absolute left-0 top-0 w-6 h-6 rounded-full bg-[#111] border border-[#95BFE5] flex items-center justify-center"><Clock className="w-3 h-3 text-[#95BFE5]" /></div>
+                  <p className="text-[#95BFE5] font-black text-xs tracking-widest">{s.h}</p>
+                  <p className="font-bold text-sm mt-1">{s.t}</p>
+                </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* DESTRA - CHECKOUT BIGLIETTO */}
-        <div className="lg:sticky lg:top-28 h-fit">
-          <div className="bg-[#111] border border-white/10 rounded- p-7">
-            <p className="text- tracking-widest uppercase text-white/40">Riepilogo</p>
-            <h3 className="text-2xl font-black mt-1">{sel.name}</h3>
-            <p className="text-sm text-white/60 mt-1">{sel.desc}</p>
 
-            <div className="mt-6 bg-black rounded-xl p-4 flex justify-between items-center">
-              <div><p className="text-xs text-white/50">Prezzo Matchday</p><p className="text-2xl font-black">{sel.price}€</p></div>
-              <div className="text-right"><p className="text- text-white/40">Posti</p><div className="flex items-center gap-2 mt-1"><button className="w-7 h-7 rounded-full bg-white/10">-</button><span className="font-bold">1</span><button className="w-7 h-7 rounded-full bg-white text-black">+</button></div></div>
+        {/* CHECKOUT */}
+        <div className="lg:sticky lg:top-24 h-fit">
+          <div className="bg-[#111] border border-white/10 rounded-[24px] p-6">
+            <p className="text-[11px] tracking-widest uppercase text-white/40">RIEPILOGO</p>
+            <h3 className="text-xl font-black mt-1">{sel.name} • {selected.length} posti</h3>
+            <p className="text-xs text-white/50 mt-1">{selected.length>0? `Fila ${selected.join(", ")}` : "Seleziona i posti sulla mappa"}</p>
+
+
+            <div className="mt-5 bg-black rounded-xl p-4 border border-white/10">
+              <div className="flex justify-between text-xs text-white/60"><span>Biglietto x{selected.length}</span><span>{total}€</span></div>
+              <div className="flex justify-between text-xs text-white/60 mt-2"><span>Esperienza Matchday</span><span className="text-[#95BFE5] font-bold">Inclusa</span></div>
+              <div className="flex justify-between font-black text-base pt-3 mt-3 border-t border-white/10"><span>Totale</span><span>{total}€</span></div>
             </div>
 
-            <div className="mt-4 space-y-2 text-xs">
-              <div className="flex justify-between text-white/60"><span>Biglietto {sel.name}</span><span>{sel.price}€</span></div>
-              <div className="flex justify-between text-white/60"><span>Esperienza Matchday (pranzo, tour, cena)</span><span className="text-[#95BFE5]">Inclusa</span></div>
-              <div className="flex justify-between font-black text-sm pt-3 border-t border-white/10"><span>Totale</span><span>{sel.price}€</span></div>
-            </div>
 
-            <form onSubmit={(e)=>{e.preventDefault(); window.open(`https://wa.me/393000000000?text=Voglio%20Matchday%20${sel.name}%20${sel.price}€%20per%20Sabato`)}} className="mt-6 space-y-3">
-              <select className="w-full bg-black border border-white/10 rounded-xl px-4 py-3.5 text-sm"><option>Sab 16 Ago vs Crotone - 17:00</option><option>Sab 23 Ago vs Catanzaro</option></select>
+            <form onSubmit={(e)=>{e.preventDefault(); if(selected.length===0) return alert("Seleziona almeno 1 posto!"); window.open(`https://wa.me/393000000000?text=Matchday%20${sel.name}%20Posti%20${selected.join(",")}%20Totale%20${total}€`)}} className="mt-5 space-y-3">
+              <select className="w-full bg-black border border-white/10 rounded-xl px-4 py-3.5 text-sm"><option>Sab 16 Ago vs Crotone 17:00</option><option>Sab 23 Ago vs Catanzaro 17:00</option></select>
               <input required placeholder="Nome e Cognome" className="w-full bg-black border border-white/10 rounded-xl px-4 py-3.5 text-sm" />
-              <input required placeholder="WhatsApp per invio biglietto" className="w-full bg-black border border-white/10 rounded-xl px-4 py-3.5 text-sm" />
-              <button className="w-full bg-white text-black rounded-full py-4 font-black text-xs tracking-widest">PRENOTA ORA - {sel.price}€ →</button>
-              <p className="text- text-center text-white/40">Ricevi QR del biglietto su WhatsApp in 5 minuti. Posto numerato: Fila {Math.floor(Math.random()*10)+1} Posto {Math.floor(Math.random()*20)+5}</p>
+              <input required placeholder="WhatsApp" className="w-full bg-black border border-white/10 rounded-xl px-4 py-3.5 text-sm" />
+              <button disabled={selected.length===0} className="w-full bg-white text-black rounded-full py-4 font-black text-xs tracking-widest disabled:opacity-30 hover:bg-[#95BFE5] transition">PRENOTA ORA - {total}€ →</button>
             </form>
 
-            <a href="/modulo-abbonamento-2026-27.pdf" download className="block text-center mt-4 text- underline text-white/30">Scarica modulo cartaceo per abbonamento annuale</a>
+
+            <p className="text-[10px] text-center text-white/30 mt-3">QR biglietto su WhatsApp in 5 min • Posti numerati garantiti</p>
           </div>
         </div>
       </div>
