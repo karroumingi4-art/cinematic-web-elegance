@@ -112,7 +112,7 @@ const fixtures: Fixture[] = [
     venue: "Gaston Villa Park",
   },
  {
-    date: "27 OTT",
+    date: "19 OTT",
     time: "20:45",
     competition: "Campionato · G6",
     home: "Deportivo Aperitivo",
@@ -120,7 +120,7 @@ const fixtures: Fixture[] = [
     venue: "Gaston Villa Park",
   },
   {
-    date: "24 OTT",
+    date: "26 DIC",
     time: "20:45",
     competition: "Campionato · G5",
     home: "Como Stai",
@@ -128,7 +128,7 @@ const fixtures: Fixture[] = [
     venue: "Gaston Villa Park",
   },
    {
-    date: "17 OTT",
+    date: "02 GEN",
     time: "15:00",
     competition: "Campionato · G4",
     home: "Gaston Villa ",
