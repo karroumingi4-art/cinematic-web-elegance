@@ -2,18 +2,17 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { PlayerModal } from "./PlayerModal";
-import { players } from "./squad-data"; // <-- importa da un solo file
+import { players, type Player } from "./squad-data"; // <-- importa da un solo file
 
 export function Squad() {
   const [selected, setSelected] = useState<Player | null>(null);
-
   return (
     <section id="squad" className="relative bg-background py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading eyebrow="Prima Squadra" title={<>I Nomi sulle <span className="text-[#95BFE5]">Maglie</span></>} intro="..." />
         <div className="mt-16 flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory">
           {players.map((player, i) => (
-            <Reveal key={player.id} delay={0.02 * i} className="w- sm:w- shrink-0 snap-start">
+            <Reveal key={player.id} delay={0.02 * i} className="w-[220px] sm:w-[260px] shrink-0 snap-start">
               <motion.button type="button" onClick={() => setSelected(player)} whileHover={{ y: -8 }} className="group block w-full overflow-hidden rounded-lg border border-border bg-surface text-left">
                 <div className="relative aspect-[4/5] overflow-hidden bg-zinc-900">
                   <img src={player.image} alt={player.name} loading="lazy" onError={(e) => e.currentTarget.src = `https://picsum.photos/seed/${player.id}/400/500`} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -29,6 +28,7 @@ export function Squad() {
             </Reveal>
           ))}
         </div>
+      </div>
       <PlayerModal player={selected} onClose={() => setSelected(null)} />
     </section>
   );
