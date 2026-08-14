@@ -339,4 +339,17 @@ function MatchdayPage(){
          <div className="flex justify-between"><span className="opacity-60">Posti</span><span className="font-bold">{selectedSeats.length>0? selectedSeats.join(", ") : "Nessuno"}</span></div>
          <div className="border-t border-black/10 pt-3 mt-3 flex justify-between font-black text-lg"><span>Totale</span><span className="text-[#C8102E]">{selectedTribuna.prezzoBase*selectedSeats.length}€</span></div>
         </div>
-        <button disabled={selectedSeats.length===
+        <button disabled={selectedSeats.length===0} onClick={()=>setShowPay(true)} className="mt-6 w-full bg-[#C8102E] disabled:bg-black/20 text-white py-4 rounded-full font-black text-xs">ACQUISTA</button>
+        <button onClick={()=>setTribunaStep("chooseSector")} className="mt-3 w-full bg-black/5 py-3 rounded-full font-bold text-xs">CAMBIA SETTORE</button>
+       </div>
+      </div>
+     </div>
+    )}
+
+    {showPay&&(<div className="fixed inset-0 bg-black/70 backdrop-blur flex items-center justify-center z-50 p-4"><div className="bg-white rounded-xl p-6 w-full max-w-md"><h3 className="font-black text-xl">PAGAMENTO</h3><div className="mt-4 space-y-3"><input placeholder="Nome e Cognome" value={form.nome} onChange={e=>setForm({...form,nome:e.target.value})} className="w-full bg-[#f5f5f5] border border-black/10 rounded-xl px-4 py-3 text-sm"/><input placeholder="Email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} className="w-full bg-[#f5f5f5] border border-black/10 rounded-xl px-4 py-3 text-sm"/><input placeholder="Carta" value={form.card} onChange={e=>setForm({...form,card:e.target.value})} className="w-full bg-[#f5f5f5] border border-black/10 rounded-xl px-4 py-3 text-sm"/></div><div className="flex gap-3 mt-6"><button onClick={()=>setShowPay(false)} className="flex-1 bg-black/10 rounded-full py-3 text-xs font-bold">ANNULLA</button><button onClick={handlePay} disabled={loading} className="flex-1 bg-[#C8102E] text-white rounded-full py-3 text-xs font-black">{loading?"ELABORO...":`PAGA ${selectedTribuna.prezzoBase*selectedSeats.length}€`}</button></div></div></div>)}
+    {showTicket&&(<div className="fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center z-50 p-4"><div className="bg-white rounded-xl p-6 w-full max-w-lg text-center"><div className="text-5xl">🎟️</div><h3 className="text-2xl font-black mt-4">BIGLIETTI CONFERMATI</h3><div className="mt-4 bg-[#f5f5f5] rounded-xl p-4 font-mono text-sm font-bold">{ticketCode}</div><canvas ref={canvasRef} className="hidden"></canvas><div className="flex gap-3 mt-6"><button onClick={downloadTicket} className="flex-1 bg-[#C8102E] text-white rounded-full py-3 font-black text-xs">SCARICA PNG</button><button onClick={()=>{setShowTicket(false); setView("calendar"); setTribunaStep("stadiumOverview"); setSelectedSeats([]);}} className="flex-1 bg-black/10 rounded-full py-3 font-bold text-xs">TORNA</button></div></div></div>)}
+   </div>
+  )
+ }
+ return null;
+}
