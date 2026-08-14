@@ -1,53 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 export const Route = createFileRoute("/matchday")({ component: MatchdayPage });
+
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgawolng";
+
 const MATCHES = [
- {id:1, date:"11 SET", time:"18:30", competition:"Campionato · G1", home:"Gaston Villa", away:"KUNG FU PANDEV", venue:"Gaston Villa Park"},
- {id:2, date:"18 SET", time:"18:30", competition:"Campionato · G2", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:3, date:"10 OTT", time:"21:00", competition:"Campionato · G3", home:"Gaston Villa", away:"Forza PCI", venue:"Gaston Villa Park"},
- {id:4, date:"17 OTT", time:"15:00", competition:"Campionato · G4", home:"Gaston Villa", away:"Aura Jacquet", venue:"Gaston Villa Park"},
- {id:5, date:"24 OTT", time:"20:45", competition:"Campionato · G5", home:"Como Stai", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:6, date:"27 OTT", time:"20:45", competition:"Campionato · G6", home:"Deportivo Aperitivo", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:7, date:"31 OTT", time:"20:45", competition:"Campionato · G7", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:8, date:"07 NOV", time:"20:45", competition:"Campionato · G8", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:9, date:"21 NOV", time:"20:45", competition:"Campionato · G9", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:10, date:"28 NOV", time:"20:45", competition:"Campionato · G10", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:11, date:"05 DIC", time:"20:45", competition:"Campionato · G11", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:12, date:"12 DIC", time:"20:45", competition:"Campionato · G12", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:13, date:"09 GEN", time:"20:45", competition:"Campionato · G16", home:"Forza PCI", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:14, date:"16 GEN", time:"20:45", competition:"Campionato · G17", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:15, date:"23 GEN", time:"20:45", competition:"Campionato · G18", home:"KUNG FU PANDEV", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:16, date:"30 GEN", time:"20:45", competition:"Campionato · G19", home:"KUNG FU PANDEV", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:17, date:"6 FEB", time:"20:45", competition:"Campionato · G20", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:18, date:"13 FEB", time:"20:45", competition:"Campionato · G21", home:"Forza PCI", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:19, date:"20 FEB", time:"20:45", competition:"Campionato · G22", home:"Aura Jacquet", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:20, date:"27 FEB", time:"20:45", competition:"Campionato · G23", home:"Como Stai", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:21, date:"6 MAR", time:"20:45", competition:"Campionato · G24", home:"Deportivo Aperitivo", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:22, date:"13 MAR", time:"20:45", competition:"Campionato · G25", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:23, date:"20 MAR", time:"20:45", competition:"Campionato · G26", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:24, date:"03 APR", time:"20:45", competition:"Campionato · G27", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:25, date:"10 APR", time:"20:45", competition:"Campionato · G28", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:26, date:"17 APR", time:"20:45", competition:"Campionato · G29", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:27, date:"24 APR", time:"20:45", competition:"Campionato · G30", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:28, date:"1 MAG", time:"20:45", competition:"Campionato · G31", home:"Deportivo Aperitivo", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:29, date:"8 MAG", time:"20:45", competition:"Campionato · G33", home:"Aura Jacquet", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:30, date:"15 MAG", time:"20:45", competition:"Campionato · G34", home:"Forza PCI", away:"Gaston Villa", venue:"Gaston Villa Park"},
- {id:31, date:"22 MAG", time:"20:45", competition:"Campionato · G35", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"}
+{id:1, date:"11 SET", time:"18:30", competition:"Campionato · G1", home:"Gaston Villa", away:"KUNG FU PANDEV", venue:"Gaston Villa Park"},{id:2, date:"18 SET", time:"18:30", competition:"Campionato · G2", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:3, date:"10 OTT", time:"21:00", competition:"Campionato · G3", home:"Gaston Villa", away:"Forza PCI", venue:"Gaston Villa Park"},{id:4, date:"17 OTT", time:"15:00", competition:"Campionato · G4", home:"Gaston Villa", away:"Aura Jacquet", venue:"Gaston Villa Park"},{id:5, date:"24 OTT", time:"20:45", competition:"Campionato · G5", home:"Como Stai", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:6, date:"27 OTT", time:"20:45", competition:"Campionato · G6", home:"Deportivo Aperitivo", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:7, date:"31 OTT", time:"20:45", competition:"Campionato · G7", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:8, date:"07 NOV", time:"20:45", competition:"Campionato · G8", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:9, date:"21 NOV", time:"20:45", competition:"Campionato · G9", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:10, date:"28 NOV", time:"20:45", competition:"Campionato · G10", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:11, date:"05 DIC", time:"20:45", competition:"Campionato · G11", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:12, date:"12 DIC", time:"20:45", competition:"Campionato · G12", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:13, date:"09 GEN", time:"20:45", competition:"Campionato · G16", home:"Forza PCI", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:14, date:"16 GEN", time:"20:45", competition:"Campionato · G17", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:15, date:"23 GEN", time:"20:45", competition:"Campionato · G18", home:"KUNG FU PANDEV", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:16, date:"30 GEN", time:"20:45", competition:"Campionato · G19", home:"KUNG FU PANDEV", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:17, date:"6 FEB", time:"20:45", competition:"Campionato · G20", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:18, date:"13 FEB", time:"20:45", competition:"Campionato · G21", home:"Forza PCI", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:19, date:"20 FEB", time:"20:45", competition:"Campionato · G22", home:"Aura Jacquet", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:20, date:"27 FEB", time:"20:45", competition:"Campionato · G23", home:"Como Stai", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:21, date:"6 MAR", time:"20:45", competition:"Campionato · G24", home:"Deportivo Aperitivo", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:22, date:"13 MAR", time:"20:45", competition:"Campionato · G25", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:23, date:"20 MAR", time:"20:45", competition:"Campionato · G26", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:24, date:"03 APR", time:"20:45", competition:"Campionato · G27", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:25, date:"10 APR", time:"20:45", competition:"Campionato · G28", home:"BORUSSIA PORCMUND", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:26, date:"17 APR", time:"20:45", competition:"Campionato · G29", home:"Team Crack", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:27, date:"24 APR", time:"20:45", competition:"Campionato · G30", home:"Urbe Eterna", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:28, date:"1 MAG", time:"20:45", competition:"Campionato · G31", home:"Deportivo Aperitivo", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:29, date:"8 MAG", time:"20:45", competition:"Campionato · G33", home:"Aura Jacquet", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:30, date:"15 MAG", time:"20:45", competition:"Campionato · G34", home:"Forza PCI", away:"Gaston Villa", venue:"Gaston Villa Park"},{id:31, date:"22 MAG", time:"20:45", competition:"Campionato · G35", home:"Tottingham Forest", away:"Gaston Villa", venue:"Gaston Villa Park"}
 ];
+
 const TRIBUNE = [
- { id:"rossa", nome:"ROSSA", base:320 },
- { id:"blu", nome:"BLU", base:240 },
- { id:"verde", nome:"VERDE", base:150 },
- { id:"arancio", nome:"CURVA", base:80 },
+ { id:"rossa", nome:"ROSSA", base:320, color:"text-red-400", bg:"bg-red-500/10", border:"border-red-500/30", dot:"bg-red-500" },
+ { id:"blu", nome:"BLU", base:240, color:"text-blue-400", bg:"bg-blue-500/10", border:"border-blue-500/30", dot:"bg-blue-500" },
+ { id:"verde", nome:"VERDE", base:150, color:"text-green-400", bg:"bg-green-500/10", border:"border-green-500/30", dot:"bg-green-500" },
+ { id:"arancio", nome:"CURVA", base:80, color:"text-orange-400", bg:"bg-orange-500/10", border:"border-orange-500/30", dot:"bg-orange-400" },
 ];
+
 function calcPrice(base:number, fila:number, centrale:boolean){
  const m=[1,0.92,0.84,0.76,0.68,0.61,0.55][fila-1];
  return Math.round(base*m*(centrale?1.25:1));
 }
+
 function MatchdayPage(){
  const [selectedMatch,setSelectedMatch]=useState(MATCHES[0]);
- const [selected,setSelected]=useState<{tribuna:string,sez:"ALTO"|"CENTRALE"|"BASSO",fila:number,price:number}|null>(null);
+ const [selected,setSelected]=useState<{tribuna:string, sez:"ALTO"|"CENTRALE"|"BASSO", fila:number, price:number, color:string}|null>(null);
  const [qty,setQty]=useState(2);
  const [showPay,setShowPay]=useState(false);
  const [showTicket,setShowTicket]=useState(false);
@@ -55,19 +30,22 @@ function MatchdayPage(){
  const [form,setForm]=useState({nome:"",email:"",card:"4242 4242 4242 4242"});
  const [loading,setLoading]=useState(false);
  const canvasRef=useRef<HTMLCanvasElement>(null);
+
  function selectSector(trib:any, sez:"ALTO"|"CENTRALE"|"BASSO", fila:number){
-  setSelected({tribuna:trib.nome, sez, fila, price:calcPrice(trib.base,fila,sez==="CENTRALE")});
+  setSelected({tribuna:trib.nome, sez, fila, price:calcPrice(trib.base,fila,sez==="CENTRALE"), color:trib.color});
  }
+
  async function handlePay(){
   if(!selected||!form.nome||!form.email) return alert("Inserisci nome ed email");
   setLoading(true);
   const code=`GV-${Date.now().toString().slice(-4)}-${Math.random().toString(36).slice(2,6).toUpperCase()}`;
   setTicketCode(code);
   try{
-   await fetch(FORMSPREE_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({partita:`${selectedMatch.home} vs ${selectedMatch.away} - ${selectedMatch.date} ${selectedMatch.time} - ${selectedMatch.competition}`,tribuna:selected.tribuna,sezione:selected.sez,fila:selected.fila,quantita:qty,prezzo_singolo:selected.price,totale:selected.price*qty,codice_biglietto:code,nome:form.nome,email:form.email,venue:selectedMatch.venue})});
+   await fetch(FORMSPREE_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({partita:`${selectedMatch.home} vs ${selectedMatch.away} - ${selectedMatch.date} ${selectedMatch.time}`,tribuna:selected.tribuna,sezione:selected.sez,fila:selected.fila,quantita:qty,prezzo_singolo:selected.price,totale:selected.price*qty,codice_biglietto:code,nome:form.nome,email:form.email,venue:selectedMatch.venue})});
   }catch(e){console.log(e);}
   setTimeout(()=>{setLoading(false);setShowPay(false);setShowTicket(true);},1200);
  }
+
  function downloadTicket(){
   const canvas=canvasRef.current; if(!canvas||!selected) return;
   const ctx=canvas.getContext("2d"); if(!ctx) return;
@@ -88,106 +66,177 @@ function MatchdayPage(){
   ctx.fillStyle="#666"; ctx.font="9px monospace"; ctx.fillText("NON CEDIBILE - 1 INGRESSO",900,330);
   const link=document.createElement("a"); link.download=`biglietto-${ticketCode}.png`; link.href=canvas.toDataURL(); link.click();
  }
+
  return(
   <div className="min-h-screen bg-[#080808] text-white pt-20">
-   <div className="mx-auto max-w-[1600px] px-4 py-6 grid grid-cols-12 gap-6">
-    <div className="col-span-12 lg:col-span-3 bg-[#111] border border-white/10 rounded-2xl p-3 h-[85vh] overflow-y-auto">
-     <h3 className="text-[10px] tracking-widest opacity-50 font-bold mb-3">SELEZIONA PARTITA</h3>
+   <div className="mx-auto max-w- px-4 py-6 grid grid-cols-12 gap-6">
+    {/* PARTITE */}
+    <div className="col-span-12 lg:col-span-3 bg-[#111] border border-white/10 rounded-2xl p-3 h- overflow-y-auto">
+     <h3 className="text- tracking-widest opacity-50 font-bold mb-3">SELEZIONA PARTITA</h3>
      {MATCHES.map(m=>(
       <button key={m.id} onClick={()=>setSelectedMatch(m)} className={`w-full text-left p-3 rounded-xl mb-2 border transition ${selectedMatch.id===m.id?"bg-white text-black border-white":"bg-black border-white/10 hover:border-white/20"}`}>
-       <div className="text-[10px] opacity-60">{m.date} {m.time} · {m.competition}</div>
+       <div className="text- opacity-60">{m.date} {m.time} · {m.competition}</div>
        <div className="text-xs font-black mt-1">{m.home} vs {m.away}</div>
-       <div className="text-[10px] opacity-50">{m.venue}</div>
       </button>
      ))}
     </div>
-    <div className="col-span-12 lg:col-span-6 bg-[#111] border border-white/10 rounded-2xl p-6">
-     <div className="text-center mb-6">
-      <div className="text-[10px] tracking-widest opacity-40">SAN SIRO - 84 SETTORI - ANELLO COMPLETO</div>
+
+    {/* STADIO RETTANGOLARE */}
+    <div className="col-span-12 lg:col-span-6 bg-[#111] border border-white/10 rounded-2xl p-4 lg:p-6">
+     <div className="text-center mb-4">
+      <div className="text- tracking-[0.3em] opacity-40 font-bold">GASTON VILLA PARK - RETTANGOLARE - 84 SETTORI</div>
       <div className="font-black text-lg mt-1">{selectedMatch.home} vs {selectedMatch.away}</div>
-      <div className="text-[10px] opacity-50">{selectedMatch.date} {selectedMatch.time}</div>
      </div>
-     <div className="relative mx-auto w-full max-w-[750px] h-[720px] bg-[#0f0f0f] rounded-[24px] border border-white/10 p-2">
-      <div className="absolute inset-[90px] bg-[#1a6b1a] rounded-xl border border-white/10 flex items-center justify-center">
-       <div className="absolute w-[70%] h-[70%] border border-white/20"></div>
-       <div className="w-28 h-28 border border-white/20 rounded-full"></div>
-       <div className="absolute w-1 h-full bg-white/10"></div>
-       <span className="font-black text-white/20 tracking-[0.4em] text-xs">CAMPO</span>
-      </div>
-      <div className="absolute top-2 left-[90px] right-[90px]">
-       <div className="text-center text-[10px] font-black text-red-400 tracking-widest mb-2">TRIBUNA ROSSA</div>
-       <div className="space-y-1">
-        {Array.from({length:7}).map((_,idx)=>{
-         const fila=7-idx;
-         return(
-          <div key={fila} className="grid grid-cols-3 gap-1.5">
-           {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
-            const trib=TRIBUNE[0]; const price=calcPrice(trib.base,fila,sez==="CENTRALE"); const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
-            return <button key={sez} onClick={()=>selectSector(trib,sez,fila)} className={`h-8 rounded-lg text-[10px] font-black border transition ${isSel?"bg-white text-black border-white scale-105":"bg-[#1e1e1e] text-white border-white/10 hover:border-white/30"}`}>{sez[0]}-F{fila} {price}€</button>
-           })}
+
+     {/* CONTENITORE STADIO RETTANGOLARE */}
+     <div className="relative mx-auto w-full max-w- aspect-[4/3.2] bg-[#0c0c0c] rounded- border border-white/10 p- overflow-hidden">
+
+      {/* TRIBUNA ROSSA - TOP */}
+      <div className="absolute top- left- right- h-">
+        <div className="h-full bg-[#161616] rounded-t- border border-white/10 flex flex-col p-1.5 gap-1">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+            <span className="text- font-black tracking-[0.3em] text-red-400">TRIBUNA ROSSA</span>
           </div>
-         )
-        })}
-       </div>
+          {Array.from({length:7}).map((_, idx)=>{
+            const fila = 7-idx;
+            return(
+              <div key={fila} className="grid grid-cols-3 gap-1.5 flex-1">
+                {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
+                  const trib=TRIBUNE[0];
+                  const price=calcPrice(trib.base,fila,sez==="CENTRALE");
+                  const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
+                  return(
+                    <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
+                      className={`rounded- text- font-black border flex items-center justify-center transition-all hover:scale-[1.02] ${isSel?"bg-white text-black border-white z-10 shadow-[0_0_20px_rgba(255,255,255,0.5)]":"bg-[#242424] text-white/80 border-white/10 hover:border-red-500/50 hover:text-white"}`}>
+                      <span className="opacity-40 text- mr-1">{sez[0]}</span>F{fila} · {price}€
+                    </button>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </div>
       </div>
-      <div className="absolute bottom-2 left-[90px] right-[90px]">
-       <div className="space-y-1">
-        {Array.from({length:7}).map((_,idx)=>{
-         const fila=idx+1;
-         return(
-          <div key={fila} className="grid grid-cols-3 gap-1.5">
-           {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
-            const trib=TRIBUNE[1]; const price=calcPrice(trib.base,fila,sez==="CENTRALE"); const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
-            return <button key={sez} onClick={()=>selectSector(trib,sez,fila)} className={`h-8 rounded-lg text-[10px] font-black border transition ${isSel?"bg-white text-black border-white scale-105":"bg-[#1e1e1e] text-white border-white/10 hover:border-white/30"}`}>{sez[0]}-F{fila} {price}€</button>
-           })}
+
+      {/* TRIBUNA BLU - BOTTOM */}
+      <div className="absolute bottom- left- right- h-">
+        <div className="h-full bg-[#161616] rounded-b- border border-white/10 flex flex-col p-1.5 gap-1">
+          {Array.from({length:7}).map((_, idx)=>{
+            const fila = idx+1;
+            return(
+              <div key={fila} className="grid grid-cols-3 gap-1.5 flex-1">
+                {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
+                  const trib=TRIBUNE[1];
+                  const price=calcPrice(trib.base,fila,sez==="CENTRALE");
+                  const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
+                  return(
+                    <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
+                      className={`rounded- text- font-black border flex items-center justify-center transition-all hover:scale-[1.02] ${isSel?"bg-white text-black border-white z-10 shadow-[0_0_20px_rgba(255,255,255,0.5)]":"bg-[#242424] text-white/80 border-white/10 hover:border-blue-500/50"}`}>
+                      <span className="opacity-40 text- mr-1">{sez[0]}</span>F{fila} · {price}€
+                    </button>
+                  )
+                })}
+              </div>
+            )
+          })}
+          <div className="flex items-center justify-center gap-2 mt-1">
+            <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+            <span className="text- font-black tracking-[0.3em] text-blue-400">TRIBUNA BLU</span>
           </div>
-         )
-        })}
-       </div>
-       <div className="text-center text-[10px] font-black text-blue-400 tracking-widest mt-2">TRIBUNA BLU</div>
+        </div>
       </div>
-      <div className="absolute left-2 top-[90px] bottom-[90px] w-[80px]">
-       <div className="h-full flex flex-col gap-1.5">
-        {Array.from({length:7}).map((_,idx)=>{
-         const fila=7-idx;
-         return(
-          <div key={fila} className="grid grid-rows-3 gap-1 flex-1">
-           {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
-            const trib=TRIBUNE[2]; const price=calcPrice(trib.base,fila,sez==="CENTRALE"); const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
-            return <button key={sez} onClick={()=>selectSector(trib,sez,fila)} className={`rounded-lg text-[9px] font-black border ${isSel?"bg-white text-black":"bg-[#1e1e1e] text-white border-white/10"}`}>{price}€</button>
-           })}
+
+      {/* CURVA VERDE - LEFT */}
+      <div className="absolute left- top- bottom- w-">
+        <div className="h-full bg-[#161616] border border-white/10 flex p-1.5 gap-1">
+          <div className="flex flex-col flex-1 gap-1">
+            {Array.from({length:7}).map((_, idx)=>{
+              const fila = 7-idx;
+              return(
+                <div key={fila} className="grid grid-rows-3 gap-1 flex-1">
+                  {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
+                    const trib=TRIBUNE[2];
+                    const price=calcPrice(trib.base,fila,sez==="CENTRALE");
+                    const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
+                    return(
+                      <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
+                        className={`rounded- text- font-black border transition-all ${isSel?"bg-white text-black border-white":"bg-[#242424] text-white/70 border-white/10 hover:border-green-500/50"}`}>
+                        {price}€
+                      </button>
+                    )
+                  })}
+                </div>
+              )
+            })}
           </div>
-         )
-        })}
-       </div>
-      </div>
-      <div className="absolute right-2 top-[90px] bottom-[90px] w-[80px]">
-       <div className="h-full flex flex-col gap-1.5">
-        {Array.from({length:7}).map((_,idx)=>{
-         const fila=idx+1;
-         return(
-          <div key={fila} className="grid grid-rows-3 gap-1 flex-1">
-           {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
-            const trib=TRIBUNE[3]; const price=calcPrice(trib.base,fila,sez==="CENTRALE"); const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
-            return <button key={sez} onClick={()=>selectSector(trib,sez,fila)} className={`rounded-lg text-[9px] font-black border ${isSel?"bg-white text-black":"bg-[#1e1e1e] text-white border-white/10"}`}>{price}€</button>
-           })}
+          <div className="w-5 flex items-center justify-center bg-green-500/10 rounded border border-green-500/20">
+            <span className="text- font-black tracking-widest text-green-400 -rotate-90 whitespace-nowrap">VERDE</span>
           </div>
-         )
-        })}
-       </div>
+        </div>
       </div>
+
+      {/* CURVA ARANCIO - RIGHT */}
+      <div className="absolute right- top- bottom- w-">
+        <div className="h-full bg-[#161616] border border-white/10 flex p-1.5 gap-1">
+          <div className="w-5 flex items-center justify-center bg-orange-500/10 rounded border border-orange-500/20">
+            <span className="text- font-black tracking-widest text-orange-400 rotate-90 whitespace-nowrap">CURVA</span>
+          </div>
+          <div className="flex flex-col flex-1 gap-1">
+            {Array.from({length:7}).map((_, idx)=>{
+              const fila = idx+1;
+              return(
+                <div key={fila} className="grid grid-rows-3 gap-1 flex-1">
+                  {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
+                    const trib=TRIBUNE[3];
+                    const price=calcPrice(trib.base,fila,sez==="CENTRALE");
+                    const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
+                    return(
+                      <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
+                        className={`rounded- text- font-black border transition-all ${isSel?"bg-white text-black border-white":"bg-[#242424] text-white/70 border-white/10 hover:border-orange-500/50"}`}>
+                        {price}€
+                      </button>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* CAMPO CENTRALE RETTANGOLARE */}
+      <div className="absolute left- right- top- bottom- bg-[#1a6b1a] rounded-lg border border-white/10 flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-[10%] border border-white/20"></div>
+        <div className="absolute w-[70%] h- bg-white/20 top-1/2"></div>
+        <div className="absolute h-[70%] w- bg-white/20 left-1/2"></div>
+        <div className="w-16 h-16 border border-white/20 rounded-full"></div>
+        <div className="absolute w-1 h-1 bg-white rounded-full"></div>
+        {/* porte */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-16 border border-white/30 border-l-0"></div>
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-16 border border-white/30 border-r-0"></div>
+        <span className="font-black text-white/20 tracking-[0.5em] text-">CAMPO</span>
+      </div>
+     </div>
+
+     <div className="flex justify-center gap-4 mt-4">
+      {TRIBUNE.map(t=>(
+        <div key={t.id} className="flex items-center gap-1.5"><div className={`w-2.5 h-2.5 rounded-sm ${t.dot}`}></div><span className="text- font-bold opacity-60 tracking-widest">{t.nome}</span></div>
+      ))}
      </div>
     </div>
+
+    {/* RIEPILOGO */}
     <div className="col-span-12 lg:col-span-3 bg-[#111] border border-white/10 rounded-2xl p-6 h-fit sticky top-24">
-     <h3 className="font-black">RIEPILOGO</h3>
+     <h3 className="font-black tracking-widest text-sm">RIEPILOGO</h3>
      <div className="mt-4 text-xs space-y-2">
       <div className="opacity-60">{selectedMatch.date} {selectedMatch.time} - {selectedMatch.competition}</div>
       <div className="font-black text-sm">{selectedMatch.home} vs {selectedMatch.away}</div>
       <div className="h-px bg-white/10 my-3"></div>
       {selected?(
        <>
-        <div className="bg-black rounded-xl p-3 space-y-2">
-         <div className="flex justify-between"><span className="opacity-60">Tribuna</span><span className="font-bold">{selected.tribuna} {selected.sez}</span></div>
+        <div className="bg-black rounded-xl p-3 space-y-2 border border-white/10">
+         <div className="flex justify-between"><span className="opacity-60">Tribuna</span><span className={`font-bold ${selected.color}`}>{selected.tribuna} {selected.sez}</span></div>
          <div className="flex justify-between"><span className="opacity-60">Fila</span><span className="font-bold">F{selected.fila}</span></div>
          <div className="flex justify-between"><span className="opacity-60">Prezzo</span><span className="font-bold">{selected.price}€</span></div>
         </div>
@@ -197,12 +246,14 @@ function MatchdayPage(){
          <button onClick={()=>setQty(q=>Math.min(4,q+1))} className="w-10 h-10 rounded-full bg-white text-black font-black">+</button>
          <span className="ml-auto font-black text-2xl">{selected.price*qty}€</span>
         </div>
-        <button onClick={()=>setShowPay(true)} className="mt-6 w-full bg-white text-black rounded-full py-4 font-black text-xs tracking-widest">PAGA {selected.price*qty}€</button>
+        <button onClick={()=>setShowPay(true)} className="mt-6 w-full bg-white text-black rounded-full py-4 font-black text-xs tracking-widest hover:bg-white/90 transition">PAGA {selected.price*qty}€</button>
        </>
-      ):<div className="opacity-40 text-xs py-10 text-center">Seleziona un settore</div>}
+      ):<div className="opacity-40 text-xs py-10 text-center">Seleziona un settore dal rettangolo - i prezzi sono sparsi sulle tribune</div>}
      </div>
     </div>
    </div>
+
+   {/* PAY & TICKET - uguali a prima */}
    {showPay&&(
     <div className="fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center z-50 p-4">
      <div className="bg-[#111] border border-white/10 rounded-2xl p-6 w-full max-w-md">
@@ -222,9 +273,9 @@ function MatchdayPage(){
    )}
    {showTicket&&selected&&(
     <div className="fixed inset-0 bg-black/90 backdrop-blur flex items-center justify-center z-50 p-4">
-     <div className="w-full max-w-[900px]">
+     <div className="w-full max-w-">
       <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col md:flex-row">
-       <div className="w-10 bg-[#C8102E] hidden md:flex items-center justify-center"><span className="text-white font-black text-[10px] -rotate-90 whitespace-nowrap">GASTON VILLA PARK</span></div>
+       <div className="w-10 bg-[#C8102E] hidden md:flex items-center justify-center"><span className="text-white font-black text- -rotate-90 whitespace-nowrap">GASTON VILLA PARK</span></div>
        <div className="flex-1">
         <div className="bg-[#C8102E] h-12 flex items-center justify-between px-6">
          <span className="font-mono text-xs text-white">{selectedMatch.competition}</span>
@@ -235,18 +286,18 @@ function MatchdayPage(){
          <div className="text-xs opacity-60 mt-2 font-mono">{selectedMatch.date} · {selectedMatch.time} · {selectedMatch.venue}</div>
          <div className="h-px bg-white/10 my-4"></div>
          <div className="grid grid-cols-5 gap-4">
-          <div><div className="text-[9px] opacity-50">TRIBUNA</div><div className="font-black">{selected.tribuna}</div></div>
-          <div><div className="text-[9px] opacity-50">SETTORE</div><div className="font-black">{selected.sez}</div></div>
-          <div><div className="text-[9px] opacity-50">FILA</div><div className="font-black">F{selected.fila}</div></div>
-          <div><div className="text-[9px] opacity-50">POSTI</div><div className="font-black">{qty}x</div></div>
-          <div><div className="text-[9px] opacity-50">TOTALE</div><div className="font-black text-[#C8102E]">{selected.price*qty}€</div></div>
+          <div><div className="text- opacity-50">TRIBUNA</div><div className="font-black">{selected.tribuna}</div></div>
+          <div><div className="text- opacity-50">SETTORE</div><div className="font-black">{selected.sez}</div></div>
+          <div><div className="text- opacity-50">FILA</div><div className="font-black">F{selected.fila}</div></div>
+          <div><div className="text- opacity-50">POSTI</div><div className="font-black">{qty}x</div></div>
+          <div><div className="text- opacity-50">TOTALE</div><div className="font-black text-[#C8102E]">{selected.price*qty}€</div></div>
          </div>
         </div>
        </div>
-       <div className="w-full md:w-[220px] bg-[#151515] border-t md:border-t-0 md:border-l border-dashed border-white/20 p-6 flex flex-col items-center justify-center">
-        <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center"><div className="grid grid-cols-10 gap-[2px]">{Array.from({length:100}).map((_,i)=><div key={i} className={`w-2 h-2 ${Math.random()>0.5?"bg-black":"bg-white"}`}></div>)}</div></div>
+       <div className="w-full md:w- bg-[#151515] border-t md:border-t-0 md:border-l border-dashed border-white/20 p-6 flex flex-col items-center justify-center">
+        <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center"><div className="grid grid-cols-10 gap-">{Array.from({length:100}).map((_,i)=><div key={i} className={`w-2 h-2 ${Math.random()>0.5?"bg-black":"bg-white"}`}></div>)}</div></div>
         <div className="font-mono text-xs font-black mt-3">{ticketCode}</div>
-        <div className="text-[8px] opacity-40 mt-1 text-center">NON CEDIBILE</div>
+        <div className="text- opacity-40 mt-1 text-center">NON CEDIBILE</div>
        </div>
       </div>
       <canvas ref={canvasRef} className="hidden"></canvas>
