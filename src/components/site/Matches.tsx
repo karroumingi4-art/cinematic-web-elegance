@@ -98,7 +98,7 @@ const fixtures: Fixture[] = [
    {
     date: "05 DIC",
     time: "20:45",
-    competition: "Campionato · G8",
+    competition: "Campionato · G11",
     home: "Team Crack",
     away: "Gaston Villa ",
     venue: "Gaston Villa Park",
@@ -106,7 +106,7 @@ const fixtures: Fixture[] = [
    {
     date: "12 DIC",
     time: "20:45",
-    competition: "Campionato · G7",
+    competition: "Campionato · G12",
     home: "Urbe Eterna",
     away: "Gaston Villa ",
     venue: "Gaston Villa Park",
@@ -114,7 +114,7 @@ const fixtures: Fixture[] = [
  {
     date: "19 DIC",
     time: "20:45",
-    competition: "Campionato · G6",
+    competition: "Campionato · G13",
     home: "Deportivo Aperitivo",
     away: "Gaston Villa ",
     venue: "Gaston Villa Park",
@@ -122,7 +122,7 @@ const fixtures: Fixture[] = [
   {
     date: "26 DIC",
     time: "20:45",
-    competition: "Campionato · G5",
+    competition: "Campionato · G14",
     home: "Como Stai",
     away: "Gaston Villa ",
     venue: "Gaston Villa Park",
@@ -130,7 +130,7 @@ const fixtures: Fixture[] = [
    {
     date: "02 GEN",
     time: "15:00",
-    competition: "Campionato · G4",
+    competition: "Campionato · G15",
     home: "Gaston Villa ",
     away: "Aura Jacquet",
     venue: "Gaston Villa PArk",
