@@ -69,47 +69,48 @@ function MatchdayPage(){
 
  return(
   <div className="min-h-screen bg-[#080808] text-white pt-20">
-   <div className="mx-auto max-w- px-4 py-6 grid grid-cols-12 gap-6">
-    {/* PARTITE */}
-    <div className="col-span-12 lg:col-span-3 bg-[#111] border border-white/10 rounded-2xl p-3 h- overflow-y-auto">
-     <h3 className="text- tracking-widest opacity-50 font-bold mb-3">SELEZIONA PARTITA</h3>
+   <div className="mx-auto max-w-[1600px] px-4 py-6 grid grid-cols-12 gap-6">
+    {/* PARTITE - INVARIATO */}
+    <div className="col-span-12 lg:col-span-3 bg-[#111] border border-white/10 rounded-2xl p-3 h-[85vh] overflow-y-auto">
+     <h3 className="text-[10px] tracking-widest opacity-50 font-bold mb-3">SELEZIONA PARTITA</h3>
      {MATCHES.map(m=>(
       <button key={m.id} onClick={()=>setSelectedMatch(m)} className={`w-full text-left p-3 rounded-xl mb-2 border transition ${selectedMatch.id===m.id?"bg-white text-black border-white":"bg-black border-white/10 hover:border-white/20"}`}>
-       <div className="text- opacity-60">{m.date} {m.time} · {m.competition}</div>
+       <div className="text-[10px] opacity-60">{m.date} {m.time} · {m.competition}</div>
        <div className="text-xs font-black mt-1">{m.home} vs {m.away}</div>
+       <div className="text-[10px] opacity-50">{m.venue}</div>
       </button>
      ))}
     </div>
 
-    {/* STADIO RETTANGOLARE */}
+    {/* STADIO RETTANGOLARE NUOVO - CON GAP LARGO, SENZA SOVRAPPOSIZIONI, 43.000 */}
     <div className="col-span-12 lg:col-span-6 bg-[#111] border border-white/10 rounded-2xl p-4 lg:p-6">
-     <div className="text-center mb-4">
-      <div className="text- tracking-[0.3em] opacity-40 font-bold">GASTON VILLA PARK - RETTANGOLARE - 84 SETTORI</div>
+     <div className="text-center mb-6">
+      <div className="text-[10px] tracking-[0.3em] opacity-40 font-bold">GASTON VILLA PARK - RETTANGOLARE - 43.000 POSTI - 84 SETTORI</div>
       <div className="font-black text-lg mt-1">{selectedMatch.home} vs {selectedMatch.away}</div>
+      <div className="text-[10px] opacity-50">{selectedMatch.date} {selectedMatch.time}</div>
      </div>
 
-     {/* CONTENITORE STADIO RETTANGOLARE */}
-     <div className="relative mx-auto w-full max-w- aspect-[4/3.2] bg-[#0c0c0c] rounded- border border-white/10 p- overflow-hidden">
+     <div className="relative mx-auto w-full max-w-[700px] bg-[#0c0c0c] rounded-[20px] border border-white/10 p-4 flex flex-col gap-8">
 
-      {/* TRIBUNA ROSSA - TOP */}
-      <div className="absolute top- left- right- h-">
-        <div className="h-full bg-[#161616] rounded-t- border border-white/10 flex flex-col p-1.5 gap-1">
-          <div className="flex items-center justify-center gap-2 mb-1">
-            <div className="w-2 h-2 rounded-full bg-red-500"></div>
-            <span className="text- font-black tracking-[0.3em] text-red-400">TRIBUNA ROSSA</span>
-          </div>
+      {/* TRIBUNA ROSSA */}
+      <div className="bg-[#161616] rounded-xl border border-white/10 p-3">
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <div className="w-2 h-2 rounded-full bg-red-500"></div>
+          <span className="text-[10px] font-black tracking-[0.3em] text-red-400">TRIBUNA ROSSA</span>
+        </div>
+        <div className="grid gap-2">
           {Array.from({length:7}).map((_, idx)=>{
             const fila = 7-idx;
             return(
-              <div key={fila} className="grid grid-cols-3 gap-1.5 flex-1">
+              <div key={fila} className="grid grid-cols-3 gap-3">
                 {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
                   const trib=TRIBUNE[0];
                   const price=calcPrice(trib.base,fila,sez==="CENTRALE");
                   const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
                   return(
                     <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
-                      className={`rounded- text- font-black border flex items-center justify-center transition-all hover:scale-[1.02] ${isSel?"bg-white text-black border-white z-10 shadow-[0_0_20px_rgba(255,255,255,0.5)]":"bg-[#242424] text-white/80 border-white/10 hover:border-red-500/50 hover:text-white"}`}>
-                      <span className="opacity-40 text- mr-1">{sez[0]}</span>F{fila} · {price}€
+                      className={`h-10 rounded-lg text-[11px] font-black border flex items-center justify-center transition-all hover:scale-[1.02] ${isSel?"bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.5)]":"bg-[#242424] text-white/80 border-white/10 hover:border-red-500/50"}`}>
+                      <span className="opacity-40 text-[9px] mr-1.5">{sez[0]}</span>F{fila} · {price}€
                     </button>
                   )
                 })}
@@ -119,49 +120,22 @@ function MatchdayPage(){
         </div>
       </div>
 
-      {/* TRIBUNA BLU - BOTTOM */}
-      <div className="absolute bottom- left- right- h-">
-        <div className="h-full bg-[#161616] rounded-b- border border-white/10 flex flex-col p-1.5 gap-1">
-          {Array.from({length:7}).map((_, idx)=>{
-            const fila = idx+1;
-            return(
-              <div key={fila} className="grid grid-cols-3 gap-1.5 flex-1">
-                {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
-                  const trib=TRIBUNE[1];
-                  const price=calcPrice(trib.base,fila,sez==="CENTRALE");
-                  const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
-                  return(
-                    <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
-                      className={`rounded- text- font-black border flex items-center justify-center transition-all hover:scale-[1.02] ${isSel?"bg-white text-black border-white z-10 shadow-[0_0_20px_rgba(255,255,255,0.5)]":"bg-[#242424] text-white/80 border-white/10 hover:border-blue-500/50"}`}>
-                      <span className="opacity-40 text- mr-1">{sez[0]}</span>F{fila} · {price}€
-                    </button>
-                  )
-                })}
-              </div>
-            )
-          })}
-          <div className="flex items-center justify-center gap-2 mt-1">
-            <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-            <span className="text- font-black tracking-[0.3em] text-blue-400">TRIBUNA BLU</span>
-          </div>
-        </div>
-      </div>
-
-      {/* CURVA VERDE - LEFT */}
-      <div className="absolute left- top- bottom- w-">
-        <div className="h-full bg-[#161616] border border-white/10 flex p-1.5 gap-1">
-          <div className="flex flex-col flex-1 gap-1">
+      {/* CENTRO: CURVE + CAMPO CON GAP LARGO */}
+      <div className="flex gap-6 min-h-[480px]">
+        {/* CURVA VERDE */}
+        <div className="w-[110px] bg-[#161616] rounded-xl border border-white/10 p-2.5 flex flex-col gap-2.5">
+          <div className="flex-1 flex flex-col gap-2.5">
             {Array.from({length:7}).map((_, idx)=>{
               const fila = 7-idx;
               return(
-                <div key={fila} className="grid grid-rows-3 gap-1 flex-1">
+                <div key={fila} className="grid grid-rows-3 gap-2 flex-1">
                   {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
                     const trib=TRIBUNE[2];
                     const price=calcPrice(trib.base,fila,sez==="CENTRALE");
                     const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
                     return(
                       <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
-                        className={`rounded- text- font-black border transition-all ${isSel?"bg-white text-black border-white":"bg-[#242424] text-white/70 border-white/10 hover:border-green-500/50"}`}>
+                        className={`rounded-md text-[10px] font-black border transition-all ${isSel?"bg-white text-black border-white":"bg-[#242424] text-white/70 border-white/10 hover:border-green-500/50"}`}>
                         {price}€
                       </button>
                     )
@@ -170,30 +144,36 @@ function MatchdayPage(){
               )
             })}
           </div>
-          <div className="w-5 flex items-center justify-center bg-green-500/10 rounded border border-green-500/20">
-            <span className="text- font-black tracking-widest text-green-400 -rotate-90 whitespace-nowrap">VERDE</span>
+          <div className="h-6 flex items-center justify-center bg-green-500/10 rounded border border-green-500/20">
+            <span className="text-[9px] font-black tracking-widest text-green-400">VERDE</span>
           </div>
         </div>
-      </div>
 
-      {/* CURVA ARANCIO - RIGHT */}
-      <div className="absolute right- top- bottom- w-">
-        <div className="h-full bg-[#161616] border border-white/10 flex p-1.5 gap-1">
-          <div className="w-5 flex items-center justify-center bg-orange-500/10 rounded border border-orange-500/20">
-            <span className="text- font-black tracking-widest text-orange-400 rotate-90 whitespace-nowrap">CURVA</span>
-          </div>
-          <div className="flex flex-col flex-1 gap-1">
+        {/* CAMPO */}
+        <div className="flex-1 bg-[#1a6b1a] rounded-xl border border-white/10 flex items-center justify-center overflow-hidden relative min-h-[400px]">
+          <div className="absolute inset-[10%] border border-white/20 rounded-sm"></div>
+          <div className="absolute w-[70%] h-[1px] bg-white/20 top-1/2"></div>
+          <div className="absolute h-[70%] w-[1px] bg-white/20 left-1/2"></div>
+          <div className="w-20 h-20 border border-white/20 rounded-full"></div>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-20 border border-white/30 border-l-0"></div>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-20 border border-white/30 border-r-0"></div>
+          <span className="font-black text-white/20 tracking-[0.5em] text-[11px]">CAMPO 43.000</span>
+        </div>
+
+        {/* CURVA ARANCIO */}
+        <div className="w-[110px] bg-[#161616] rounded-xl border border-white/10 p-2.5 flex flex-col gap-2.5">
+          <div className="flex-1 flex flex-col gap-2.5">
             {Array.from({length:7}).map((_, idx)=>{
               const fila = idx+1;
               return(
-                <div key={fila} className="grid grid-rows-3 gap-1 flex-1">
+                <div key={fila} className="grid grid-rows-3 gap-2 flex-1">
                   {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
                     const trib=TRIBUNE[3];
                     const price=calcPrice(trib.base,fila,sez==="CENTRALE");
                     const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
                     return(
                       <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
-                        className={`rounded- text- font-black border transition-all ${isSel?"bg-white text-black border-white":"bg-[#242424] text-white/70 border-white/10 hover:border-orange-500/50"}`}>
+                        className={`rounded-md text-[10px] font-black border transition-all ${isSel?"bg-white text-black border-white":"bg-[#242424] text-white/70 border-white/10 hover:border-orange-500/50"}`}>
                         {price}€
                       </button>
                     )
@@ -202,31 +182,49 @@ function MatchdayPage(){
               )
             })}
           </div>
+          <div className="h-6 flex items-center justify-center bg-orange-500/10 rounded border border-orange-500/20">
+            <span className="text-[9px] font-black tracking-widest text-orange-400">CURVA</span>
+          </div>
         </div>
       </div>
 
-      {/* CAMPO CENTRALE RETTANGOLARE */}
-      <div className="absolute left- right- top- bottom- bg-[#1a6b1a] rounded-lg border border-white/10 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-[10%] border border-white/20"></div>
-        <div className="absolute w-[70%] h- bg-white/20 top-1/2"></div>
-        <div className="absolute h-[70%] w- bg-white/20 left-1/2"></div>
-        <div className="w-16 h-16 border border-white/20 rounded-full"></div>
-        <div className="absolute w-1 h-1 bg-white rounded-full"></div>
-        {/* porte */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-16 border border-white/30 border-l-0"></div>
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-16 border border-white/30 border-r-0"></div>
-        <span className="font-black text-white/20 tracking-[0.5em] text-">CAMPO</span>
+      {/* TRIBUNA BLU */}
+      <div className="bg-[#161616] rounded-xl border border-white/10 p-3">
+        <div className="grid gap-2">
+          {Array.from({length:7}).map((_, idx)=>{
+            const fila = idx+1;
+            return(
+              <div key={fila} className="grid grid-cols-3 gap-3">
+                {(["ALTO","CENTRALE","BASSO"] as const).map(sez=>{
+                  const trib=TRIBUNE[1];
+                  const price=calcPrice(trib.base,fila,sez==="CENTRALE");
+                  const isSel=selected?.tribuna===trib.nome&&selected?.sez===sez&&selected?.fila===fila;
+                  return(
+                    <button key={sez} onClick={()=>selectSector(trib,sez,fila)}
+                      className={`h-10 rounded-lg text-[11px] font-black border flex items-center justify-center transition-all hover:scale-[1.02] ${isSel?"bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.5)]":"bg-[#242424] text-white/80 border-white/10 hover:border-blue-500/50"}`}>
+                      <span className="opacity-40 text-[9px] mr-1.5">{sez[0]}</span>F{fila} · {price}€
+                    </button>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </div>
+        <div className="flex items-center justify-center gap-2 mt-3">
+          <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+          <span className="text-[10px] font-black tracking-[0.3em] text-blue-400">TRIBUNA BLU</span>
+        </div>
       </div>
      </div>
 
-     <div className="flex justify-center gap-4 mt-4">
+     <div className="flex justify-center gap-5 mt-5">
       {TRIBUNE.map(t=>(
-        <div key={t.id} className="flex items-center gap-1.5"><div className={`w-2.5 h-2.5 rounded-sm ${t.dot}`}></div><span className="text- font-bold opacity-60 tracking-widest">{t.nome}</span></div>
+        <div key={t.id} className="flex items-center gap-1.5"><div className={`w-2.5 h-2.5 rounded-sm ${t.dot}`}></div><span className="text-[10px] font-bold opacity-60 tracking-widest">{t.nome}</span></div>
       ))}
      </div>
     </div>
 
-    {/* RIEPILOGO */}
+    {/* RIEPILOGO - INVARIATO */}
     <div className="col-span-12 lg:col-span-3 bg-[#111] border border-white/10 rounded-2xl p-6 h-fit sticky top-24">
      <h3 className="font-black tracking-widest text-sm">RIEPILOGO</h3>
      <div className="mt-4 text-xs space-y-2">
@@ -253,7 +251,6 @@ function MatchdayPage(){
     </div>
    </div>
 
-   {/* PAY & TICKET - uguali a prima */}
    {showPay&&(
     <div className="fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center z-50 p-4">
      <div className="bg-[#111] border border-white/10 rounded-2xl p-6 w-full max-w-md">
@@ -273,9 +270,9 @@ function MatchdayPage(){
    )}
    {showTicket&&selected&&(
     <div className="fixed inset-0 bg-black/90 backdrop-blur flex items-center justify-center z-50 p-4">
-     <div className="w-full max-w-">
+     <div className="w-full max-w-[900px]">
       <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col md:flex-row">
-       <div className="w-10 bg-[#C8102E] hidden md:flex items-center justify-center"><span className="text-white font-black text- -rotate-90 whitespace-nowrap">GASTON VILLA PARK</span></div>
+       <div className="w-10 bg-[#C8102E] hidden md:flex items-center justify-center"><span className="text-white font-black text-[10px] -rotate-90 whitespace-nowrap">GASTON VILLA PARK - 43.000</span></div>
        <div className="flex-1">
         <div className="bg-[#C8102E] h-12 flex items-center justify-between px-6">
          <span className="font-mono text-xs text-white">{selectedMatch.competition}</span>
@@ -283,21 +280,21 @@ function MatchdayPage(){
         </div>
         <div className="p-6">
          <div className="text-3xl font-black leading-none">{selectedMatch.home} <span className="text-[#C8102E]">vs</span> {selectedMatch.away}</div>
-         <div className="text-xs opacity-60 mt-2 font-mono">{selectedMatch.date} · {selectedMatch.time} · {selectedMatch.venue}</div>
+         <div className="text-xs opacity-60 mt-2 font-mono">{selectedMatch.date} · {selectedMatch.time} · {selectedMatch.venue} - 43.000 posti</div>
          <div className="h-px bg-white/10 my-4"></div>
          <div className="grid grid-cols-5 gap-4">
-          <div><div className="text- opacity-50">TRIBUNA</div><div className="font-black">{selected.tribuna}</div></div>
-          <div><div className="text- opacity-50">SETTORE</div><div className="font-black">{selected.sez}</div></div>
-          <div><div className="text- opacity-50">FILA</div><div className="font-black">F{selected.fila}</div></div>
-          <div><div className="text- opacity-50">POSTI</div><div className="font-black">{qty}x</div></div>
-          <div><div className="text- opacity-50">TOTALE</div><div className="font-black text-[#C8102E]">{selected.price*qty}€</div></div>
+          <div><div className="text-[9px] opacity-50">TRIBUNA</div><div className="font-black">{selected.tribuna}</div></div>
+          <div><div className="text-[9px] opacity-50">SETTORE</div><div className="font-black">{selected.sez}</div></div>
+          <div><div className="text-[9px] opacity-50">FILA</div><div className="font-black">F{selected.fila}</div></div>
+          <div><div className="text-[9px] opacity-50">POSTI</div><div className="font-black">{qty}x</div></div>
+          <div><div className="text-[9px] opacity-50">TOTALE</div><div className="font-black text-[#C8102E]">{selected.price*qty}€</div></div>
          </div>
         </div>
        </div>
-       <div className="w-full md:w- bg-[#151515] border-t md:border-t-0 md:border-l border-dashed border-white/20 p-6 flex flex-col items-center justify-center">
-        <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center"><div className="grid grid-cols-10 gap-">{Array.from({length:100}).map((_,i)=><div key={i} className={`w-2 h-2 ${Math.random()>0.5?"bg-black":"bg-white"}`}></div>)}</div></div>
+       <div className="w-full md:w-[220px] bg-[#151515] border-t md:border-t-0 md:border-l border-dashed border-white/20 p-6 flex flex-col items-center justify-center">
+        <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center"><div className="grid grid-cols-10 gap-[2px]">{Array.from({length:100}).map((_,i)=><div key={i} className={`w-2 h-2 ${Math.random()>0.5?"bg-black":"bg-white"}`}></div>)}</div></div>
         <div className="font-mono text-xs font-black mt-3">{ticketCode}</div>
-        <div className="text- opacity-40 mt-1 text-center">NON CEDIBILE</div>
+        <div className="text-[8px] opacity-40 mt-1 text-center">NON CEDIBILE - 43.000</div>
        </div>
       </div>
       <canvas ref={canvasRef} className="hidden"></canvas>
