@@ -1,37 +1,35 @@
-import { players, staff } from "./squad-data";
+export const players = [
+  { id: "p1", name: "Giocatore 1", number: 1, role: "Portiere", photo: "/players/p1.jpg" },
+  { id: "p2", name: "Giocatore 2", number: 2, role: "Difensore", photo: "/players/p2.jpg" },
+  { id: "p3", name: "Giocatore 3", number: 3, role: "Difensore", photo: "/players/p3.jpg" },
+  { id: "p4", name: "Giocatore 4", number: 4, role: "Difensore", photo: "/players/p4.jpg" },
+  { id: "p5", name: "Giocatore 5", number: 5, role: "Difensore", photo: "/players/p5.jpg" },
+  { id: "p6", name: "Giocatore 6", number: 6, role: "Centrocampista", photo: "/players/p6.jpg" },
+  { id: "p7", name: "Giocatore 7", number: 7, role: "Attaccante", photo: "/players/p7.jpg" },
+  { id: "p8", name: "Giocatore 8", number: 8, role: "Centrocampista", photo: "/players/p8.jpg" },
+  { id: "p9", name: "Giocatore 9", number: 9, role: "Attaccante", photo: "/players/p9.jpg" },
+  { id: "p10", name: "Giocatore 10", number: 10, role: "Centrocampista", photo: "/players/p10.jpg" },
+  { id: "p11", name: "Giocatore 11", number: 11, role: "Attaccante", photo: "/players/p11.jpg" },
+  { id: "p12", name: "Giocatore 12", number: 12, role: "Portiere", photo: "/players/p12.jpg" },
+  { id: "p13", name: "Giocatore 13", number: 13, role: "Difensore", photo: "/players/p13.jpg" },
+  { id: "p14", name: "Giocatore 14", number: 14, role: "Difensore", photo: "/players/p14.jpg" },
+  { id: "p15", name: "Giocatore 15", number: 15, role: "Centrocampista", photo: "/players/p15.jpg" },
+  { id: "p16", name: "Giocatore 16", number: 16, role: "Centrocampista", photo: "/players/p16.jpg" },
+  { id: "p17", name: "Giocatore 17", number: 17, role: "Attaccante", photo: "/players/p17.jpg" },
+  { id: "p18", name: "Giocatore 18", number: 18, role: "Centrocampista", photo: "/players/p18.jpg" },
+  { id: "p19", name: "Giocatore 19", number: 19, role: "Attaccante", photo: "/players/p19.jpg" },
+  { id: "p20", name: "Giocatore 20", number: 20, role: "Difensore", photo: "/players/p20.jpg" },
+  { id: "p21", name: "Giocatore 21", number: 21, role: "Centrocampista", photo: "/players/p21.jpg" },
+  { id: "p22", name: "Giocatore 22", number: 22, role: "Portiere", photo: "/players/p22.jpg" },
+  { id: "p23", name: "Giocatore 23", number: 23, role: "Difensore", photo: "/players/p23.jpg" },
+  { id: "p24", name: "Giocatore 24", number: 24, role: "Difensore", photo: "/players/p24.jpg" },
+  { id: "p25", name: "Giocatore 25", number: 25, role: "Centrocampista", photo: "/players/p25.jpg" },
+  { id: "p26", name: "Giocatore 26", number: 26, role: "Attaccante", photo: "/players/p26.jpg" },
+  { id: "p27", name: "Giocatore 27", number: 27, role: "Centrocampista", photo: "/players/p27.jpg" },
+  { id: "p28", name: "Giocatore 28", number: 28, role: "Attaccante", photo: "/players/p28.jpg" },
+];
 
-function Card({ name, role, number, photo }: any) {
-  return (
-    <div className="overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 group">
-      <div className="aspect-[3/4] bg-white/5 overflow-hidden">
-        <img src={photo} alt={name} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" 
-        onError={(e) => (e.currentTarget.style.display = 'none')} />
-      </div>
-      <div className="p-4">
-        <div className="flex gap-2 text-xs uppercase tracking-widest opacity-50">
-          {number && <span>#{number}</span>}
-          <span>{role}</span>
-        </div>
-        <p className="mt-1 font-semibold">{name}</p>
-      </div>
-    </div>
-  );
-}
-
-export function Squad() {
-  return (
-    <section className="py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <h2 className="text-4xl font-bold">La Rosa - 28 Giocatori</h2>
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {players.map((p) => <Card key={p.id} {...p} />)}
-        </div>
-
-        <h2 className="mt-20 text-4xl font-bold">Staff Tecnico</h2>
-        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {staff.map((s) => <Card key={s.id} {...s} />)}
-        </div>
-      </div>
-    </section>
-  );
-}
+export const staff = [
+  { id: "s1", name: "Mister 1", role: "Allenatore", photo: "/players/mister1.jpg" },
+  { id: "s2", name: "Mister 2", role: "Vice Allenatore", photo: "/players/mister2.jpg" },
+];
