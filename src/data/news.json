@@ -1,29 +1,43 @@
 [
   {
+    "id": "gazzetta-fanta-prima-edizione",
+    "tag": "Gazzetta del Fanta",
+    "date": "15.08.2026",
+    "title": "IL RITORNO DEL FANTA - Presentate le nuove maglie 2026-27",
+    "body": "Prima Edizione del 29.11 - Tutte le Sfighe della Vita.",
+    "fullBody": "Presentate le nuove maglie valide per la stagione Fantacalcistica 2026-27. In ordine: Deportivo Aperitivo, Aura Jacquet, Como Stai, Gaston Villa, Forza PCI, Borussia Porcmund, Blue Lock, Urbe Eterna, Young Girls, Kung Fu Pandev. Ci vediamo al 6 Settembre per L'ASTAAAAA.",
+    "image": "gazzetta-fanta-1",
+    "gallery": ["gazzetta-fanta-2"],
+    "download": {
+      "label": "Scarica La Gazzetta del Fanta completa (PDF)",
+      "file": "/files/gazzetta-fanta-2026-27.pdf"
+    }
+  },
+  {
     "id": "giovani-prima-squadra",
     "tag": "Accademia",
-    "date": "15.08.2026",
+    "date": "06.09.2026",
     "title": "4 giovani in prima squadra, l'idea di Gastone",
     "body": "Come il gruppo di giovani si approccia con i senatori del Team.",
-    "fullBody": "Testo lungo che si vede quando clicchi sull'articolo. Qui puoi scrivere quanto vuoi, con la storia dei 4 ragazzi dell'Accademia che entrano nello spogliatoio curvo con le maglie Unieuro.",
+    "fullBody": "Testo lungo accademia.",
     "image": "news-1"
   },
   {
     "id": "maglia-ritorno-2026",
     "tag": "Kit 2026-2027",
-    "date": "15.08.2026",
-    "title": "La Maglia per il ritorno",
-    "body": "C'è chi vince una volta e si accontenta. Noi abbiamo vinto una volta e abbiamo capito che possiamo farlo ancora.",
-    "fullBody": "Testo lungo della maglia bordeaux celeste...",
+    "date": "13.08.2026",
+    "title": "LA Maglia per il ritorno",
+    "body": "C'è chi vince una volta e si accontenta.",
+    "fullBody": "Testo lungo maglia bordeaux.",
     "image": "maglia"
   },
   {
     "id": "nuovo-centro-preparativo",
     "tag": "Club",
-    "date": "15.08.2026",
+    "date": "06.08.2026",
     "title": "Dentro al nuovo centro preparativo",
     "body": "dieci mila metri quadrati per ritornare in forma.",
-    "fullBody": "Testo lungo del centro...",
+    "fullBody": "Testo lungo del centro.",
     "image": "news-3"
   }
 ]
