@@ -41,9 +41,10 @@ export function Navbar() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${solid? "glass shadow-elegant" : "bg-transparent"}`}>
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
+        
+        {/* Il testo Gaston Villa è stato rimosso. Rimane solo l'immagine del logo */}
         <a href="#hero" className="flex items-center gap-3">
           <img src="/GASTON_VILLA-removebg-preview.png" alt="Logo" width={40} height={40} className="h-9 w-9 object-contain" />
-          <span className="display text-lg tracking-[0.18em] sm:text-xl">Gaston Villa</span>
         </a>
 
 
