@@ -12,8 +12,8 @@ const TOUR_STOPS = [
     id: 1,
     title: "Sala Trofei",
     subtitle: "Un solo trofeo, tutta la nostra storia",
-    desc: "Il Campionato 26/27 è l'unico trofeo della nostra storia. Esposto al centro della sala con teca in vetro, luce naturale e pareti chiare. Il logo Gaston Villa domina la sala.",
-    image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=1200&h=800&fit=crop",
+    desc: "Il Campionato 26/27 è l'unico trofeo della nostra storia. Esposto al centro della sala con teca in vetro vicina alle altre, luce artificiale, pareti scure con tutte le vetrine vicine tra loro. Coppa Serie A illuminata.",
+    image: "/tour/sala-trofei-serie-a.jpg", // CORRETTA: trophy_room_spotlight.webp - teca vicina alle altre senza finestre
     tag: "Iconico",
     mapPos: { top: "8%", left: "38%", label: "SALA TROFEI - PIANO 1" },
   },
@@ -21,8 +21,8 @@ const TOUR_STOPS = [
     id: 2,
     title: "Il Tunnel",
     subtitle: "Dal logo alla luce del campo",
-    desc: "Dal logo Gaston Villa al campo, la scritta WIN vi accompagna nel tunnel. L'uscita verso il campo con luce naturale del giorno. L'emozione di entrare in campo.",
-    image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200&h=800&fit=crop",
+    desc: "Dal logo Gaston Villa al campo, la scritta WIN vi accompagna nel tunnel. Uscita verso il campo con lampioni illuminati di notte.",
+    image: "/tour/tunnel-notte-lampioni.jpg", // CORRETTA: tunnel_to_pitch_night.webp - notte con lampioni fuori
     tag: "Emozione",
     mapPos: { top: "42%", left: "12%", label: "TUNNEL - LATO OVEST" },
   },
@@ -31,7 +31,7 @@ const TOUR_STOPS = [
     title: "Stanze da Letto",
     subtitle: "Ritiro pre-partita, realistico e luminoso",
     desc: "REALISTICHE, non futuristiche, di giorno con vista campo. Legno naturale, due letti singoli, logo appeso al muro. Ritiro pre-partita per i giocatori.",
-    image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&h=800&fit=crop",
+    image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&h=800&fit=crop", // LASCIATA COME ERA
     tag: "Realistico",
     mapPos: { top: "8%", left: "62%", label: "RITIRO - PIANO 2" },
   },
@@ -39,8 +39,8 @@ const TOUR_STOPS = [
     id: 4,
     title: "Spogliatoio",
     subtitle: "Mattoni, legno e azzurro",
-    desc: "Spogliatoio prima squadra: panche in legno naturale chiaro, armadietti con numero e nome, pavimento chiaro. Profumo di erba e di giorno.",
-    image: "gallery/spogliatoio_curvo_unieuro_1200.jpg",
+    desc: "Spogliatoio prima squadra: sala curva con maglie Unieuro esatte tue maroon con esagoni oro, senza uomo senza numero, ripresa da lontano, panche in legno.",
+    image: "/tour/spogliatoio-curvo-unieuro-esatto.jpg", // CORRETTA: spogliatoio_curvo_unieuro_1200.jpg - maglie tue esatte
     tag: "Squadra",
     mapPos: { top: "42%", left: "78%", label: "SPOGLIATOIO - LATO EST" },
   },
@@ -48,8 +48,8 @@ const TOUR_STOPS = [
     id: 5,
     title: "Sala Stampa",
     subtitle: "Le parole dopo i 90'",
-    desc: "Tavolo lungo in legno chiaro, backdrop con logo Gaston Villa ripetuto, sedute chiare. Luce naturale dalle vetrate.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=800&fit=crop",
+    desc: "Tavolo lungo in legno scuro, backdrop blu con logo Gaston Villa cane ripetuto vicino agli sponsor intervallato da uno sponsor: adidas - logo tuo - Heineken - logo tuo - bet365 - Castore - logo tuo - Kappa - logo tuo.",
+    image: "/tour/sala-stampa-logo-tuo-esatto.jpg", // CORRETTA: gaston_villa_press_conference.webp - come Aston Villa ma con logo tuo vicino sponsor
     tag: "Media",
     mapPos: { top: "72%", left: "38%", label: "SALA STAMPA - PIANO TERRA" },
   },
@@ -58,7 +58,7 @@ const TOUR_STOPS = [
     title: "Palestra / Mensa",
     subtitle: "Dove si costruisce il risultato",
     desc: "Palestra vista campo con attrezzi, mensa con tavoli in legno e infermeria luminosa. Tutto collegato, tutto di giorno.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop", // LASCIATA COME ERA
     tag: "Performance",
     mapPos: { top: "72%", left: "62%", label: "PALESTRA - PIANO TERRA" },
   },
@@ -188,14 +188,12 @@ function StadiumTourPage() {
                   <div key={i} className={`flex-1 border-r last:border-r-0 border-white/10 ${i%3===0?"bg-zinc-700":"bg-zinc-800"} flex items-center justify-center text- font-bold text-white/40`}>{i+1}</div>
                 ))}
               </div>
-              <div className="absolute left-[20%] right-[20%] top-[1%] text-center text- font-bold tracking-widest text-white/30">TRIBUNA ROSSA NORD - 20 RETTANGOLI FORMA DIVERSA - COLLEGATA A SE STESSA</div>
 
               <div className="absolute left-[20%] right-[20%] bottom-[4%] h-[18%] bg-zinc-800 rounded- border border-white/20 flex overflow-hidden">
                 {Array.from({length:20}).map((_,i)=>(
                   <div key={i} className={`flex-1 border-r last:border-r-0 border-white/10 ${i%4===0?"bg-zinc-700":"bg-zinc-800"} flex items-center justify-center text- font-bold text-white/40`}>{i+1}</div>
                 ))}
               </div>
-              <div className="absolute left-[20%] right-[20%] bottom-[1%] text-center text- font-bold tracking-widest text-white/30">CURVA SUD - 20 RETTANGOLI FORMA DIVERSA - COLLEGATA</div>
 
               <div className="absolute left-[2%] top-[26%] bottom-[26%] w-[16%] bg-zinc-800 rounded- border border-white/20 flex flex-col overflow-hidden">
                 {Array.from({length:20}).map((_,i)=>(
@@ -209,10 +207,7 @@ function StadiumTourPage() {
                 ))}
               </div>
 
-              <div
-                className="absolute z-10 transition-all duration-500"
-                style={{ top: active.mapPos.top, left: active.mapPos.left }}
-              >
+              <div className="absolute z-10 transition-all duration-500" style={{ top: active.mapPos.top, left: active.mapPos.left }}>
                 <div className="relative">
                   <div className="w-3 h-3 bg-white rounded-full animate-ping absolute"></div>
                   <div className="w-3 h-3 bg-white rounded-full border-2 border-black shadow-[0_0_20px_white] relative"></div>
@@ -221,15 +216,7 @@ function StadiumTourPage() {
                   </div>
                 </div>
               </div>
-
-              <div className="absolute bottom-2 left-2 bg-black/80 backdrop-blur border border-white/20 rounded-full px-2 py-1 text- font-bold text-white/60 flex gap-2">
-                <span className="flex items-center gap-1"><span className="w-2 h-1 bg-zinc-700 block"></span>20 rettangoli</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 bg-white rounded-full block"></span>SEI QUI</span>
-                <span>Forma diversa</span>
-              </div>
             </div>
-
-            <div className="mt-3 text- text-white/40 text-center">Mappa sistemata - Sfondo nero - Ogni tribuna collegata a se stessa con 20 rettangoli di forma diversa - Indicatore live: {active.title} - {active.mapPos.label}</div>
           </div>
         </div>
       </div>
