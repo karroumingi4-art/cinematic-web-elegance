@@ -1,50 +1,40 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import newsData from "@/data/news.json";
 import { imageMap } from "@/data/newsImages";
-import { ArrowUpRight, ArrowLeft } from "lucide-react";
+import { posts } from "@/components/Journal";
 
 export const Route = createFileRoute("/journal/$postId")({
-  component: JournalPost,
+  component: PostPage,
 });
 
-const posts = (newsData as any[]).map((n: any) => ({
- ...n,
-  src: imageMap[n.image],
-}));
-
-function JournalPost() {
+function PostPage() {
   const { postId } = Route.useParams();
-  const index = posts.findIndex((p: any) => p.id === postId);
-  const post = posts[index];
-  if (!post) return <div className="min-h-screen bg-ink text-white p-20">Articolo non trovato</div>;
-
-  const nextPost = posts[(index + 1) % posts.length];
-  const prevPost = posts[(index - 1 + posts.length) % posts.length];
+  const post: any = newsData.find(p => p.id === postId);
+  if (!post) return <div className="p-20">Notizia non trovata</div>;
 
   return (
-    <div className="min-h-screen bg-ink text-white">
-      <div className="mx-auto max-w-3xl px-5 py-12 sm:py-24">
-        <Link to="/" hash="journal" className="inline-flex items-center gap-2 text-[0.7rem] tracking-[0.2em] uppercase text-[#95BFE5]">
-          <ArrowLeft className="size-4" /> Torna al Journal
-        </Link>
-        <div className="mt-10 flex gap-3 text-[0.65rem] font-bold uppercase tracking-[0.22em]">
-          <span className="bg-white text-black px-3 py-1 rounded-full">{post.tag}</span>
-          <span className="text-white/40 pt-1">{post.date}</span>
+    <div className="min-h-screen bg-[#080808] text-white pt-20 px-6 max-w-4xl mx-auto">
+      <Link to="/" className="text-xs opacity-50">← Torna</Link>
+      <h1 className="font-black text-4xl md:text-6xl mt-10">{post.title}</h1>
+
+      <img src={imageMap[post.image]} className="w-full h-auto rounded-2xl mt-10 border border-white/10" />
+      <p className="mt-10 text-lg opacity-80 whitespace-pre-wrap">{post.fullBody}</p>
+
+      {post.gallery && (
+        <div className="mt-12">
+          {post.gallery.map((k: string) => (
+            <img key={k} src={imageMap[k]} className="w-full h-auto rounded-2xl border border-white/10 mt-6" />
+          ))}
         </div>
-        <h1 className="display mt-6 text-4xl sm:text-6xl leading-[0.9]">{post.title}</h1>
-        <img src={post.src} className="mt-10 w-full rounded-2xl aspect-16/10 object-cover border border-white/10" />
-        <p className="mt-10 text-[1.15rem] leading-[1.8] text-white/70">{post.fullBody}</p>
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 pt-10">
-          <Link to="/journal/$postId" params={{ postId: prevPost.id }} className="rounded-2xl bg-white/[0.04] border border-white/10 p-6 hover:bg-white/[0.08] transition">
-            <div className="text-[0.6rem] uppercase text-white/40">Precedente</div>
-            <div className="mt-2 font-bold">{prevPost.title}</div>
-          </Link>
-          <Link to="/journal/$postId" params={{ postId: nextPost.id }} className="rounded-2xl bg-[#95BFE5] text-black p-6 hover:bg-white transition">
-            <div className="text-[0.6rem] uppercase opacity-60">Prossimo</div>
-            <div className="mt-2 font-bold flex items-center gap-2">{nextPost.title} <ArrowUpRight className="size-4" /></div>
-          </Link>
+      )}
+
+      {/* QUESTO È IL TASTO SCARICA */}
+      {post.download && (
+        <div className="mt-12 bg-[#111] border border-white/10 rounded-2xl p-6 flex justify-between items-center">
+          <div className="font-black text-sm">{post.download.label}</div>
+          <a href={post.download.file} download target="_blank" className="bg-white text-black rounded-full px-6 py-3 font-black text-xs">SCARICA PDF</a>
         </div>
-      </div>
+      )}
     </div>
   );
 }
