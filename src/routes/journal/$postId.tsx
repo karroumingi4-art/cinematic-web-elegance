@@ -8,17 +8,14 @@ export const Route = createFileRoute("/journal/$postId")({
 });
 
 function MagliaSlides() {
-  const [slide, setSlide] = useState(0);
-
+  const [slide][setSlide] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s+1)%3), 3000);
     return () => clearInterval(t);
   }, []);
-
   return (
     <div className="w-full mt-12 select-none">
       <div className="relative w-full aspect-[16/9] bg-[#0a0a0a] rounded- overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-
         {slide === 0 && (
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a12] via-[#2B0A14] to-[#080808] p-8 flex flex-col justify-between">
             <div className="flex justify-between">
@@ -26,17 +23,12 @@ function MagliaSlides() {
               <div className="text-white/40 text- tracking-[0.3em]">GASTON VILLA</div>
             </div>
             <div>
-              <div className="flex gap-2 mb-4">
-                <div className="h-1 w-12 bg-[#5C0A2D]" />
-                <div className="h-1 w-12 bg-[#B8E6F0]" />
-                <div className="h-1 w-12 bg-[#FFD700]" />
-              </div>
-              <h2 className="font-black text- md:text- leading-[0.85] tracking-[-0.03em]">LA MAGLIA<br/>PER IL<br/>RITORNO</h2>
+              <div className="flex gap-2 mb-4"><div className="h-1 w-12 bg-[#5C0A2D]" /><div className="h-1 w-12 bg-[#B8E6F0]" /><div className="h-1 w-12 bg-[#FFD700]" /></div>
+              <h2 className="font-black text- md:text- leading-[0.85]">LA MAGLIA<br/>PER IL<br/>RITORNO</h2>
               <p className="text-white/50 text-xs mt-4 max-w-">C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora.</p>
             </div>
           </div>
         )}
-
         {slide === 1 && (
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a12] via-[#2B0A14] to-[#1a0a12] flex items-center justify-center p-6">
             <div className="relative w-full h-full flex items-center justify-center">
@@ -44,15 +36,12 @@ function MagliaSlides() {
               <div className="absolute top-[18%] left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-3">
                 <span className="text- font-bold text-white/60">adidas</span>
                 <span className="text-[#FFD700] text- leading-none drop-shadow-[0_0_10px_#FFD700]">★</span>
-                <span className="text- font-black text-white">GASTON</span>
+                <span className="text- font-black text-white">GASTON VILLA</span>
               </div>
-              <div className="absolute bottom-6 left-6 bg-[#B8E6F0] text-black text- font-black px-3 py-1.5 rounded-full">
-                STELLA TRA LOGO E SPONSOR • COME DA TRADIZIONE
-              </div>
+              <div className="absolute bottom-6 left-6 bg-[#B8E6F0] text-black text- font-black px-3 py-1.5 rounded-full">STELLA TRA LOGO E SPONSOR • COME DA TRADIZIONE</div>
             </div>
           </div>
         )}
-
         {slide === 2 && (
           <div className="absolute inset-0 bg-[#f5f5f0] text-black p-8 flex gap-8">
             <div className="flex-1">
@@ -70,11 +59,8 @@ function MagliaSlides() {
             </div>
           </div>
         )}
-
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {[0,1,2].map(i => (
-            <button key={i} onClick={()=>setSlide(i)} className={`h-1.5 rounded-full transition-all ${slide===i? 'w-8 bg-white' : 'w-1.5 bg-white/30'}`} />
-          ))}
+          {[0][1][2].map(i => (<button key={i} onClick={()=>setSlide(i)} className={`h-1.5 rounded-full transition-all ${slide===i? 'w-8 bg-white' : 'w-1.5 bg-white/30'}`} />))}
         </div>
       </div>
     </div>
@@ -93,17 +79,8 @@ function PostPage() {
       <div className="text-xs opacity-40 mt-3">{post.date}</div>
       <img src={imageMap[post.image]} className="w-full h-auto rounded-2xl mt-10 border border-white/10" />
       <p className="mt-10 text-lg opacity-80 whitespace-pre-wrap leading-relaxed">{post.fullBody}</p>
-      {post.gallery?.length > 0 && post.gallery.map((k: string) => (
-        <img key={k} src={imageMap[k]} className="w-full h-auto rounded-2xl border border-white/10 mt-6" />
-      ))}
+      {post.gallery?.length > 0 && post.gallery.map((k: string) => (<img key={k} src={imageMap[k]} className="w-full h-auto rounded-2xl border border-white/10 mt-6" />))}
       {post.id === "maglia-ritorno-2026" && <MagliaSlides />}
-      {post.download && (
-        <div className="mt-12 bg-[#111] border border-white/10 rounded-2xl p-6 flex justify-between items-center gap-4">
-          <div className="font-black text-sm">{post.download.label}</div>
-          <a href={post.download.file} download target="_blank" className="bg-white text-black rounded-full px-6 py-3 font-black text-xs">SCARICA PDF</a>
-        </div>
-      )}
-      <div className="h-20" />
-    </div>
-  );
-}
+
+      {post.id === "maglia-ritorno-2026"? (
+        <div className="mt-12 bg-white text-black rounded
