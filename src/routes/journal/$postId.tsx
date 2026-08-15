@@ -44,7 +44,7 @@ function MagliaSlides() {
               <div>Scudetto 2024 ★</div>
             </div>
             <div className="w-[45%] bg-[#2B0A14] rounded-2xl flex items-center justify-center">
-              <img src={imageMap["maglia-trasparente"]} className="w-full h-auto -rotate-3" />
+              <img src={imageMap["maglia-trasparente"]} className="w-full h-auto -rotate-3" alt="maglia" />
             </div>
           </div>
         )}
@@ -66,7 +66,7 @@ function PostPage() {
     <div className="min-h-screen bg-[#080808] text-white pt-20 px-6 max-w-4xl mx-auto">
       <Link to="/" className="text-xs opacity-50">← Torna</Link>
       <h1 className="font-black text-4xl mt-6">{post.title}</h1>
-      <img src={imageMap[post.image]} className="w-full rounded-2xl mt-10 border border-white/10" />
+      <img src={imageMap[post.image]} className="w-full rounded-2xl mt-10 border border-white/10" alt="" />
       <p className="mt-10 text-lg opacity-80 whitespace-pre-wrap">{post.fullBody}</p>
       {post.id === "maglia-ritorno-2026" && <MagliaSlides />}
       {post.id === "maglia-ritorno-2026" && (
