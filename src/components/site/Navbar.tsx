@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 
-
 const links = [
   { label: "Club", href: "#about" },
   { label: "Fondo Eredita", href: "/legacy" },
   { label: "Biglietti", href: "/matchday" },
+  { label: "Tour Stadio", href: "/stadium" }, // <- AGGIUNTO - questo è il tuo stadium.tsx
   { label: "Accademia", href: "/academy" },
   { label: "Il Circolo", href: "/club" },
   { label: "La Squadra", href: "#squad" },
@@ -17,11 +17,9 @@ const links = [
   { label: "Shop", href: "/shop" },
 ];
 
-
 export function Navbar() {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
-
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 24);
@@ -30,12 +28,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
   useEffect(() => {
     document.body.style.overflow = open? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
-
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${solid? "glass shadow-elegant" : "bg-transparent"}`}>
@@ -45,18 +41,27 @@ export function Navbar() {
           <span className="display text-lg tracking-[0.18em] sm:text-xl">Gaston Villa</span>
         </a>
 
-
         <nav className="hidden items-center gap-5 lg:flex">
           {links.map((l) => {
             const isShop = l.href === "/shop";
+            const isStadium = l.href === "/stadium";
             return (
-              <a key={l.href} href={l.href} className={isShop? "rounded-full bg-white text-black px-4 py-1.5 text-xs font-black uppercase tracking-widest hover:bg-zinc-200" : "text-xs font-semibold uppercase tracking-widest text-foreground/75 hover:text-foreground"}>
+              <a
+                key={l.href}
+                href={l.href}
+                className={
+                  isShop
+                   ? "rounded-full bg-white text-black px-4 py-1.5 text-xs font-black uppercase tracking-widest hover:bg-zinc-200"
+                    : isStadium
+                   ? "rounded-full bg-[#5D1F2E] text-white px-4 py-1.5 text-xs font-black uppercase tracking-widest hover:bg-black border border-white/20"
+                    : "text-xs font-semibold uppercase tracking-widest text-foreground/75 hover:text-foreground"
+                }
+              >
                 {l.label}
               </a>
             );
           })}
         </nav>
-
 
         <div className="flex items-center gap-2">
           <a href="#contact" className="hidden rounded-full bg-primary px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-primary-foreground sm:inline-flex">
@@ -68,15 +73,29 @@ export function Navbar() {
         </div>
       </div>
 
-
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.4 }} className="glass overflow-hidden lg:hidden">
             <nav className="flex flex-col px-5 pb-8 pt-2">
               {links.map((l, i) => {
                 const isShop = l.href === "/shop";
+                const isStadium = l.href === "/stadium";
                 return (
-                  <motion.a key={l.href} href={l.href} onClick={() => setOpen(false)} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.06 * i }} className={isShop? "mt-2 rounded-full bg-white text-black py-3 text-sm font-black uppercase text-center" : "display border-b border-border py-4 text-xl"}>
+                  <motion.a
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.06 * i }}
+                    className={
+                      isShop
+                       ? "mt-2 rounded-full bg-white text-black py-3 text-sm font-black uppercase text-center"
+                        : isStadium
+                       ? "mt-2 rounded-full bg-[#5D1F2E] text-white py-3 text-sm font-black uppercase text-center border"
+                        : "display border-b border-border py-4 text-xl"
+                    }
+                  >
                     {l.label}
                   </motion.a>
                 );
