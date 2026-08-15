@@ -5,7 +5,7 @@
     "date": "15.08.2026",
     "title": "IL RITORNO DEL FANTA - Presentate le nuove maglie 2026-27",
     "body": "Prima Edizione del 29.11 - Tutte le Sfighe della Vita.",
-    "fullBody": "Presentate le nuove maglie valide per la stagione Fantacalcistica 2026-27 nel nuovo entusiasmante articolo della Gazzetta del Fanta, che uscirà a partire dal 06.09 ogni due settimane/mese",
+    "fullBody": "Presentate le nuove maglie valide per la stagione Fantacalcistica 2026-27. In ordine da sinistra: Deportivo Aperitivo, Aura Jacquet, Como Stai, Gaston Villa, Forza PCI, Borussia Porcmund, Blue Lock, Urbe Eterna, Young Girls, Kung Fu Pandev. Ci vediamo al 6 Settembre per L'ASTAAAAA.",
     "image": "gazzetta-fanta-1",
     "gallery": ["gazzetta-fanta-2"],
     "download": {
@@ -16,13 +16,13 @@
   {
     "id": "giovani-prima-squadra",
     "tag": "Accademia",
-    "date": "06.09.2026",
+    "date": "01.08.2026",
     "title": "4 giovani in prima squadra, l'idea di Gastone",
     "body": "Come il gruppo di giovani si approccia con i senatori del Team.",
     "fullBody": "Testo lungo accademia.",
     "image": "news-1"
   },
-   {
+  {
     "id": "maglia-ritorno-2026",
     "tag": "Kit 2026-2027",
     "date": "13.08.2026",
@@ -32,6 +32,10 @@
     "image": "maglia",
     "gallery": [],
     "video": "/files/presentazione-maglia.html",
+    "download": {
+      "label": "Scarica scheda tecnica maglia (PDF)",
+      "file": "/files/gazzetta-fanta-2026-27.pdf"
+    }
   },
   {
     "id": "nuovo-centro-preparativo",
