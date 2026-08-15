@@ -4,5 +4,5 @@ export const imageMap: Record<string, string> = {
   "news-1": "/images/news-1.jpg",
   "news-3": "/images/news-3.jpg",
   "maglia": "/images/gaston-villa-maglia_2_-LDGmoDta.jpg",
-  "maglia-trasparente": "/images/maglia-trasparente.png",
+  "maglia-trasparente": "/images/gaston-villa-maglia-trasparente.png",
 };
