@@ -40,7 +40,7 @@ const TOUR_STOPS = [
     title: "Spogliatoio",
     subtitle: "Mattoni, legno e azzurro",
     desc: "Spogliatoio prima squadra: panche in legno naturale chiaro, armadietti con numero e nome, pavimento chiaro. Profumo di erba e di giorno.",
-    image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&h=800&fit=crop",
+    image: "gallery/spogliatoio_curvo_unieuro_1200.jpg",
     tag: "Squadra",
     mapPos: { top: "42%", left: "78%", label: "SPOGLIATOIO - LATO EST" },
   },
