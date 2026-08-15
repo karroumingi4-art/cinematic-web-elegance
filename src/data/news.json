@@ -5,7 +5,7 @@
     "date": "15.08.2026",
     "title": "IL RITORNO DEL FANTA - Presentate le nuove maglie 2026-27",
     "body": "Prima Edizione del 29.11 - Tutte le Sfighe della Vita.",
-    "fullBody": "Presentate le nuove maglie valide per la stagione Fantacalcistica 2026-27. In ordine: Deportivo Aperitivo, Aura Jacquet, Como Stai, Gaston Villa, Forza PCI, Borussia Porcmund, Blue Lock, Urbe Eterna, Young Girls, Kung Fu Pandev. Ci vediamo al 6 Settembre per L'ASTAAAAA.",
+    "fullBody": "Presentate le nuove maglie valide per la stagione Fantacalcistica 2026-27 nel nuovo entusiasmante articolo della Gazzetta del Fanta, che uscirà a partire dal 06.09 ogni due settimane/mese",
     "image": "gazzetta-fanta-1",
     "gallery": ["gazzetta-fanta-2"],
     "download": {
@@ -23,13 +23,18 @@
     "image": "news-1"
   },
   {
-    "id": "maglia-ritorno-2026",
-    "tag": "Kit 2026-2027",
-    "date": "13.08.2026",
-    "title": "LA Maglia per il ritorno",
-    "body": "C'è chi vince una volta e si accontenta.",
-    "fullBody": "Testo lungo maglia bordeaux.",
-    "image": "maglia"
+  "id": "maglia-ritorno-2026",
+  "tag": "Kit 2026-2027",
+  "date": "13.08.2026",
+  "title": "LA Maglia per il ritorno",
+  "body": "C'è chi vince una volta e si accontenta. Noi abbiamo vinto una volta e abbiamo capito che possiamo farlo ancora.",
+  "fullBody": "Presentiamo la maglia ufficiale Gaston Villa 2026-27.\n\nBordeaux profondo #5C0A2D, colletto e dettagli celesti #B8E6F0, logo Adidas. Sul petto lo stemma con Gaston il cane che salta, simbolo della squadra.\n\nSopra lo stemma, la stella dorata: lo scudetto vinto 2 anni fa. Non è un ricordo, è una promessa.\n\nDopo un anno di delusioni, dove eravamo i favoriti e siamo crollati per troppa pressione, torniamo con meno chiacchiere e più fame.\n\nMeno parole. Più campo.",
+  "image": "maglia",
+  "gallery": [],
+  "video": "/files/presentazione-maglia.html",
+  "download": {
+    "label": "Scarica scheda tecnica maglia (PDF)",
+    "file": "/files/gazzetta-fanta-2026-27.pdf"
   },
   {
     "id": "nuovo-centro-preparativo",
