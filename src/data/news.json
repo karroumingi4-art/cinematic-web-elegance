@@ -22,19 +22,17 @@
     "fullBody": "Testo lungo accademia.",
     "image": "news-1"
   },
-  {
-  "id": "maglia-ritorno-2026",
-  "tag": "Kit 2026-2027",
-  "date": "13.08.2026",
-  "title": "LA Maglia per il ritorno",
-  "body": "C'è chi vince una volta e si accontenta. Noi abbiamo vinto una volta e abbiamo capito che possiamo farlo ancora.",
-  "fullBody": "Presentiamo la maglia ufficiale Gaston Villa 2026-27.\n\nBordeaux profondo #5C0A2D, colletto e dettagli celesti #B8E6F0, logo Adidas. Sul petto lo stemma con Gaston il cane che salta, simbolo della squadra.\n\nSopra lo stemma, la stella dorata: lo scudetto vinto 2 anni fa. Non è un ricordo, è una promessa.\n\nDopo un anno di delusioni, dove eravamo i favoriti e siamo crollati per troppa pressione, torniamo con meno chiacchiere e più fame.\n\nMeno parole. Più campo.",
-  "image": "maglia",
-  "gallery": [],
-  "video": "/files/presentazione-maglia.html",
-  "download": {
-    "label": "Scarica scheda tecnica maglia (PDF)",
-    "file": "/files/gazzetta-fanta-2026-27.pdf"
+   {
+    "id": "maglia-ritorno-2026",
+    "tag": "Kit 2026-2027",
+    "date": "13.08.2026",
+    "title": "LA Maglia per il ritorno",
+    "body": "C'è chi vince una volta e si accontenta. Noi abbiamo vinto una volta e abbiamo capito che possiamo farlo ancora.",
+    "fullBody": "Presentiamo la maglia ufficiale Gaston Villa 2026-27. Bordeaux profondo, dettagli celesti, logo Adidas. Sul petto lo stemma con Gaston il cane. Sopra lo stemma, la stella dorata dello scudetto vinto 2 anni fa. Dopo un anno di delusioni, torniamo con meno chiacchiere e piu fame.",
+    "image": "maglia",
+    "gallery": [],
+    "video": "/files/presentazione-maglia.html",
+    }
   },
   {
     "id": "nuovo-centro-preparativo",
