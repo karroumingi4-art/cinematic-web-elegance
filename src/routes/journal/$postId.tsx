@@ -16,25 +16,30 @@ function PostPage() {
     <div className="min-h-screen bg-[#080808] text-white pt-20 px-6 max-w-4xl mx-auto">
       <Link to="/" className="text-xs opacity-50">← Torna</Link>
       <h1 className="font-black text-4xl md:text-6xl mt-10">{post.title}</h1>
+<img src={imageMap[post.image]} className="w-full h-auto rounded-2xl mt-10 border border-white/10" />
+<p className="mt-10 text-lg opacity-80 whitespace-pre-wrap">{post.fullBody}</p>
 
-      <img src={imageMap[post.image]} className="w-full h-auto rounded-2xl mt-10 border border-white/10" />
-      <p className="mt-10 text-lg opacity-80 whitespace-pre-wrap">{post.fullBody}</p>
+{post.gallery && (
+  <div className="mt-12">
+    {post.gallery.map((k: string) => (
+      <img key={k} src={imageMap[k]} className="w-full h-auto rounded-2xl border border-white/10 mt-6" />
+    ))}
+  </div>
+)}
 
-      {post.gallery && (
-        <div className="mt-12">
-          {post.gallery.map((k: string) => (
-            <img key={k} src={imageMap[k]} className="w-full h-auto rounded-2xl border border-white/10 mt-6" />
-          ))}
-        </div>
-      )}
+{post.video && (
+  <div className="mt-12 rounded-2xl overflow-hidden border border-white/10 aspect-video bg-[#2B0A14]">
+    <iframe src={post.video} className="w-full h-full" frameBorder="0" allowFullScreen />
+  </div>
+)}
 
-      {/* QUESTO È IL TASTO SCARICA */}
-      {post.download && (
-        <div className="mt-12 bg-[#111] border border-white/10 rounded-2xl p-6 flex justify-between items-center">
-          <div className="font-black text-sm">{post.download.label}</div>
-          <a href={post.download.file} download target="_blank" className="bg-white text-black rounded-full px-6 py-3 font-black text-xs">SCARICA PDF</a>
-        </div>
-      )}
+{/* QUESTO È IL TASTO SCARICA */}
+{post.download && (
+  <div className="mt-12 bg-[#111] border border-white/10 rounded-2xl p-6 flex justify-between items-center">
+    <div className="font-black text-sm">{post.download.label}</div>
+    <a href={post.download.file} download target="_blank" className="bg-white text-black rounded-full px-6 py-3 font-black text-xs">SCARICA PDF</a>
+  </div>
+)}
     </div>
   );
 }
