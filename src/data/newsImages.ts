@@ -3,6 +3,7 @@ import n2 from "@/assets/gaston-villa-maglia (2).jpg";
 import n3 from "@/assets/news-3.jpg";
 import gazzetta1 from "@/assets/gazzetta-fanta-1.jpg";
 import gazzetta2 from "@/assets/gazzetta-fanta-2.jpg";
+"maglia-trasparente": "/images/gaston-villa-maglia-trasparente.png"
 
 export const imageMap: any = {
   "news-1": n1,
