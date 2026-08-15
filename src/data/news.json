@@ -1,0 +1,29 @@
+[
+  {
+    "id": "giovani-prima-squadra",
+    "tag": "Accademia",
+    "date": "06.09.2026",
+    "title": "4 giovani in prima squadra, l'idea di Gastone",
+    "body": "Come il gruppo di giovani si approccia con i senatori del Team.",
+    "fullBody": "Testo lungo che si vede quando clicchi sull'articolo. Qui puoi scrivere quanto vuoi, con la storia dei 4 ragazzi dell'Accademia che entrano nello spogliatoio curvo con le maglie Unieuro.",
+    "image": "news-1"
+  },
+  {
+    "id": "maglia-ritorno-2026",
+    "tag": "Kit 2026-2027",
+    "date": "13.08.2026",
+    "title": "LA Maglia per il ritorno",
+    "body": "C'è chi vince una volta e si accontenta. Noi abbiamo vinto una volta e abbiamo capito che possiamo farlo ancora.",
+    "fullBody": "Testo lungo della maglia bordeaux celeste...",
+    "image": "maglia"
+  },
+  {
+    "id": "nuovo-centro-preparativo",
+    "tag": "Club",
+    "date": "06.08.2026",
+    "title": "Dentro al nuovo centro preparativo",
+    "body": "dieci mila metri quadrati per ritornare in forma.",
+    "fullBody": "Testo lungo del centro...",
+    "image": "news-3"
+  }
+]
