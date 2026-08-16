@@ -5,7 +5,7 @@
     "sottotitolo": "KIT 2026-27 • GASTON VILLA",
     "titolo": "LA MAGLIA\nPER IL\nRITORNO",
     "testo": "C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora. E che la prossima volta vogliamo farlo insieme.",
-    "immagine": "/maglia-gaston-2026.png",
+    "immagine": "/gaston-villa-maglia-trasparente.png",
     "bg": "linear-gradient(135deg, #1a0a12 0%, #2B0A14 50%, #000000 100%)",
     "highlight": "PRESENTAZIONE UFFICIALE"
   },
@@ -42,7 +42,7 @@
     "titolo": "BORDEAUX X\nCELESTE",
     "testo": "Eleganza e cielo. Sangue e futuro.",
     "bg": "#f7f3ef",
-    "immagine": "/maglia-gaston-2026.png"
+    "immagine": "/gaston-villa-maglia-trasparente.png"
   },
   {
     "id": 4,
@@ -51,7 +51,7 @@
     "titolo": "LA STELLA",
     "testo": "Una stella oro ricamata tra il logo adidas e lo stemma Gaston Villa. Non è un ricordo. È una promessa.",
     "bg": "#0f0a12",
-    "immagine": "/maglia-gaston-2026.png",
+    "immagine": "/gaston-villa-maglia-trasparente.png",
     "highlight": "★ TRA ADIDAS E STEMMA"
   },
   {
@@ -61,7 +61,7 @@
     "titolo": "DISEGNATA PER\nIL RITORNO",
     "testo": "BASE #5C0A2D\nColletto polo celeste #7DD3E0\nStella oro tra Adidas e Stemma\nSponsor Unieuro",
     "bg": "#f5f5f0",
-    "immagine": "/maglia-gaston-2026.png"
+    "immagine": "/gaston-villa-maglia-trasparente.png"
   },
   {
     "id": 6,
@@ -79,6 +79,6 @@
     "titolo": "GASTON VILLA\nIL RITORNO",
     "testo": "SORTEGGIO GIRONI E ASTA UFFICIALE 2026-27",
     "bg": "linear-gradient(135deg, #2B0A14 0%, #000000 100%)",
-    "immagine": "/maglia-gaston-2026.png"
+    "immagine": "/gaston-villa-maglia-trasparente.png"
   }
 ]
