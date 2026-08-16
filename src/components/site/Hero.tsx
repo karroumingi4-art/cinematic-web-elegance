@@ -1,11 +1,12 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
-import hero from "@/public/hero-tunnel-oro.jpg"; // <-- ora è la nuova oro-nera senza arbitri
+
+const hero = "/hero-tunnel-oro.jpg";
 
 const stats = [
   { value: "2023", label: "Anno di Fondazione" },
-  { value: "43,000", label: "Posti a sedere" },
-  { value: "1", label: "Scudetto" },
+  { value: "75,400", label: "Posti a sedere" },
+  { value: "1", label: "Palmares" },
 ];
 
 export function Hero() {
@@ -25,11 +26,9 @@ export function Hero() {
           height={1088}
           className="h-[114%] w-full object-cover object-center"
         />
-        {/* Overlay oro-nero per rendere tutto più scuro come il tuo screen originale */}
-        <div className="veil absolute inset-0 bg-[#0a0800]/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[#0a0800]/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[#1a0a0f]/20" />
       </motion.div>
 
       <motion.div
