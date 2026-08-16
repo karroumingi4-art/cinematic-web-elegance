@@ -10,9 +10,8 @@ export const Route = createFileRoute("/journal/$postId")({
 });
 
 function MagliaSlider7() {
-  const [slide][setSlide] = useState(0);
-  const [paused][setPaused] = useState(false);
-
+    const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
   useEffect(() => {
     if (paused) return;
     const id = setInterval(() => setSlide((s) => (s + 1) % (slidesData as any[]).length), 4000);
