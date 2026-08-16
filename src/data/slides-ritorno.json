@@ -10,9 +10,9 @@
     "highlight": "PRESENTAZIONE UFFICIALE",
     "posizioni": [
       {
-        "x": -121.1484375,
-        "y": 121.5,
-        "scale": 0.7
+        "x": 20.8515625,
+        "y": -6.0390625,
+        "scale": 1
       }
     ],
     "styles": {
@@ -69,7 +69,7 @@
         "font": "Inter"
       },
       "testo": {
-        "size": 23,
+        "size": 16,
         "font": "Montserrat"
       }
     }
@@ -101,7 +101,7 @@
         "font": "Inter"
       },
       "testo": {
-        "size": 17,
+        "size": 16,
         "font": "Inter"
       }
     }
