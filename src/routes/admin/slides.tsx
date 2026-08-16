@@ -87,4 +87,17 @@ function AdminSlides(){
 
               <div className="absolute right-[2%] top-1/2 -translate-y-1/2 w-[48%] h-[85%]">
                 {imgs.map((img:string,i:number)=>(
-                  <img key={i} src={img} onMouseDown={()=>setDragIdx(i)} style={{ left:`calc(50% + ${s.pos
+                  <img key={i} src={img} onMouseDown={()=>setDragIdx(i)} style={{ left:`calc(50% + ${s.posizioni[i]?.x||0}px)`, top:`calc(50% + ${s.posizioni[i]?.y||0}px)`, transform:`translate(-50%,-50%) scale(${s.posizioni[i]?.scale||1})` }} className="absolute w- max-w-full object-contain drop-shadow-[0_20px_50px_black] cursor-grab active:cursor-grabbing select-none" alt="" draggable={false} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10"><div className="h-full bg-[#7DD3E0]" style={{ width: `${((sel + 1) / slides.length) * 100}%` }} /></div>
+        </div>
+
+        <div className="mt-4 text- opacity-40">Trascina le foto per spostarle. Usa lo slider ZOOM per ingrandire. Quello che vedi qui è ESATTAMENTE quello che esce nell'articolo.</div>
+      </div>
+    </div>
+  );
+}
