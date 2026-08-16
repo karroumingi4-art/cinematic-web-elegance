@@ -4,10 +4,31 @@
     "tipo": "hero",
     "sottotitolo": "KIT 2026-27 • GASTON VILLA",
     "titolo": "LA MAGLIA\nPER IL\nRITORNO",
-    "testo": "C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora. E che la prossima volta vogliamo farlo insieme.",
+    "testo": "C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora. E che la prossima volta vogliamo farlo insieme.\nUna maglia che ci riporta ai bei momenti, senza dimenticare le dure sconfitte che ci hanno rafforzato",
     "immagine": "/gaston-villa-maglia-trasparente.png",
     "bg": "linear-gradient(135deg, #1a0a12 0%, #2B0A14 50%, #000000 100%)",
-    "highlight": "PRESENTAZIONE UFFICIALE"
+    "highlight": "PRESENTAZIONE UFFICIALE",
+    "posizioni": [
+      {
+        "x": -87,
+        "y": 0,
+        "scale": 0.7
+      }
+    ],
+    "styles": {
+      "titolo": {
+        "size": 45,
+        "font": "Montserrat"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 15,
+        "font": "Inter"
+      }
+    }
   },
   {
     "id": 2,
