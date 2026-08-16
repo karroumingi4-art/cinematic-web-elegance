@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
-import hero from "@/assets/hero-stadium.jpg"; // <-- ora è la nuova oro-nera senza arbitri
+import hero from "@/public/hero-tunnel-oro.jpg"; // <-- ora è la nuova oro-nera senza arbitri
 
 const stats = [
   { value: "2023", label: "Anno di Fondazione" },
