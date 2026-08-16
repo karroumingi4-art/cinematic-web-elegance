@@ -17,9 +17,21 @@
     "testo": "Due anni fa la gloria. L'anno scorso il peso. Quest'anno la fame.",
     "bg": "#0c1812",
     "timeline": [
-      { "anno": "2024", "titolo": "CAMPIONI", "desc": "Una cavalcata che non dimenticheremo mai." },
-      { "anno": "2025", "titolo": "DELUSIONE", "desc": "Un anno complicato, fuori ai playoff." },
-      { "anno": "2026", "titolo": "RITORNO", "desc": "Non è una rivincita. È la conferma." }
+      {
+        "anno": "2024",
+        "titolo": "CAMPIONI",
+        "desc": "Una cavalcata che non dimenticheremo mai."
+      },
+      {
+        "anno": "2025",
+        "titolo": "DELUSIONE",
+        "desc": "Un anno complicato, fuori ai playoff."
+      },
+      {
+        "anno": "2026",
+        "titolo": "RITORNO",
+        "desc": "Non è una rivincita. È la conferma."
+      }
     ],
     "immagine": ""
   },
