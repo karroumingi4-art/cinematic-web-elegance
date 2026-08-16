@@ -71,4 +71,27 @@ function AdminSlides() {
         {/* FOTO */}
         <div className="bg-black/50 p-3 rounded-xl border border-white/10"><div className="text- font-black mb-2">FOTO - ZOOM E POSIZIONE</div>
           {imgs.map((img:string,i:number)=>(
-            <div key={i} className="mb-3 pb-3 border-b border-white/10 last:border-0"><div className="flex gap-1 mb-1"><input value={img} onChange={e=>{const ni=[...imgs]; ni[i]=e.target.value; setImgs(ni);}} className="flex-1 bg-[#111] border border-white/10 rounded p-1 text-" /><button onClick={()=>setImgs(imgs.filter((_:any,idx:number)=>idx!==
+            <div key={i} className="mb-3 pb-3 border-b border-white/10 last:border-0"><div className="flex gap-1 mb-1"><input value={img} onChange={e=>{const ni=[...imgs]; ni[i]=e.target.value; setImgs(ni);}} className="flex-1 bg-[#111] border border-white/10 rounded p-1 text-" /><button onClick={()=>setImgs(imgs.filter((_:any,idx:number)=>idx!==i))} className="px-2 bg-red-500/20 rounded text-">X</button></div><div className="grid grid-cols-2 gap-2"><div><label className="text- opacity-50">ZOOM {s.posizioni[i]?.scale?.toFixed(1)}</label><input type="range" min="0.2" max="4" step="0.1" value={s.posizioni[i]?.scale||1} onChange={e=>setPos(i,{scale:parseFloat(e.target.value)})} className="w-full" /></div><div><label className="text- opacity-50">X</label><input type="range" min="-400" max="400" value={s.posizioni[i]?.x||0} onChange={e=>setPos(i,{x:parseInt(e.target.value)})} className="w-full" /></div></div></div>
+          ))}<button onClick={()=>setImgs([...imgs, "/gaston-villa-maglia-trasparente.png"])} className="w-full py-2 border border-dashed border-white/20 rounded-xl text- font-black">+ FOTO</button>
+        </div>
+      </div>
+
+      <div className="flex-1 p-4 bg-[#0a0a0a] flex flex-col">
+        <div className="text- opacity-30 font-black tracking-widest mb-2">ANTEPRIMA - SLIDE {sel+1} - TRASCINA LE FOTO</div>
+        <div className="flex-1 rounded- overflow-hidden relative border border-white/10" style={{ backgroundColor: s.bgColor||"#1a0a0f", backgroundImage: s.bgImage? `url(${s.bgImage})` : undefined, backgroundSize:"cover", backgroundPosition:"center" }}
+          onMouseMove={e=>{ if(dragIdx===null) return; const r=e.currentTarget.getBoundingClientRect(); setPos(dragIdx,{x:e.clientX-r.left-r.width/2, y:e.clientY-r.top-r.height/2}); }}
+          onMouseUp={()=>setDragIdx(null)} onMouseLeave={()=>setDragIdx(null)}
+        >
+          <div className="absolute top-8 left-8 max-w- z-10 pointer-events-none space-y-3">
+            <div style={{ fontSize:`${s.styles?.sottotitolo?.size||10}px`, fontFamily:s.styles?.sottotitolo?.font||"Inter", color:s.subColor||"#7DD3E0" }} className="font-black tracking-widest px-3 py-1 bg-white text-black rounded-full inline-block">{s.sottotitolo}</div>
+            <h2 style={{ fontSize:`${s.styles?.titolo?.size||36}px`, fontFamily:s.styles?.titolo?.font||"Anton", color:s.textColor||"white" }} className="font-black leading-[0.85] whitespace-pre-wrap">{s.titolo}</h2>
+            <p style={{ fontSize:`${s.styles?.testo?.size||12}px`, fontFamily:s.styles?.testo?.font||"Inter", color:s.textColor||"white" }} className="opacity-70 whitespace-pre-wrap leading-relaxed">{s.testo}</p>
+          </div>
+          {imgs.map((img:string,i:number)=>(
+            <img key={i} src={img} onMouseDown={()=>setDragIdx(i)} style={{ left:`calc(65% + ${s.posizioni[i]?.x||0}px)`, top:`calc(50% + ${s.posizioni[i]?.y||0}px)`, transform:`translate(-50%,-50%) scale(${s.posizioni[i]?.scale||1})` }} className="absolute w- object-contain drop-shadow-[0_30px_60px_black] cursor-grab select-none" alt="" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
