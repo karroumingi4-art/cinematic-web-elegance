@@ -1,11 +1,11 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
-import hero from "@/assets/hero-stadium.jpg";
+import hero from "@/assets/hero-stadium.jpg"; // <-- ora è la nuova oro-nera senza arbitri
 
 const stats = [
   { value: "2023", label: "Anno di Fondazione" },
-  { value: "75,400", label: "Posti a sedere" },
-  { value: "1", label: "Palmares" },
+  { value: "43,000", label: "Posti a sedere" },
+  { value: "1", label: "Scudetto" },
 ];
 
 export function Hero() {
@@ -16,7 +16,7 @@ export function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0]);
 
   return (
-    <section id="hero" className="relative min-h-dvh overflow-hidden">
+    <section id="hero" className="relative min-h-dvh overflow-hidden bg-black">
       <motion.div className="absolute inset-0 -z-10" style={reduced ? {} : { y: imageY }}>
         <img
           src={hero}
@@ -25,7 +25,11 @@ export function Hero() {
           height={1088}
           className="h-[114%] w-full object-cover object-center"
         />
-        <div className="veil absolute inset-0" />
+        {/* Overlay oro-nero per rendere tutto più scuro come il tuo screen originale */}
+        <div className="veil absolute inset-0 bg-[#0a0800]/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[#1a0a0f]/20" />
       </motion.div>
 
       <motion.div
@@ -50,7 +54,7 @@ export function Hero() {
                 animate={{ y: "0%" }}
                 transition={{ delay: 0.25 + i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
-                {i === 2 ? <span className="text-gradient-gold">{line}</span> : line}
+                {line}
               </motion.span>
             </span>
           ))}
@@ -82,7 +86,6 @@ export function Hero() {
         </motion.div>
 
         <motion.dl
-
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
