@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "tipo": "hero",
+    "sottotitolo": "KIT 2026-27 • GASTON VILLA",
+    "titolo": "LA MAGLIA\nPER IL\nRITORNO",
+    "testo": "C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora. E che la prossima volta vogliamo farlo insieme.",
+    "immagine": "/maglia-gaston-2026.png",
+    "bg": "linear-gradient(135deg, #1a0a12 0%, #2B0A14 50%, #000000 100%)",
+    "highlight": "PRESENTAZIONE UFFICIALE"
+  },
+  {
+    "id": 2,
+    "tipo": "timeline",
+    "sottotitolo": "2024 - 2025 - 2026",
+    "titolo": "IL NOSTRO ARCO",
+    "testo": "Due anni fa la gloria. L'anno scorso il peso. Quest'anno la fame.",
+    "bg": "#0c1812",
+    "timeline": [
+      { "anno": "2024", "titolo": "CAMPIONI", "desc": "Una cavalcata che non dimenticheremo mai." },
+      { "anno": "2025", "titolo": "DELUSIONE", "desc": "Un anno complicato, fuori ai playoff." },
+      { "anno": "2026", "titolo": "RITORNO", "desc": "Non è una rivincita. È la conferma." }
+    ],
+    "immagine": ""
+  },
+  {
+    "id": 3,
+    "tipo": "colori",
+    "sottotitolo": "I NOSTRI COLORI",
+    "titolo": "BORDEAUX X\nCELESTE",
+    "testo": "Eleganza e cielo. Sangue e futuro.",
+    "bg": "#f7f3ef",
+    "immagine": "/maglia-gaston-2026.png"
+  },
+  {
+    "id": 4,
+    "tipo": "stella",
+    "sottotitolo": "2024 • SCUDETTO",
+    "titolo": "LA STELLA",
+    "testo": "Una stella oro ricamata tra il logo adidas e lo stemma Gaston Villa. Non è un ricordo. È una promessa.",
+    "bg": "#0f0a12",
+    "immagine": "/maglia-gaston-2026.png",
+    "highlight": "★ TRA ADIDAS E STEMMA"
+  },
+  {
+    "id": 5,
+    "tipo": "anatomia",
+    "sottotitolo": "ANATOMIA 2026-27",
+    "titolo": "DISEGNATA PER\nIL RITORNO",
+    "testo": "BASE #5C0A2D\nColletto polo celeste #7DD3E0\nStella oro tra Adidas e Stemma\nSponsor Unieuro",
+    "bg": "#f5f5f0",
+    "immagine": "/maglia-gaston-2026.png"
+  },
+  {
+    "id": 6,
+    "tipo": "dettagli",
+    "sottotitolo": "I DETTAGLI CHE CONTANO",
+    "titolo": "PERCHÉ LA\nINDOSSERAI\nOVUNQUE",
+    "testo": "",
+    "bg": "#0a0a0a",
+    "immagine": ""
+  },
+  {
+    "id": 7,
+    "tipo": "evento",
+    "sottotitolo": "TRENTO • 6 SETTEMBRE",
+    "titolo": "GASTON VILLA\nIL RITORNO",
+    "testo": "SORTEGGIO GIRONI E ASTA UFFICIALE 2026-27",
+    "bg": "linear-gradient(135deg, #2B0A14 0%, #000000 100%)",
+    "immagine": "/maglia-gaston-2026.png"
+  }
+]
