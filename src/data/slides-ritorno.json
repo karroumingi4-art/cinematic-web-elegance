@@ -180,7 +180,13 @@
     "testo": "Una maglia che abbina classe e forza di volontà, una maglia che puoi vestire sui campi da calcio per mostrare la tua squadra del cuore o da vestire tranquillamente in giro con i tuoi amici.\nCon i suoi classici colori societari, questa maglia verrà rilasciata nello shop già da domani",
     "bg": "#0a0a0a",
     "immagine": "",
-    "posizioni": [],
+    "posizioni": [
+      {
+        "x": -117.1484375,
+        "y": 160.5,
+        "scale": 1
+      }
+    ],
     "styles": {
       "titolo": {
         "size": 36,
@@ -191,20 +197,44 @@
         "font": "Inter"
       },
       "testo": {
-        "size": 14,
+        "size": 15,
         "font": "Montserrat"
       }
     },
     "textColor": "#b2e2ed",
-    "immagini": []
+    "immagini": [
+      "/gaston-villa-maglia-trasparente.png"
+    ]
   },
   {
     "id": 7,
     "tipo": "evento",
     "sottotitolo": "TRENTO • 6 SETTEMBRE",
     "titolo": "GASTON VILLA\nIL RITORNO",
-    "testo": "SORTEGGIO GIRONI E ASTA UFFICIALE 2026-27",
+    "testo": "Ci vediamo il 6 settembre per l'asta, con aggiornamenti \ncontinui su nuovi acquisti, scambi e rumor \ndi mercato\nPer un nuovo capitolo di questa magnifica \nstoria con VOI",
     "bg": "linear-gradient(135deg, #2B0A14 0%, #000000 100%)",
-    "immagine": "/gaston-villa-maglia-trasparente.png"
+    "immagine": "/gaston-villa-maglia-trasparente.png",
+    "posizioni": [
+      {
+        "x": 0,
+        "y": 0,
+        "scale": 1
+      }
+    ],
+    "styles": {
+      "titolo": {
+        "size": 36,
+        "font": "Montserrat"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 12,
+        "font": "Inter"
+      }
+    },
+    "textColor": "#b2e2ed"
   }
 ]
