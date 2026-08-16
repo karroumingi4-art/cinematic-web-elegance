@@ -15,7 +15,7 @@
     "sottotitolo": "2024 - 2025 - 2026",
     "titolo": "IL NOSTRO ARCO",
     "testo": "Due anni fa la gloria. L'anno scorso il peso. Quest'anno la fame.\nUna storia che non viene mai ignorata, una sconfitta impressa nei nostri cuori per ritornare alla vittoria",
-    "immagine": "/gaston-villa-maglia-trasparente.png",
+    "immagine": "",
     "bg": "#0c1812",
     "timeline": [
       {
@@ -33,8 +33,7 @@
         "titolo": "RITORNO",
         "desc": "Non è una rivincita. È la conferma."
       }
-    ],
-    "immagine": ""
+    ]
   },
   {
     "id": 3,
@@ -43,7 +42,9 @@
     "titolo": "BORDEAUX X\nCELESTE",
     "testo": "Eleganza e cielo. Sangue e futuro.",
     "bg": "#f7f3ef",
-    "immagine": "/gaston-villa-maglia-trasparente.png"
+    "immagine": "/gaston-villa-maglia-trasparente.png",
+    "textColor": "#5a1020",
+    "subColor": "#1ae0ff"
   },
   {
     "id": 4,
