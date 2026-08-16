@@ -4,14 +4,14 @@
     "tipo": "hero",
     "sottotitolo": "KIT 2026-27 • GASTON VILLA",
     "titolo": "LA MAGLIA\nPER IL\nRITORNO",
-    "testo": "C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora. E che la prossima volta vogliamo farlo insieme.\nUna maglia che ci riporta ai bei momenti, senza dimenticare le dure sconfitte che ci hanno rafforzato",
+    "testo": "C'è chi vince una volta e si accontenta. Noi abbiamo capito che possiamo farlo ancora. E che la prossima volta vogliamo farlo insieme.\nUna maglia che ci riporta ai bei momenti, senza dimenticare le dure sconfitte che ci hanno rafforzato, per tornare tutti insieme a vincere",
     "immagine": "/gaston-villa-maglia-trasparente.png",
     "bg": "linear-gradient(135deg, #1a0a12 0%, #2B0A14 50%, #000000 100%)",
     "highlight": "PRESENTAZIONE UFFICIALE",
     "posizioni": [
       {
-        "x": -87,
-        "y": 0,
+        "x": -121.1484375,
+        "y": 121.5,
         "scale": 0.7
       }
     ],
@@ -28,14 +28,17 @@
         "size": 15,
         "font": "Inter"
       }
-    }
+    },
+    "immagini": [
+      "/gaston-villa-maglia-trasparente.png"
+    ]
   },
   {
     "id": 2,
     "tipo": "timeline",
     "sottotitolo": "2024 - 2025 - 2026",
     "titolo": "IL NOSTRO ARCO",
-    "testo": "Due anni fa la gloria. L'anno scorso il peso. Quest'anno la fame.\nUna storia che non viene mai ignorata, una sconfitta impressa nei nostri cuori per ritornare alla vittoria",
+    "testo": "DUE ANNI FA LA GLORIA\n\nUN ANNO FA LA DELUSIONE\n\nQUEST'ANNO: LA FAME\n\n\nPer tornare tutti insieme a vincere, per tornare a sorridere insieme",
     "immagine": "",
     "bg": "#0c1812",
     "timeline": [
@@ -54,37 +57,120 @@
         "titolo": "RITORNO",
         "desc": "Non è una rivincita. È la conferma."
       }
-    ]
+    ],
+    "posizioni": [],
+    "styles": {
+      "titolo": {
+        "size": 36,
+        "font": "Anton"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 23,
+        "font": "Montserrat"
+      }
+    }
   },
   {
     "id": 3,
     "tipo": "colori",
     "sottotitolo": "I NOSTRI COLORI",
-    "titolo": "BORDEAUX X\nCELESTE",
-    "testo": "Eleganza e cielo. Sangue e futuro.",
+    "titolo": "BORDEAUX \n\nX\n\nCELESTE",
+    "testo": "Eleganza e cielo. \nSangue e futuro.\nForza e Volontà\nVoglia di Vittori\nSiamo NOI",
     "bg": "#f7f3ef",
     "immagine": "/gaston-villa-maglia-trasparente.png",
-    "textColor": "#5a1020",
-    "subColor": "#1ae0ff"
+    "textColor": "#7dd3e0",
+    "subColor": "#7dd3e0",
+    "posizioni": [
+      {
+        "x": 0,
+        "y": 0,
+        "scale": 1
+      }
+    ],
+    "styles": {
+      "titolo": {
+        "size": 55,
+        "font": "Anton"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 17,
+        "font": "Inter"
+      }
+    }
   },
   {
     "id": 4,
     "tipo": "stella",
     "sottotitolo": "2024 • SCUDETTO",
     "titolo": "LA STELLA",
-    "testo": "Una stella oro ricamata tra il logo adidas e lo stemma Gaston Villa. Non è un ricordo. È una promessa.",
+    "testo": "Una stella di colore oro ricamata tra il logo adidas e lo stemma Gaston Villa. \nNon è un ricordo, è una promessa.\n\nLa promessa di  ritornare ai tempi d'oro di ritrovare la NOSTRA STELLA",
     "bg": "#0f0a12",
     "immagine": "/gaston-villa-maglia-trasparente.png",
-    "highlight": "★ TRA ADIDAS E STEMMA"
+    "highlight": "★ TRA ADIDAS E STEMMA",
+    "posizioni": [
+      {
+        "x": -108.1484375,
+        "y": -0.5,
+        "scale": 0.7
+      }
+    ],
+    "styles": {
+      "titolo": {
+        "size": 51,
+        "font": "Anton"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 17,
+        "font": "Montserrat"
+      }
+    },
+    "immagini": [
+      "/stella-gaston.png"
+    ]
   },
   {
     "id": 5,
     "tipo": "anatomia",
     "sottotitolo": "ANATOMIA 2026-27",
     "titolo": "DISEGNATA PER\nIL RITORNO",
-    "testo": "BASE #5C0A2D\nColletto polo celeste #7DD3E0\nStella oro tra Adidas e Stemma\nSponsor Unieuro",
+    "testo": "Colori sociali: Base bordeaux (maroon) dominante con colletto e dettagli in azzurro cielo (sky blue).\n\nElementi tecnici: Presenta il colletto a polo azzurro con scollatura a V bianca, tre strisce azzurre sulle spalle e il logo dello sponsor tecnico Adidas a tre bande sul petto a destra.\n\nTessuto: Trama traspirante con pannelli geometrici microforati sul pannello frontale per la massima ventilazione.\n\nDettagli celebrativi: Una stella dorata ricamata al centro del petto, simbolo di una vittoria storica.\n\nStemma personalizzato: Logo circolare sul cuore con bordo dorato contenente la scritta \"GASTON VILLA FC\", con al centro la figura di Gastone, presidente del club su sfondo azzurro.",
     "bg": "#f5f5f0",
-    "immagine": "/gaston-villa-maglia-trasparente.png"
+    "immagine": "/gaston-villa-maglia-trasparente.png",
+    "posizioni": [
+      {
+        "x": -99.1484375,
+        "y": 145.5,
+        "scale": 0.7
+      }
+    ],
+    "styles": {
+      "titolo": {
+        "size": 36,
+        "font": "Montserrat"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 12,
+        "font": "Montserrat"
+      }
+    },
+    "textColor": "#b2e2ed",
+    "subColor": "#b2e2ed"
   },
   {
     "id": 6,
@@ -93,7 +179,24 @@
     "titolo": "PERCHÉ LA\nINDOSSERAI\nOVUNQUE",
     "testo": "Una maglia che abbina classe e forza di volontà, una maglia che puoi vestire sui campi da calcio per mostrare la tua squadra del cuore o da vestire tranquillamente in giro con i tuoi amici.\nCon i suoi classici colori societari, questa maglia verrà rilasciata nello shop già da domani",
     "bg": "#0a0a0a",
-    "immagine": ""
+    "immagine": "",
+    "posizioni": [],
+    "styles": {
+      "titolo": {
+        "size": 36,
+        "font": "Montserrat"
+      },
+      "sottotitolo": {
+        "size": 10,
+        "font": "Inter"
+      },
+      "testo": {
+        "size": 14,
+        "font": "Montserrat"
+      }
+    },
+    "textColor": "#b2e2ed",
+    "immagini": []
   },
   {
     "id": 7,
