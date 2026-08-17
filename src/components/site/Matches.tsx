@@ -353,7 +353,7 @@ function FixtureCard({ match, i }: { match: Fixture; i: number }) {
           </span>
         ) : (
           <a
-            href="#contact"
+            href="#matchday"
             className="inline-flex shrink-0 items-center justify-center rounded-full border border-primary/60 px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             Biglietti
