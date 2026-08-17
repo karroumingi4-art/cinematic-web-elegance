@@ -5,8 +5,8 @@ const hero = "/hero-tunnel-oro.jpg";
 
 const stats = [
   { value: "2023", label: "Anno di Fondazione" },
-  { value: "43,000", label: "Posti a sedere" },
-  { value: "1", label: "Scudetto" },
+  { value: "75,400", label: "Posti a sedere" },
+  { value: "1", label: "Palmares" },
 ];
 
 export function Hero() {
@@ -17,8 +17,8 @@ export function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0]);
 
   return (
-    <section id="hero" className="relative min-h-dvh overflow-hidden bg-black">
-      <motion.div className="absolute inset-0 -z-10" style={reduced ? {} : { y: imageY }}>
+    <section id="hero" className="relative min-h-dvh overflow-hidden">
+      <motion.div className="absolute inset-0" style={reduced ? {} : { y: imageY }}>
         <img
           src={hero}
           alt="Floodlit stadium tunnel before kick-off"
@@ -26,9 +26,7 @@ export function Hero() {
           height={1088}
           className="h-[114%] w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[#0a0800]/40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
       </motion.div>
 
       <motion.div
@@ -53,7 +51,7 @@ export function Hero() {
                 animate={{ y: "0%" }}
                 transition={{ delay: 0.25 + i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
-                {line}
+                {i === 2 ? <span className="text-gradient-gold">{line}</span> : line}
               </motion.span>
             </span>
           ))}
