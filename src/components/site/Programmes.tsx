@@ -6,7 +6,7 @@ import { useNavigate } from "@tanstack/react-router";
 const items = [
   { icon: Ticket, title: "Matchday", body: "posti a sedere premium, tour nel tunnel dello stadio e cena pre partita.", to: "/matchday" },
   { icon: Crown, title: "Il Circolo", body: "Accesso agli allenamenti a porte chiuse, entrata anticipata e priorità prenotazioni.", to: "/circolo" },
-  { icon: Users, title: "Accademia", body: "Sviluppo tecnico, tattico e mentale dagli 8 anni in su.", to: "/accademia" },
+  { icon: Users, title: "Accademia", body: "Sviluppo tecnico, tattico e mentale dagli 8 anni in su.", to: "/academy" },
   { icon: Trophy, title: "Shop", body: "Le maglie ufficiali Gaston Villa 25/26.", to: "/shop" },
 ];
 
