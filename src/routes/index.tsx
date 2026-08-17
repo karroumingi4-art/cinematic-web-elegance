@@ -18,10 +18,11 @@ import { Partners } from "@/components/site/Partners";
 import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import { TribunaleTifoso } from "@/components/TribunaleTifoso";
 
-const title = "Ardente FC — A Century of Craft, Courage and Belonging";
+const title = "Gaston Villa- il nostro sito";
 const description =
-  "Official home of Ardente Football Club. Membership, matchday hospitality, the academy and the Legacy Fund — a club built in the dark and forged for the light.";
+  "Sito ufficiale di Gaston Villa FC. Membership, Hospitlity, accdemia, biglietti, shop e molto altro...";
 
 export const Route = createFileRoute("/")({
   head: () => ({
