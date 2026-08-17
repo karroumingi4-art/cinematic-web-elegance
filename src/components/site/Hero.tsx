@@ -5,8 +5,8 @@ const hero = "/hero-tunnel-oro.jpg";
 
 const stats = [
   { value: "2023", label: "Anno di Fondazione" },
-  { value: "75,400", label: "Posti a sedere" },
-  { value: "1", label: "Palmares" },
+  { value: "43,000", label: "Posti a sedere" },
+  { value: "1", label: "Scudetto" },
 ];
 
 export function Hero() {
