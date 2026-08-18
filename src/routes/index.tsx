@@ -67,6 +67,7 @@ function Index() {
         <Journal />
         <Voices />
         <FanWall />
+        <TribunaleTifoso />
         <Partners />
         <Faq />
         <Contact />
