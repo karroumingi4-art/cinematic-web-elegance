@@ -1,0 +1,16 @@
+[
+  {
+    "id": "24-07",
+    "titolo": "Terza maglia 24/25: ORO PURO o NERO OPACO?",
+    "imgs": ["tribunale-oro-1", "tribunale-oro-2"],
+    "opzioni": ["ORO PURO", "NERO OPACO"],
+    "voti": { "ORO PURO": 1847, "NERO OPACO": 693 }
+  },
+  {
+    "id": "24-08",
+    "titolo": "Capitano per la prossima stagione?",
+    "imgs": ["rossi-cap", "bianchi-cap"],
+    "opzioni": ["ROSSI #10", "BIANCHI #4", "ESPOSITO #9"],
+    "voti": { "ROSSI #10": 3120, "BIANCHI #4": 1455, "ESPOSITO #9": 890 }
+  }
+]
