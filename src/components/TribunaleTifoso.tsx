@@ -1,129 +1,154 @@
-import { motion } from "motion/react";
-import { Gavel, Check, X, Clock, Users } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Gavel, Users } from "lucide-react";
 
-const casi = [
+const FORMSPREE_VOTI = "https://formspree.io/f/mnpaobkr";
+const FORMSPREE_PROPOSTE = "https://formspree.io/f/maewldgr";
+
+type Caso = {
+  id: string;
+  titolo: string;
+  img?: string;
+  opzioni: string[];
+  voti: Record<string, number>;
+};
+
+const CASI_INIZIALI: Caso[] = [
   {
     id: "24-07",
-    stato: "VOTAZIONE APERTA",
     titolo: "Terza maglia 24/25: ORO PURO o NERO OPACO?",
-    descrizione: "La società propone 2 varianti. La scelta finale è dei Tesserati Oro. Il voto chiude Domenica.",
-    voti: { oro: 73, nero: 27 },
-    totale: 1247,
-    chiusura: "3 GIORNI",
-    colore: "oro",
+    img: "/hero-tunnel-oro.jpg",
+    opzioni: ["ORO PURO", "NERO OPACO"],
+    voti: { "ORO PURO": 1847, "NERO OPACO": 693 },
   },
   {
-    id: "24-06",
-    stato: "VERDETTO",
-    titolo: "Prezzo panino + birra allo stadio: da 8€ a 6.50€?",
-    descrizione: "Proposta dei tifosi curva. Approvata con il 91%. In vigore dalla prossima in casa.",
-    voti: { si: 91, no: 9 },
-    totale: 2103,
-    chiusura: "APPROVATO",
-    colore: "verdetto",
-  },
-  {
-    id: "24-05",
-    stato: "RESPINTO",
-    titolo: "Inno d'ingresso: mantenere Bella Ciao remix?",
-    descrizione: "Proposta respinta. Si torna al classico Seven Nation Army fino a nuova votazione.",
-    voti: { si: 34, no: 66 },
-    totale: 1890,
-    chiusura: "RESPINTO",
-    colore: "respinto",
+    id: "24-08",
+    titolo: "Capitano per la prossima stagione?",
+    img: "",
+    opzioni: ["ROSSI #10", "BIANCHI #4", "ESPOSITO #9"],
+    voti: { "ROSSI #10": 3120, "BIANCHI #4": 1455, "ESPOSITO #9": 890 },
   },
 ];
 
 export function TribunaleTifoso() {
+  const [casi, setCasi] = useState<Caso[]>(CASI_INIZIALI);
+  const [votedIds, setVotedIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("gv-tribunale-voti");
+    const voted = localStorage.getItem("gv-tribunale-voted");
+    if (saved) setCasi(JSON.parse(saved));
+    if (voted) setVotedIds(JSON.parse(voted));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("gv-tribunale-voti", JSON.stringify(casi));
+  }, [casi]);
+
+  const handleVote = async (casoId: string, opzione: string) => {
+    if (votedIds.includes(casoId)) return;
+
+    const nuoviCasi = casi.map(c => {
+      if (c.id!== casoId) return c;
+      return {...c, voti: {...c.voti, [opzione]: (c.voti[opzione] || 0) + 1 } };
+    });
+    setCasi(nuoviCasi);
+
+    const newVoted = [...votedIds, casoId];
+    setVotedIds(newVoted);
+    localStorage.setItem("gv-tribunale-voted", JSON.stringify(newVoted));
+    localStorage.setItem("gv-tribunale-voti", JSON.stringify(nuoviCasi));
+
+    fetch(FORMSPREE_VOTI, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        caso: casoId,
+        voto: opzione,
+        totale_aggiornato: nuoviCasi.find(c => c.id === casoId)?.voti[opzione],
+        _subject: `VOTO TRIBUNALE ${casoId} -> ${opzione}`,
+      }),
+    });
+  };
+
+  const getTotale = (voti: Record<string, number>) => Object.values(voti).reduce((a, b) => a + b, 0);
+  const getPerc = (voti: Record<string, number>, op: string) => {
+    const tot = getTotale(voti);
+    return tot === 0? 0 : Math.round((voti[op] / tot) * 100);
+  };
+
   return (
-    <section id="tribunale" className="relative bg-[#080600] py-24 sm:py-32 border-t border-white/[0.06]">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        {/* Header */}
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.25em] text-[#d6b45a]">
-              <Gavel className="size-4" /> Tribunale Del Tifoso
-            </p>
-            <h2 className="display mt-4 text-[clamp(2rem,6vw,4.5rem)] leading-[0.9] text-white">
-              Qui non comanda <br />
-              <span className="text-[#d6b45a]">Gastone.</span> Comandate voi.
-            </h2>
+    <section id="tribunale" className="bg-[#080600] py-24 border-t border-white/10 scroll-mt-24">
+      <div className="mx-auto max-w-7xl px-5">
+        <p className="text-[#d6b45a] text-[0.7rem] tracking-[0.25em] uppercase flex gap-2 items-center">
+          <Gavel className="size-4" /> TRIBUNALE DEL TIFOSO — LIVE
+        </p>
+        <h2 className="display text-white text-[clamp(2rem,6vw,4rem)] mt-4 leading-[0.9]">
+          I numeri non <span className="text-[#d6b45a]">mentono.</span>
+        </h2>
+
+        <div className="mt-12 grid lg:grid-cols-2 gap-6">
+          {casi.map(c => {
+            const totale = getTotale(c.voti);
+            const hasVoted = votedIds.includes(c.id);
+            return (
+              <div key={c.id} className="rounded- border border-white/10 bg-white/[0.03] p-7">
+                {c.img && <img src={c.img} className="h-48 w-full object-cover rounded-xl mb-6" alt="" />}
+                <h3 className="text-white font-bold text-xl">{c.titolo}</h3>
+
+                <div className="mt-6 space-y-4">
+                  {c.opzioni.map(op => {
+                    const perc = getPerc(c.voti, op);
+                    return (
+                      <div key={op}>
+                        <div className="flex justify-between text-[0.7rem] uppercase tracking-widest text-white/60 mb-1.5">
+                          <span>{op}</span>
+                          <span>{c.voti[op].toLocaleString()} voti · {perc}%</span>
+                        </div>
+                        <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                          <div className="h-full bg-[#d6b45a] transition-all duration-700" style={{ width: `${perc}%` }} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  {c.opzioni.map(op => (
+                    <button
+                      key={op}
+                      disabled={hasVoted}
+                      onClick={() => handleVote(c.id, op)}
+                      className={`rounded-full py-3 text-[0.75rem] font-bold uppercase tracking-widest ${hasVoted? "bg-white/10 text-white/30 cursor-not-allowed" : "bg-white text-black hover:bg-[#d6b45a]"}`}
+                    >
+                      {hasVoted? "Votato ✓" : `Vota ${op}`}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mt-4 flex items-center gap-2 text-[0.7rem] text-white/30">
+                  <Users className="size-3.5" /> {totale.toLocaleString()} VOTANTI TOTALI
+                  {hasVoted && <span className="ml-auto text-[#d6b45a]">+1 dal tuo voto</span>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <form action={FORMSPREE_PROPOSTE} method="POST" encType="multipart/form-data" className="mt-20 rounded- border border-[#d6b45a]/20 p-8 bg-[#d6b45a]/5">
+          <h3 className="text-white text-2xl font-bold">Proponi un nuovo caso con foto</h3>
+          <p className="text-white/50 text-sm mt-2">Le immagini arrivano direttamente nella tua mail Formspree.</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <input name="nome" required placeholder="Nome e Cognome" className="rounded-full bg-black/40 border border-white/10 px-6 py-3 text-white text-sm outline-none focus:border-[#d6b45a]" />
+            <input name="email" type="email" required placeholder="Email Tesserato" className="rounded-full bg-black/40 border border-white/10 px-6 py-3 text-white text-sm outline-none focus:border-[#d6b45a]" />
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-white/60">
-            Ogni mese una decisione reale del club viene messa al voto. Solo i Tesserati Oro votano.
-            Ogni verdetto viene pubblicato con verbale ufficiale. Niente fuffa.
-          </p>
-        </div>
-
-        {/* Casi */}
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {casi.map((c, i) => (
-            <motion.div
-              key={c.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className={`relative overflow-hidden rounded- border p-7 sm:p-8 ${
-                c.stato === "VOTAZIONE APERTA"
-                 ? "border-[#d6b45a]/30 bg-gradient-to-b from-[#d6b45a]/[0.08] to-transparent"
-                  : "border-white/10 bg-white/[0.02]"
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[0.65rem] tracking-[0.2em] text-white/40">CASO #{c.id}</span>
-                <span
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.6rem] font-bold tracking-[0.15em] ${
-                    c.stato === "VOTAZIONE APERTA"
-                     ? "bg-[#d6b45a] text-black"
-                      : c.stato === "VERDETTO"
-                     ? "bg-emerald-400 text-black"
-                      : "bg-white/10 text-white/60"
-                  }`}
-                >
-                  {c.stato === "VOTAZIONE APERTA"? <Clock className="size-3" /> : c.stato === "VERDETTO"? <Check className="size-3" /> : <X className="size-3" />}
-                  {c.stato}
-                </span>
-              </div>
-
-              <h3 className="mt-6 text-xl font-bold leading-tight text-white">{c.titolo}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">{c.descrizione}</p>
-
-              {/* Barra voto */}
-              <div className="mt-8">
-                <div className="flex h-2 overflow-hidden rounded-full bg-white/10">
-                  <div
-                    className={`h-full ${c.colore === "oro"? "bg-[#d6b45a]" : c.colore === "verdetto"? "bg-emerald-400" : "bg-white/40"}`}
-                    style={{ width: `${Object.values(c.voti)[0]}%` }}
-                  />
-                </div>
-                <div className="mt-3 flex justify-between text-[0.7rem] uppercase tracking-[0.15em] text-white/50">
-                  <span>{Object.keys(c.voti)[0]} {Object.values(c.voti)[0]}%</span>
-                  <span>{Object.keys(c.voti)[1]} {Object.values(c.voti)[1]}%</span>
-                </div>
-              </div>
-
-              <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                <span className="flex items-center gap-1.5 text-[0.7rem] text-white/40">
-                  <Users className="size-3.5" /> {c.totale} VOTANTI
-                </span>
-                <span className="text-[0.7rem] font-bold tracking-[0.15em] text-[#d6b45a]">{c.chiusura}</span>
-              </div>
-
-              {c.stato === "VOTAZIONE APERTA" && (
-                <button className="mt-6 w-full rounded-full bg-white py-3 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#d6b45a]">
-                  Vota Ora
-                </button>
-              )}
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <a href="#tesseramento" className="text-[0.7rem] uppercase tracking-[0.25em] text-white/30 hover:text-white/60 transition">
-            Solo Tesserati Oro possono votare — Diventa Oro →
-          </a>
-        </div>
+          <input name="titolo" required placeholder="Titolo proposta es: Nuovo inno curva" className="mt-4 w-full rounded-full bg-black/40 border border-white/10 px-6 py-3 text-white text-sm outline-none focus:border-[#d6b45a]" />
+          <textarea name="descrizione" required rows={4} placeholder="Descrivi la proposta..." className="mt-4 w-full rounded- bg-black/40 border border-white/10 px-6 py-4 text-white text-sm outline-none focus:border-[#d6b45a]" />
+          <input type="file" name="immagini" accept="image/*" multiple className="mt-4 w-full text-sm text-white/60 file:mr-4 file:rounded-full file:border-0 file:bg-white file:px-4 file:py-2 file:text-black" />
+          <input type="hidden" name="_subject" value="NUOVA PROPOSTA TRIBUNALE CON IMMAGINE" />
+          <button type="submit" className="mt-4 w-full rounded-full bg-[#d6b45a] py-4 font-bold uppercase text-black hover:bg-white transition">
+            Invia al Tribunale
+          </button>
+        </form>
       </div>
     </section>
   );
