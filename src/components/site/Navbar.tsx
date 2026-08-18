@@ -15,6 +15,7 @@ const links = [
   { label: "Pronostici", href: "#predictions" },
   { label: "Pagelle", href: "#mvp" },
   { label: "Fan wall", href: "#fanwall" },
+  { label: "Tribunale", href: "#tribunale" }
   { label: "Shop", href: "/shop" },
 ];
 
