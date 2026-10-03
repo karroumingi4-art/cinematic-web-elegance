@@ -52,7 +52,7 @@ export const fixtures: Fixture[] = [
 ];
 
 const results: Fixture[] = [];
- { date: "11 SET", time: "18:30", competition: "Campionato · G1", home: "Gaston Villa", away: "KUNG FU PANDEV", venue: "Gaston Villa Park" score: "0 - 2", result: "L",   },
+ { date: "11 SET", time: "18:30", competition: "Campionato · G1", home: "Gaston Villa", away: "KUNG FU PANDEV", venue: "Gaston Villa Park" score: "0 - 2", result: "P",   },
   { date: "18 SET", time: "18:30", competition: "Campionato · G2", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park" score: "4 - 1", result: "V",   },
    ];
 //... resto del tuo file identico, ma cambia FixtureCard:
