@@ -1,147 +1,90 @@
-import { useState } from "react";
-import { motion } from "motion/react";
-import { toast } from "sonner";
-import { Vote } from "lucide-react";
-import { Reveal, SectionHeading } from "./Reveal";
-import { nextMatch } from "./next-match";
+import { useState, useMemo } from "react";
 
-type Pick = "1" | "X" | "2";
 
-const options: { key: Pick; label: string; caption: string }[] = [
-  { key: "1", label: "1", caption: nextMatch.home },
-  { key: "X", label: "X", caption: "Pareggio" },
-  { key: "2", label: "2", caption: nextMatch.away },
+// IL TUO CALENDARIO - lo incolli qui così com'è
+const PARTITE = [
+  { date: "10 OTT", time: "21:00", competition: "Campionato · G3", home: "Gaston Villa ", away: "Forza PCI", venue: "Gaston Villa Park" },
+  { date: "17 OTT", time: "15:00", competition: "Campionato · G4", home: "Gaston Villa ", away: "Aura Jacquet", venue: "Gaston Villa Park" },
+  { date: "24 OTT", time: "20:45", competition: "Campionato · G5", home: "Como Stai", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "27 OTT", time: "20:45", competition: "Campionato · G6", home: "Deportivo Aperitivo", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "31 OTT", time: "20:45", competition: "Campionato · G7", home: "Urbe Eterna", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "07 NOV", time: "20:45", competition: "Campionato · G8", home: "Team Crack", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "21 NOV", time: "20:45", competition: "Campionato · G9", home: "BORUSSIA PORCMUND", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "28 NOV", time: "20:45", competition: "Campionato · G10", home: "BORUSSIA PORCMUND", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "05 DIC", time: "20:45", competition: "Campionato · G11", home: "Team Crack", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "12 DIC", time: "20:45", competition: "Campionato · G12", home: "Urbe Eterna", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "19 DIC", time: "20:45", competition: "Campionato · G13", home: "Deportivo Aperitivo", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "26 DIC", time: "20:45", competition: "Campionato · G14", home: "Como Stai", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "02 GEN", time: "15:00", competition: "Campionato · G15", home: "Gaston Villa ", away: "Aura Jacquet", venue: "Gaston Villa PArk" },
+  { date: "09 GEN", time: "20:45", competition: "Campionato · G16", home: "Forza PCI", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "16 GEN", time: "20:45", competition: "Campionato · G17", home: "Tottingham Forest", away: "Gaston Villa ", venue: "Gaston Villa Park" },
+  { date: "23 GEN", time: "20:45", competition: "Campionato · G18", home: "KUNG FU PANDEV", away: "Gaston Villa ", venue: "Gaston Villa Park" },
 ];
 
-export function Predictions() {
-  const [pick, setPick] = useState<Pick | null>(null);
-  const [voter, setVoter] = useState("");
-  const [isPending, setIsPending] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+const MESI: any = { GEN: 0, FEB: 1, MAR: 2, APR: 3, MAG: 4, GIU: 5, LUG: 6, AGO: 7, SET: 8, OTT: 9, NOV: 10, DIC: 11 };
 
-    if (!pick) {
-      toast.error("Scegli 1, X o 2 prima di inviare!");
-      return;
-    }
-    if (voter.trim().length < 2) {
-      toast.error("Inserisci il tuo nome");
-      return;
-    }
 
-    setIsPending(true);
+function parseData(str: string) {
+  const [giorno, meseStr] = str.split(" ");
+  const mese = MESI[meseStr.toUpperCase()];
+  const anno = mese >= 8? 2025 : 2026; // da SET a DIC = 2025, da GEN in poi = 2026
+  return new Date(anno, mese, parseInt(giorno));
+}
 
-    const formData = new FormData();
-    formData.append("Partita", `${nextMatch.home} vs ${nextMatch.away}`);
-    formData.append("Competizione", nextMatch.competition);
-    formData.append("Nome Tifoso", voter.trim());
-    formData.append("Segno Pronosticato", pick);
 
-    try {
-      const res = await fetch("https://formspree.io/f/mnpanwae", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+export function Pronostico() {
+  const [indexSelezionato, setIndexSelezionato] = useState<number>(() => {
+    const oggi = new Date();
+    const idx = PARTITE.findIndex(p => parseData(p.date) >= oggi);
+    return idx >= 0? idx : 0;
+  });
 
-      if (res.ok) {
-        toast.success("Pronostico inviato con successo! In bocca al lupo!");
-        setVoter("");
-        setPick(null);
-      } else {
-        throw new Error("Errore durante l'invio");
-      }
-    } catch (error) {
-      toast.error("Impossibile salvare il pronostico. Riprova più tardi.");
-    } finally {
-      setIsPending(false);
-    }
-  };
+
+  const match = PARTITE[indexSelezionato];
+  const avversario = match.home.trim() === "Gaston Villa"? match.away.trim() : match.home.trim();
+
 
   return (
-    <section id="predictions" className="relative bg-surface/30 py-24 sm:py-32 lg:py-40">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading
-          eyebrow={`Pronostici · ${nextMatch.competition}`}
-          title={
-            <>
-              1 · X · <span className="text-primary">2</span>
-            </>
-          }
-          intro={`Chi indovina il risultato di ${nextMatch.home} — ${nextMatch.away}? Vota prima del fischio d'inizio e confronta il tuo pronostico con quello degli altri.`}
-        />
+    <section className="py-16 bg-[#080600] border-t border-white/10">
+      <div className="mx-auto max-w-5xl px-5">
+        <h2 className="text-3xl font-black text-white">Pronostico Giornata</h2>
+        <p className="text-white/50 text-sm mt-1">{match.competition} - {match.date} ore {match.time}</p>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          <div>
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              {options.map((option, i) => {
-                const active = pick === option.key;
-                return (
-                  <Reveal key={option.key} delay={0.08 * i}>
-                    <motion.button
-                      type="button"
-                      whileHover={{ y: -6 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      onClick={() => setPick(option.key)}
-                      aria-pressed={active}
-                      className={`flex h-full w-full flex-col items-center rounded-2xl border px-4 py-7 transition-colors ${
-                        active
-                          ? "border-primary bg-primary/10"
-                          : "border-border bg-surface/70 hover:border-primary/40"
-                      }`}
-                    >
-                      <span className="display text-5xl leading-none text-primary">{option.label}</span>
-                      <span className="mt-4 text-center text-[0.62rem] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                        {option.caption}
-                      </span>
-                    </motion.button>
-                  </Reveal>
-                );
-              })}
+
+        <div className="mt-8 grid grid-cols-12 gap-4">
+          {/* SELECT GIORNATA */}
+          <select
+            value={indexSelezionato}
+            onChange={e => setIndexSelezionato(parseInt(e.target.value))}
+            className="col-span-12 bg-black border border-white/20 rounded-full px-4 py-3 text-white text-sm"
+          >
+            {PARTITE.map((p, i) => (
+              <option key={i} value={i}>{p.date} - {p.home.trim()} vs {p.away.trim()}</option>
+            ))}
+          </select>
+
+
+          {/* PRONOSTICO - GASTON VILLA FISSO + AVVERSARIO DA CALENDARIO */}
+          <div className="col-span-12 mt-4 grid grid-cols-3 items-center bg-white/[0.03] border border-white/10 rounded-[24px] p-8">
+            <div className="text-center">
+              <div className="text-white font-black text-xl">GASTON VILLA</div>
+              <div className="text-[10px] tracking-widest text-[#d6b45a] mt-1">FISSA</div>
             </div>
-
-            <Reveal delay={0.16}>
-              <form className="mt-8 flex flex-col gap-3 sm:flex-row" onSubmit={handleSubmit}>
-                <label className="sr-only" htmlFor="prediction-voter">
-                  Il tuo nome
-                </label>
-                <input
-                  id="prediction-voter"
-                  name="voter"
-                  value={voter}
-                  maxLength={60}
-                  onChange={(event) => setVoter(event.target.value)}
-                  placeholder="Il tuo nome"
-                  className="w-full rounded-md border border-input bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-colors duration-300 focus:border-primary focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  disabled={isPending}
-                  className="shrink-0 rounded-full bg-primary px-7 py-3 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
-                >
-                  {isPending ? "Invio…" : "Invia pronostico"}
-                </button>
-              </form>
-            </Reveal>
+            <div className="text-center">
+              <div className="text-white/20 text-2xl font-black">VS</div>
+              <div className="text-[10px] text-white/40 mt-2">{match.venue}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-white font-black text-xl">{avversario.toUpperCase()}</div>
+              <div className="text-[10px] tracking-widest text-white/40 mt-1">DA CALENDARIO</div>
+            </div>
           </div>
 
-          <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-border bg-surface/70">
-              <div className="flex items-center gap-3 border-b border-border px-6 py-5">
-                <Vote className="size-4 text-primary" aria-hidden />
-                <h3 className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-foreground">
-                  Info Pronostici
-                </h3>
-              </div>
-              <div className="px-6 py-8 text-sm text-muted-foreground">
-                <p>I voti inviati tramite questo modulo vengono raccolti ed elaborati dalla dirigenza del Gaston Villa.</p>
-                <p className="mt-2 text-xs text-primary">Seleziona 1, X o 2 qui a sinistra, scrivi il tuo nome e clicca su Invia!</p>
-              </div>
-            </div>
-          </Reveal>
+
+          <div className="col-span-12 text-center mt-2 text-[10px] text-white/30">
+            L'avversario cambia automaticamente in base alla giornata selezionata. Gaston Villa resta sempre.
+          </div>
         </div>
       </div>
     </section>
