@@ -42,4 +42,33 @@ export function Pronostico() {
         <div className="mt-8 grid grid-cols-3 items-center bg-white/[0.03] border border-white/10 rounded- p-8">
           <div className="text-center"><div className="text-white font-black text-xl leading-tight">{match.home.toUpperCase()}</div><div className="text-[#d6b45a] font-black text-3xl mt-2">{stats.p1}%</div><div className="text-white/40 text- mt-1">{stats.c1} voti</div></div>
           <div className="text-center"><div className="text-white/30 text-sm tracking-widest">PAREGGIO</div><div className="text-white font-black text-3xl mt-2">{stats.pX}%</div><div className="text-white/40 text- mt-1">{stats.cX} voti</div></div>
-          <div className="text-center"><div className="text-white font-black text-xl leading-tight">{match.away.toUpperCase()}</div><div className="text-white font-black text-3xl mt-2">{stats.p2}%</div><div className="text-white/40 text- mt-1">{stats.c2} voti</
+          <div className="text-center"><div className="text-white font-black text-xl leading-tight">{match.away.toUpperCase()}</div><div className="text-white font-black text-3xl mt-2">{stats.p2}%</div><div className="text-white/40 text- mt-1">{stats.c2} voti</div></div>
+        </div>
+
+        <div className="mt-4 flex h-4 w-full overflow-hidden rounded-full bg-white/10">
+          <div style={{width:`${stats.p1}%`}} className="bg-[#d6b45a]"></div>
+          <div style={{width:`${stats.pX}%`}} className="bg-white"></div>
+          <div style={{width:`${stats.p2}%`}} className="bg-white/20"></div>
+        </div>
+
+        <div className="mt-2 flex justify-between text- text-white/30">
+          <span>{match.home}</span>
+          <span>{stats.tot} voti totali</span>
+          <span>{match.away}</span>
+        </div>
+
+        <form onSubmit={invia} className="mt-10 bg-black border border-white/10 rounded- p-7">
+          <p className="text-white font-black text-sm mb-5 tracking-widest">VOTA ANCHE TU</p>
+          <div className="grid grid-cols-3 gap-4">
+            <button type="button" onClick={()=>setVoto("1")} className={`py-5 rounded-full border-2 font-black text-base transition ${voto==="1"?"bg-[#d6b45a] border-[#d6b45a] text-black":"bg-white/5 border-white/15 text-white hover:bg-white/10"}`}>1</button>
+            <button type="button" onClick={()=>setVoto("X")} className={`py-5 rounded-full border-2 font-black text-base transition ${voto==="X"?"bg-white border-white text-black":"bg-white/5 border-white/15 text-white hover:bg-white/10"}`}>X</button>
+            <button type="button" onClick={()=>setVoto("2")} className={`py-5 rounded-full border-2 font-black text-base transition ${voto==="2"?"bg-[#d6b45a] border-[#d6b45a] text-black":"bg-white/5 border-white/15 text-white hover:bg-white/10"}`}>2</button>
+          </div>
+          <input value={nome} onChange={e=>setNome(e.target.value)} placeholder="Il tuo nome" className="mt-5 w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white text-sm outline-none focus:border-[#d6b45a]/50" />
+          <button className="mt-5 w-full bg-[#d6b45a] text-black font-black rounded-full py-4 text-sm tracking-widest hover:bg-[#e2c46e] transition">{status==="sending"?"INVIO...":status==="ok"?"VOTATO ✅":"VOTA ORA"}</button>
+        </form>
+      </div>
+    </section>
+  );
+}
+export const Predictions = Pronostico;
