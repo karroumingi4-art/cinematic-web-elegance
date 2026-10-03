@@ -14,7 +14,7 @@ export type Fixture = {
   result?: "V" | "N" | "P";
 };
 
-// PARTITE DA GIOCARE - parte da G3 perché G1 e G2 già giocate
+// DA GIOCARE - parte da G3 perché G1 e G2 già giocate
 export const fixtures: Fixture[] = [
   { date: "10 OTT", time: "21:00", competition: "Campionato · G3", home: "Gaston Villa", away: "Forza PCI", venue: "Gaston Villa Park" },
   { date: "17 OTT", time: "15:00", competition: "Campionato · G4", home: "Gaston Villa", away: "Aura Jacquet", venue: "Gaston Villa Park" },
@@ -32,32 +32,27 @@ export const fixtures: Fixture[] = [
   { date: "09 GEN", time: "20:45", competition: "Campionato · G16", home: "Forza PCI", away: "Gaston Villa", venue: "Gaston Villa Park" },
   { date: "16 GEN", time: "20:45", competition: "Campionato · G17", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park" },
   { date: "23 GEN", time: "20:45", competition: "Campionato · G18", home: "KUNG FU PANDEV", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "30 GEN", time: "20:45", competition: "Campionato · G19", home: "KUNG FU PANDEV", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "06 FEB", time: "20:45", competition: "Campionato · G20", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "13 FEB", time: "20:45", competition: "Campionato · G21", home: "Forza PCI", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "20 FEB", time: "20:45", competition: "Campionato · G22", home: "Aura Jacquet", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "27 FEB", time: "20:45", competition: "Campionato · G23", home: "Como Stai", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "06 MAR", time: "20:45", competition: "Campionato · G24", home: "Deportivo Aperitivo", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "13 MAR", time: "20:45", competition: "Campionato · G25", home: "Urbe Eterna", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "20 MAR", time: "20:45", competition: "Campionato · G26", home: "Team Crack", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "03 APR", time: "20:45", competition: "Campionato · G27", home: "BORUSSIA PORCMUND", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "10 APR", time: "20:45", competition: "Campionato · G28", home: "BORUSSIA PORCMUND", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "17 APR", time: "20:45", competition: "Campionato · G29", home: "Team Crack", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "24 APR", time: "20:45", competition: "Campionato · G30", home: "Urbe Eterna", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "01 MAG", time: "20:45", competition: "Campionato · G31", home: "Deportivo Aperitivo", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "04 MAG", time: "20:45", competition: "Campionato · G32", home: "Como Stai", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "08 MAG", time: "20:45", competition: "Campionato · G33", home: "Aura Jacquet", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "15 MAG", time: "20:45", competition: "Campionato · G34", home: "Forza PCI", away: "Gaston Villa", venue: "Gaston Villa Park" },
-  { date: "22 MAG", time: "20:45", competition: "Campionato · G35", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park" },
 ];
 
-// QUI CI SONO LE 2 GIÀ GIOCATE - CORRETTE
+// RISULTATI - QUI SCRIVI
 export const results: Fixture[] = [
   { date: "11 SET", time: "18:30", competition: "Campionato · G1", home: "Gaston Villa", away: "KUNG FU PANDEV", venue: "Gaston Villa Park", score: "0 - 2", result: "P" },
-  { date: "18 SET", time: "18:30", competition: "Campionato · G2", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park", score: "1 - 4", result: "V" },
+  { date: "18 SET", time: "18:30", competition: "Campionato · G2", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park", score: "1 - 2", result: "V" },
 ];
 
-const ALL_TEAMS = ["Gaston Villa","Aura Jacquet","Urbe Eterna","Deportivo Aperitivo","Forza PCI","BORUSSIA PORCMUND","Team Crack","Tottingham Forest","KUNG FU PANDEV","Como Stai"];
+// CLASSIFICA REALE DOPO 2 GIORNATE - dallo screenshot
+const BASE_TABLE: Record<string, { pg: number; v: number; n: number; p: number; gf: number; gs: number; pts: number }> = {
+  "Deportivo Aperitivo": { pg: 2, v: 2, n: 0, p: 0, gf: 6, gs: 1, pts: 6 },
+  "KUNG FU PANDEV": { pg: 2, v: 2, n: 0, p: 0, gf: 5, gs: 1, pts: 6 },
+  "young girls": { pg: 2, v: 1, n: 0, p: 1, gf: 7, gs: 2, pts: 3 },
+  "Urbe Eterna": { pg: 2, v: 1, n: 0, p: 1, gf: 5, gs: 4, pts: 3 },
+  "Aura Jacquet": { pg: 2, v: 1, n: 0, p: 1, gf: 5, gs: 6, pts: 3 },
+  "Gaston Villa": { pg: 2, v: 1, n: 0, p: 1, gf: 2, gs: 3, pts: 3 },
+  "forza PCI": { pg: 2, v: 1, n: 0, p: 1, gf: 2, gs: 3, pts: 3 },
+  "BLUELOCK": { pg: 2, v: 1, n: 0, p: 1, gf: 3, gs: 1, pts: 3 },
+  "BORUSSIA PORCMUND": { pg: 2, v: 0, n: 0, p: 2, gf: 2, gs: 9, pts: 0 },
+  "Como stai": { pg: 2, v: 0, n: 0, p: 2, gf: 0, gs: 7, pts: 0 },
+};
 
 function parseScore(s: string){ const [h,a]=s.split("-").map(v=>parseInt(v.trim())); return {h,a}; }
 
@@ -92,14 +87,16 @@ export function Matches() {
   const [expanded, setExpanded] = useState(false);
 
   const table = useMemo(() => {
-    const stats: Record<string, any> = {};
-    ALL_TEAMS.forEach(t=>stats[t]={pg:0,v:0,n:0,p:0,gf:0,gs:0,pts:0});
-    results.forEach(m=>{
+    const stats = JSON.parse(JSON.stringify(BASE_TABLE)) as typeof BASE_TABLE;
+    // Solo partite dalla G3 in poi - G1 e G2 sono già nella BASE_TABLE
+    const extra = results.filter(r => !r.competition.includes("G1") && !r.competition.includes("G2"));
+    extra.forEach(m=>{
       if(!m.score) return;
       const {h,a}=parseScore(m.score);
       if(isNaN(h)||isNaN(a)) return;
       const home=m.home.trim(), away=m.away.trim();
-      if(!stats[home]||!stats[away]) return;
+      if(!stats[home]) stats[home]={pg:0,v:0,n:0,p:0,gf:0,gs:0,pts:0};
+      if(!stats[away]) stats[away]={pg:0,v:0,n:0,p:0,gf:0,gs:0,pts:0};
       stats[home].pg++; stats[away].pg++;
       stats[home].gf+=h; stats[home].gs+=a;
       stats[away].gf+=a; stats[away].gs+=h;
@@ -139,7 +136,6 @@ export function Matches() {
                   <tbody>{table.map((row:any)=>{const own=row.team==="Gaston Villa"; return <tr key={row.team} className={`border-t border-border/70 ${own?"bg-primary/10":""}`}><td className="px-4 py-3"><span className={own?"text-primary":"text-muted-foreground"}>{row.pos}</span></td><td className={`py-3 font-semibold ${own?"text-primary":""}`}>{row.team}</td><td className="px-2 py-3 text-center text-muted-foreground">{row.pg}</td><td className="px-2 py-3 text-center text-muted-foreground">{row.v}</td><td className="px-2 py-3 text-center text-muted-foreground">{row.n}</td><td className="px-2 py-3 text-center text-muted-foreground">{row.p}</td><td className="px-2 py-3 text-center text-muted-foreground">{row.gf-row.gs>0?`+${row.gf-row.gs}`:row.gf-row.gs}</td><td className={`px-4 py-3 text-center font-bold ${own?"text-primary":""}`}>{row.pts}</td></tr>})}</tbody>
                 </table>
               </div>
-              <p className="border-t border-border px-6 py-4 text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">Aggiornata dai risultati</p>
             </div>
           </Reveal>
         </div>
