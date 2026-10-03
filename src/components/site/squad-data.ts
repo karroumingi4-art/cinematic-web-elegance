@@ -6,7 +6,7 @@ export const players = [
   { id: "p5", name: "Akanji", number: 25, role: "Difensore", photo: "/players/p5.jpg", altezza: "188cm", peso: "85kg", piede: "Destro", eta: 31, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p6", name: "Antov", number: 28, role: "Difensore", photo: "/players/p6.jpg", altezza: "185cm", peso: "78kg", piede: "Destro", eta: 26, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p7", name: "Badiashile", number: 3, role: "Difensore", photo: "/players/p7.jpg", altezza: "194cm", peso: "85kg", piede: "Sinistro", eta: 25, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p8", name: "Balerdi", number: 5, role: "Difensore", photo: "/players/p8.jpg", altezza: "187cm", peso: "80kg", piede: "Destro", eta: 27, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p8", name: "Balerdi", number: 15, role: "Difensore", photo: "/players/p8.jpg", altezza: "187cm", peso: "80kg", piede: "Destro", eta: 27, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p9", name: "Buongiorno", number: 6, role: "Difensore", photo: "/players/p9.jpg", altezza: "191cm", peso: "80kg", piede: "Sinistro", eta: 27, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p10", name: "Gatti", number: 24, role: "Difensore", photo: "/players/p10.jpg", altezza: "190cm", peso: "84kg", piede: "Destro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p11", name: "Schingtienne", number: 25, role: "Difensore", photo: "/players/p11.jpg", altezza: "188cm", peso: "82kg", piede: "Destro", eta: 24, presenze: 0, gol: 0, assist: 0, minuti: 0 },
