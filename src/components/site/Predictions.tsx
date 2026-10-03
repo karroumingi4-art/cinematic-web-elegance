@@ -1,7 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
-
-// IL TUO CALENDARIO - lo incolli qui così com'è
+// IL TUO CALENDARIO
 const PARTITE = [
   { date: "10 OTT", time: "21:00", competition: "Campionato · G3", home: "Gaston Villa ", away: "Forza PCI", venue: "Gaston Villa Park" },
   { date: "17 OTT", time: "15:00", competition: "Campionato · G4", home: "Gaston Villa ", away: "Aura Jacquet", venue: "Gaston Villa Park" },
@@ -21,17 +20,14 @@ const PARTITE = [
   { date: "23 GEN", time: "20:45", competition: "Campionato · G18", home: "KUNG FU PANDEV", away: "Gaston Villa ", venue: "Gaston Villa Park" },
 ];
 
-
 const MESI: any = { GEN: 0, FEB: 1, MAR: 2, APR: 3, MAG: 4, GIU: 5, LUG: 6, AGO: 7, SET: 8, OTT: 9, NOV: 10, DIC: 11 };
-
 
 function parseData(str: string) {
   const [giorno, meseStr] = str.split(" ");
   const mese = MESI[meseStr.toUpperCase()];
-  const anno = mese >= 8? 2025 : 2026; // da SET a DIC = 2025, da GEN in poi = 2026
+  const anno = mese >= 8? 2025 : 2026;
   return new Date(anno, mese, parseInt(giorno));
 }
-
 
 export function Pronostico() {
   const [indexSelezionato, setIndexSelezionato] = useState<number>(() => {
@@ -40,10 +36,8 @@ export function Pronostico() {
     return idx >= 0? idx : 0;
   });
 
-
   const match = PARTITE[indexSelezionato];
   const avversario = match.home.trim() === "Gaston Villa"? match.away.trim() : match.home.trim();
-
 
   return (
     <section className="py-16 bg-[#080600] border-t border-white/10">
@@ -51,9 +45,7 @@ export function Pronostico() {
         <h2 className="text-3xl font-black text-white">Pronostico Giornata</h2>
         <p className="text-white/50 text-sm mt-1">{match.competition} - {match.date} ore {match.time}</p>
 
-
         <div className="mt-8 grid grid-cols-12 gap-4">
-          {/* SELECT GIORNATA */}
           <select
             value={indexSelezionato}
             onChange={e => setIndexSelezionato(parseInt(e.target.value))}
@@ -64,25 +56,22 @@ export function Pronostico() {
             ))}
           </select>
 
-
-          {/* PRONOSTICO - GASTON VILLA FISSO + AVVERSARIO DA CALENDARIO */}
-          <div className="col-span-12 mt-4 grid grid-cols-3 items-center bg-white/[0.03] border border-white/10 rounded-[24px] p-8">
+          <div className="col-span-12 mt-4 grid grid-cols-3 items-center bg-white/[0.03] border border-white/10 rounded- p-8">
             <div className="text-center">
               <div className="text-white font-black text-xl">GASTON VILLA</div>
-              <div className="text-[10px] tracking-widest text-[#d6b45a] mt-1">FISSA</div>
+              <div className="text- tracking-widest text-[#d6b45a] mt-1">FISSA</div>
             </div>
             <div className="text-center">
               <div className="text-white/20 text-2xl font-black">VS</div>
-              <div className="text-[10px] text-white/40 mt-2">{match.venue}</div>
+              <div className="text- text-white/40 mt-2">{match.venue}</div>
             </div>
             <div className="text-center">
               <div className="text-white font-black text-xl">{avversario.toUpperCase()}</div>
-              <div className="text-[10px] tracking-widest text-white/40 mt-1">DA CALENDARIO</div>
+              <div className="text- tracking-widest text-white/40 mt-1">DA CALENDARIO</div>
             </div>
           </div>
 
-
-          <div className="col-span-12 text-center mt-2 text-[10px] text-white/30">
+          <div className="col-span-12 text-center mt-2 text- text-white/30">
             L'avversario cambia automaticamente in base alla giornata selezionata. Gaston Villa resta sempre.
           </div>
         </div>
@@ -90,3 +79,6 @@ export function Pronostico() {
     </section>
   );
 }
+
+// FIX PER IL BUILD: esporta anche con il nome che usa index.tsx
+export const Predictions = Pronostico;
