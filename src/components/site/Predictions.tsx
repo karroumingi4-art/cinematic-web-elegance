@@ -1,84 +1,69 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { fixtures } from "./Matches";
 
-// IL TUO CALENDARIO
-const PARTITE = [
-  { date: "10 OTT", time: "21:00", competition: "Campionato · G3", home: "Gaston Villa ", away: "Forza PCI", venue: "Gaston Villa Park" },
-  { date: "17 OTT", time: "15:00", competition: "Campionato · G4", home: "Gaston Villa ", away: "Aura Jacquet", venue: "Gaston Villa Park" },
-  { date: "24 OTT", time: "20:45", competition: "Campionato · G5", home: "Como Stai", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "27 OTT", time: "20:45", competition: "Campionato · G6", home: "Deportivo Aperitivo", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "31 OTT", time: "20:45", competition: "Campionato · G7", home: "Urbe Eterna", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "07 NOV", time: "20:45", competition: "Campionato · G8", home: "Team Crack", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "21 NOV", time: "20:45", competition: "Campionato · G9", home: "BORUSSIA PORCMUND", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "28 NOV", time: "20:45", competition: "Campionato · G10", home: "BORUSSIA PORCMUND", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "05 DIC", time: "20:45", competition: "Campionato · G11", home: "Team Crack", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "12 DIC", time: "20:45", competition: "Campionato · G12", home: "Urbe Eterna", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "19 DIC", time: "20:45", competition: "Campionato · G13", home: "Deportivo Aperitivo", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "26 DIC", time: "20:45", competition: "Campionato · G14", home: "Como Stai", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "02 GEN", time: "15:00", competition: "Campionato · G15", home: "Gaston Villa ", away: "Aura Jacquet", venue: "Gaston Villa PArk" },
-  { date: "09 GEN", time: "20:45", competition: "Campionato · G16", home: "Forza PCI", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "16 GEN", time: "20:45", competition: "Campionato · G17", home: "Tottingham Forest", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-  { date: "23 GEN", time: "20:45", competition: "Campionato · G18", home: "KUNG FU PANDEV", away: "Gaston Villa ", venue: "Gaston Villa Park" },
-];
+const FORMSPREE_ID = "xovqknln";
 
-const MESI: any = { GEN: 0, FEB: 1, MAR: 2, APR: 3, MAG: 4, GIU: 5, LUG: 6, AGO: 7, SET: 8, OTT: 9, NOV: 10, DIC: 11 };
-
-function parseData(str: string) {
-  const [giorno, meseStr] = str.split(" ");
-  const mese = MESI[meseStr.toUpperCase()];
-  const anno = mese >= 8? 2025 : 2026;
-  return new Date(anno, mese, parseInt(giorno));
+function getFintiVoti(idx: number) {
+  const seed = (idx * 37 + 13) % 100;
+  let p1 = 55 + (seed % 25); // Gaston favorita
+  let pX = 15 + ((seed * 2) % 15);
+  let p2 = 100 - p1 - pX;
+  const tot = 134 + idx * 7 + (seed % 23);
+  return { p1, pX, p2, tot, c1: Math.round(tot*p1/100), cX: Math.round(tot*pX/100), c2: Math.round(tot*p2/100) };
 }
 
 export function Pronostico() {
-  const [indexSelezionato, setIndexSelezionato] = useState<number>(() => {
-    const oggi = new Date();
-    const idx = PARTITE.findIndex(p => parseData(p.date) >= oggi);
-    return idx >= 0? idx : 0;
-  });
+  const [idx, setIdx] = useState(0);
+  const [voto, setVoto] = useState<string|null>(null);
+  const [nome, setNome] = useState("");
+  const [status, setStatus] = useState<"idle"|"sending"|"ok">("idle");
+  const match = fixtures[idx];
+  const stats = useMemo(()=>getFintiVoti(idx),[idx]);
 
-  const match = PARTITE[indexSelezionato];
-  const avversario = match.home.trim() === "Gaston Villa"? match.away.trim() : match.home.trim();
+  const invia = async (e:any) => {
+    e.preventDefault();
+    if(!voto||!nome) return alert("Nome e pronostico!");
+    setStatus("sending");
+    await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({ partita:`${match.home} vs ${match.away}`, data:match.date, pronostico:voto, nome }) });
+    setStatus("ok");
+    setTimeout(()=>setStatus("idle"),3000);
+  };
 
   return (
-    <section className="py-16 bg-[#080600] border-t border-white/10">
+    <section id="matchday" className="py-16 bg-[#080600] border-t border-white/10">
       <div className="mx-auto max-w-5xl px-5">
         <h2 className="text-3xl font-black text-white">Pronostico Giornata</h2>
-        <p className="text-white/50 text-sm mt-1">{match.competition} - {match.date} ore {match.time}</p>
+        <p className="text-white/50 text-sm mt-1">{match.competition} · {match.date} {match.time}</p>
 
-        <div className="mt-8 grid grid-cols-12 gap-4">
-          <select
-            value={indexSelezionato}
-            onChange={e => setIndexSelezionato(parseInt(e.target.value))}
-            className="col-span-12 bg-black border border-white/20 rounded-full px-4 py-3 text-white text-sm"
-          >
-            {PARTITE.map((p, i) => (
-              <option key={i} value={i}>{p.date} - {p.home.trim()} vs {p.away.trim()}</option>
-            ))}
-          </select>
+        <select value={idx} onChange={e=>setIdx(parseInt(e.target.value))} className="mt-6 w-full bg-black border border-white/20 rounded-full px-4 py-3 text-white text-sm">
+          {fixtures.map((p,i)=><option key={i} value={i}>{p.date} - {p.home} vs {p.away}</option>)}
+        </select>
 
-          <div className="col-span-12 mt-4 grid grid-cols-3 items-center bg-white/[0.03] border border-white/10 rounded- p-8">
-            <div className="text-center">
-              <div className="text-white font-black text-xl">GASTON VILLA</div>
-              <div className="text- tracking-widest text-[#d6b45a] mt-1">FISSA</div>
-            </div>
-            <div className="text-center">
-              <div className="text-white/20 text-2xl font-black">VS</div>
-              <div className="text- text-white/40 mt-2">{match.venue}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-white font-black text-xl">{avversario.toUpperCase()}</div>
-              <div className="text- tracking-widest text-white/40 mt-1">DA CALENDARIO</div>
-            </div>
+        <div className="mt-6 bg-white/[0.03] border border-white/10 rounded- p-5">
+          <div className="flex h-3 rounded-full overflow-hidden bg-white/10">
+            <div style={{width:`${stats.p1}%`}} className="bg-[#d6b45a]" />
+            <div style={{width:`${stats.pX}%`}} className="bg-white/40" />
+            <div style={{width:`${stats.p2}%`}} className="bg-white/10" />
           </div>
-
-          <div className="col-span-12 text-center mt-2 text- text-white/30">
-            L'avversario cambia automaticamente in base alla giornata selezionata. Gaston Villa resta sempre.
+          <div className="mt-3 grid grid-cols-3 text- text-white/60">
+            <div><b className="text-[#d6b45a]">{stats.p1}%</b> ({stats.c1}) - {match.home}</div>
+            <div className="text-center"><b className="text-white">{stats.pX}%</b> ({stats.cX}) - X</div>
+            <div className="text-right"><b>{stats.p2}%</b> ({stats.c2}) - {match.away}</div>
           </div>
+          <p className="text- text-white/20 mt-2 text-center">{stats.tot} voti totali · dati inventati per estetica</p>
         </div>
+
+        <form onSubmit={invia} className="mt-6 bg-black border border-white/10 rounded- p-6">
+          <div className="grid grid-cols-3 gap-3">
+            <button type="button" onClick={()=>setVoto("1")} className={`py-4 rounded-full border font-black text-sm ${voto==="1"?"bg-[#d6b45a] border-[#d6b45a] text-black":"bg-white/5 border-white/10 text-white"}`}>1</button>
+            <button type="button" onClick={()=>setVoto("X")} className={`py-4 rounded-full border font-black text-sm ${voto==="X"?"bg-[#d6b45a] border-[#d6b45a] text-black":"bg-white/5 border-white/10 text-white"}`}>X</button>
+            <button type="button" onClick={()=>setVoto("2")} className={`py-4 rounded-full border font-black text-sm ${voto==="2"?"bg-[#d6b45a] border-[#d6b45a] text-black":"bg-white/5 border-white/10 text-white"}`}>2</button>
+          </div>
+          <input value={nome} onChange={e=>setNome(e.target.value)} placeholder="Il tuo nome" className="mt-4 w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-white text-sm" />
+          <button className="mt-4 w-full bg-[#d6b45a] text-black font-black rounded-full py-3 text-sm">{status==="sending"?"Invio...":status==="ok"?"Votato ✅":"VOTA"}</button>
+        </form>
       </div>
     </section>
   );
 }
-
-// FIX PER IL BUILD: esporta anche con il nome che usa index.tsx
 export const Predictions = Pronostico;
