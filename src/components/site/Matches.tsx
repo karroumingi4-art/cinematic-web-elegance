@@ -15,8 +15,7 @@ export type Fixture = {
 };
 
 export const fixtures: Fixture[] = [
-  { date: "11 SET", time: "18:30", competition: "Campionato · G1", home: "Gaston Villa", away: "KUNG FU PANDEV", venue: "Gaston Villa Park" },
-  { date: "18 SET", time: "18:30", competition: "Campionato · G2", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park" },
+
   { date: "10 OTT", time: "21:00", competition: "Campionato · G3", home: "Gaston Villa", away: "Forza PCI", venue: "Gaston Villa Park" },
   { date: "17 OTT", time: "15:00", competition: "Campionato · G4", home: "Gaston Villa", away: "Aura Jacquet", venue: "Gaston Villa Park" },
   { date: "24 OTT", time: "20:45", competition: "Campionato · G5", home: "Como Stai", away: "Gaston Villa", venue: "Gaston Villa Park" },
@@ -53,6 +52,9 @@ export const fixtures: Fixture[] = [
 ];
 
 const results: Fixture[] = [];
+ { date: "11 SET", time: "18:30", competition: "Campionato · G1", home: "Gaston Villa", away: "KUNG FU PANDEV", venue: "Gaston Villa Park" score: "0 - 2", result: "L",   },
+  { date: "18 SET", time: "18:30", competition: "Campionato · G2", home: "Tottingham Forest", away: "Gaston Villa", venue: "Gaston Villa Park" score: "4 - 1", result: "V",   },
+   ];
 //... resto del tuo file identico, ma cambia FixtureCard:
 function FixtureCard({ match, i }: { match: Fixture; i: number }) {
   const isHome = match.home.trim() === "Gaston Villa";
