@@ -5,25 +5,25 @@ export const players = [
   { id: "p4", name: "Thiam", number: 20, role: "Portiere", photo: "/players/p4.jpg", altezza: "202cm", peso: "85kg", piede: "Destro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p5", name: "Akanji", number: 25, role: "Difensore", photo: "/players/p5.jpg", altezza: "188cm", peso: "85kg", piede: "Destro", eta: 31, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p6", name: "Antov", number: 28, role: "Difensore", photo: "/players/p6.jpg", altezza: "185cm", peso: "78kg", piede: "Destro", eta: 26, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p7", name: "Badiashile", number: 5, role: "Difensore", photo: "/players/p7.jpg", altezza: "194cm", peso: "85kg", piede: "Sinistro", eta: 25, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p7", name: "Badiashile", number: 3, role: "Difensore", photo: "/players/p7.jpg", altezza: "194cm", peso: "85kg", piede: "Sinistro", eta: 25, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p8", name: "Balerdi", number: 5, role: "Difensore", photo: "/players/p8.jpg", altezza: "187cm", peso: "80kg", piede: "Destro", eta: 27, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p9", name: "Buongiorno", number: 4, role: "Difensore", photo: "/players/p9.jpg", altezza: "191cm", peso: "80kg", piede: "Sinistro", eta: 27, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p10", name: "Gatti", number: 4, role: "Difensore", photo: "/players/p10.jpg", altezza: "190cm", peso: "84kg", piede: "Destro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p9", name: "Buongiorno", number: 6, role: "Difensore", photo: "/players/p9.jpg", altezza: "191cm", peso: "80kg", piede: "Sinistro", eta: 27, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p10", name: "Gatti", number: 24, role: "Difensore", photo: "/players/p10.jpg", altezza: "190cm", peso: "84kg", piede: "Destro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p11", name: "Schingtienne", number: 25, role: "Difensore", photo: "/players/p11.jpg", altezza: "188cm", peso: "82kg", piede: "Destro", eta: 24, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p12", name: "Stones", number: 5, role: "Difensore", photo: "/players/p12.jpg", altezza: "188cm", peso: "80kg", piede: "Destro", eta: 32, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p13", name: "João Mário", number: 2, role: "Difensore", photo: "/players/p13.jpg", altezza: "178cm", peso: "71kg", piede: "Destro", eta: 26, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p13", name: "João Mário", number: 21, role: "Difensore", photo: "/players/p13.jpg", altezza: "178cm", peso: "71kg", piede: "Destro", eta: 26, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p14", name: "Kristensen", number: 2, role: "Difensore", photo: "/players/p14.jpg", altezza: "187cm", peso: "84kg", piede: "Destro", eta: 29, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p15", name: "Obrador", number: 33, role: "Difensore", photo: "/players/p15.jpg", altezza: "181cm", peso: "72kg", piede: "Sinistro", eta: 22, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p15", name: "Obrador", number: 29, role: "Difensore", photo: "/players/p15.jpg", altezza: "181cm", peso: "72kg", piede: "Sinistro", eta: 22, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p16", name: "Sverko", number: 33, role: "Difensore", photo: "/players/p16.jpg", altezza: "187cm", peso: "82kg", piede: "Sinistro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p17", name: "Dimarco", number: 32, role: "Difensore", photo: "/players/p17.jpg", altezza: "175cm", peso: "75kg", piede: "Sinistro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p18", name: "Cristante", number: 4, role: "Centrocampista", photo: "/players/p18.jpg", altezza: "186cm", peso: "80kg", piede: "Destro", eta: 31, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p19", name: "Modrić", number: 10, role: "Centrocampista", photo: "/players/p19.jpg", altezza: "172cm", peso: "66kg", piede: "Destro", eta: 41, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p20", name: "Nicolussi Caviglia", number: 5, role: "Centrocampista", photo: "/players/p20.jpg", altezza: "179cm", peso: "74kg", piede: "Destro", eta: 26, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p20", name: "Nicolussi Caviglia", number: 13, role: "Centrocampista", photo: "/players/p20.jpg", altezza: "179cm", peso: "74kg", piede: "Destro", eta: 26, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p21", name: "Atta", number: 14, role: "Centrocampista", photo: "/players/p21.jpg", altezza: "189cm", peso: "83kg", piede: "Destro", eta: 23, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p22", name: "Baldanzi", number: 35, role: "Centrocampista", photo: "/players/p22.jpg", altezza: "170cm", peso: "64kg", piede: "Sinistro", eta: 23, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p23", name: "Beto", number: 14, role: "Attaccante", photo: "/players/p23.jpg", altezza: "194cm", peso: "88kg", piede: "Destro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
+  { id: "p23", name: "Beto", number: 17, role: "Attaccante", photo: "/players/p23.jpg", altezza: "194cm", peso: "88kg", piede: "Destro", eta: 28, presenze: 0, gol: 0, assist: 0, minuti: 0 },
   { id: "p24", name: "Lautaro Martínez", number: 10, role: "Attaccante", photo: "/players/p24.jpg", altezza: "174cm", peso: "72kg", piede: "Destro", eta: 29, presenze: 0, gol: 0, assist: 0, minuti: 0 },
-  { id: "p25", name: "Bonny", number: 14, role: "Attaccante", photo: "/players/p25.jpg", altezza: "189cm", peso: "80kg", piede: "Destro", eta: 22, presenze: 0, gol: 0, assist: 0, minuti: 0 }
+  { id: "p25", name: "Bonny", number: 99, role: "Attaccante", photo: "/players/p25.jpg", altezza: "189cm", peso: "80kg", piede: "Destro", eta: 22, presenze: 0, gol: 0, assist: 0, minuti: 0 }
 ];
 
 
